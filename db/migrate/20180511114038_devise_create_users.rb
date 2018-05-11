@@ -33,6 +33,14 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
 
+      # 新規追加
+      t.string :name_kanji
+      t.string :name_kana
+      t.string :postcode
+      t.string :street_address
+      t.string :phone_number
+      t.integer :delete_flag
+
       t.timestamps null: false
     end
 

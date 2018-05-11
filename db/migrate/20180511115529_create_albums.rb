@@ -1,8 +1,8 @@
 class CreateAlbums < ActiveRecord::Migration[5.2]
   def change
     create_table :albums do |t|
-      t.integer :album_id
-      t.string :song_title
+      t.string :name
+      t.integer :cd_id
       t.integer :oder
 
       t.timestamps
