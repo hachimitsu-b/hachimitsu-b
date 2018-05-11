@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recommend_type: 1
+  cd_id: 1
+
+two:
+  recommend_type: 1
+  cd_id: 1
