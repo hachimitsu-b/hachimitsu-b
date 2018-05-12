@@ -11,7 +11,7 @@ class CreateCds < ActiveRecord::Migration[5.2]
       t.integer :stock
       t.integer :bought
       t.boolean :display
-      t.test :introduction
+      t.text :introduction
 
       t.timestamps
     end
