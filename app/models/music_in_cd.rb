@@ -1,2 +1,0 @@
-class MusicInCd < ApplicationRecord
-end
