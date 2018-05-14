@@ -25,6 +25,21 @@
 	# delete_flagは１は入会中
 end
 
+user = User.find(1)
+user.carts.create(status_flag: 0)
+user.carts.create(status_flag: 1)
+
+cart = user.carts.first
+cart.item_in_carts.create(cd_id: 1,
+												 count: 2,
+												 price: 1000)
+
+cart = user.carts.last
+cart.item_in_carts.create(cd_id: 3,
+												 count: 3,
+												 price: 500)
+
+
 # アーティストを作成
 artist = [{ name: "宇多田ヒカル", name_kana: "ウタダヒカル"},
 					{ name: "SMAP", name_kana: "スマップ"},
