@@ -1,0 +1,21 @@
+<div class="container"> <!-- ここを追加 -->
+      <div class="row">
+             <div class="col-xs-12">
+<h1>ユーザー詳細編集ページ</h1>
+<%= form_for(@user) do |f| %>
+    <h4>名前（漢字）</h4>
+    <%= f.text_field :name_kanji %>
+    <h4>名前（ひらがな）</h4>
+    <%= f.text_field :name_kana %>
+    <h4>郵便番号</h4>
+    <%= f.text_field :street_address, style: "width: 300px;" %>
+    <h4>TEL</h4>
+    <%= f.text_field :phone_number %>
+    <h4>メールアドレス</h4>
+    <%= f.text_field :email, style: "width: 300px;"%>
+    <input type="submit" name="commit" value="保存" data-disable-with="保存" class="btn btn-primary btn-lg active">
+
+    <% end %>
+</div>
+</div>
+</div>
