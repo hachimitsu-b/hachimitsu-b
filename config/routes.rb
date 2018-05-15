@@ -50,6 +50,11 @@ Rails.application.routes.draw do
 
  get 'admins/admin'
 # get 'home/top'
+
+# TOP画面
+root to: 'user/index'
+
+
   # 管理者側のpath
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
