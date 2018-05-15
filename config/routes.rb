@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  # devise_for :users
 # #利用者側コントローラー
 #   namespace :user do
 #     get 'carts/index'
@@ -42,6 +41,10 @@ Rails.application.routes.draw do
 #     get 'users/edit'
 #     get 'users/update'
 #   end
+# 　namespace :admin do
+#   　get 'carts/index'
+# 　end
+
 
   # devise_for :members あとで実装
 
@@ -56,9 +59,9 @@ Rails.application.routes.draw do
 
 	# ユーザー側のpath
 	devise_for :users, controllers: {
-	  sessions:      'users/sessions',
-	  passwords:     'users/passwords',
-	  registrations: 'users/registrations'
+	sessions:      'users/sessions',
+	passwords:     'users/passwords',
+	registrations: 'users/registrations'
 	}
 
 	# usersディレクトリ内のコントローラーのpath
