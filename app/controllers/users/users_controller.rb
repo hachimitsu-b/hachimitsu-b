@@ -9,7 +9,7 @@ class User::UsersController < ApplicationController
 
   	@user = User.find(params[:id])
   	@user_cart = @user.cart
-  	@cart = Cart.where(status_fag: 0)
+  	@cart = user_cart.where(status_flag: 0)
   	@cart_cd = @cart.cds
   	else
   		redirect_to cds_path

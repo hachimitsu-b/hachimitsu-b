@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @user = User.all
+    @users = User.all
   end
 
   def show
@@ -39,11 +39,11 @@ class Admin::UsersController < ApplicationController
 
   def history
 
-    if User.find_by(:id params[:id])
+    if User.find_by(id: params[:id])
 
       @user = User.find(params[:id])
       @user_cart = @user.cart
-      @cart = Cart.where(status_fag: 0)
+      @cart = Cart.where(status_flag: 0)
       @cart_cd = @cart.cds
 
     else
