@@ -87,6 +87,9 @@ Rails.application.routes.draw do
 		# get ''
 		resources :cds
 		resources :carts, only: [:index]
-		resources :admins, only: [:show]
 	end
+
+	# adminのマイページのみ、変更
+	# admin/admins/:id  => admins/:id
+	resources :admins, only: [:show]
 end
