@@ -1,3 +1,831 @@
 // Place all the styles related to the user::users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+/* common */
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+ul {
+  list-style: none;
+}
+.color-icon-red{
+	color: #E0001A;
+}
+.color-icon-gray{
+	color: #333333;
+}
+.fs12{
+	font-size: 12px;
+}
+.tac{
+	text-align: center;
+}
+.fl{float: left;}
+.fr{float: right;}
+.mb5{margin-bottom: 5px;}
+.mb10{margin-bottom: 10px;}
+.mb15{margin-bottom: 15px;}
+.mb20{margin-bottom: 20px;}
+.mb30{margin-bottom: 30px;}
+.mb50{margin-bottom: 50px;}
+.mb70{margin-bottom: 70px;}
+
+
+
+
+/* header */
+header{
+	background-color: #F5A623;
+    border-bottom: 1px solid #E0001A;
+    height: 55px;
+    margin-bottom: 20px;
+}
+.top-login{
+	font-size: 16px;
+	color: #4597F5;
+	display: inline-block;
+	border-right: 1px solid #333333;
+	padding:3px 8px 2px 0;
+}
+.signin{
+	font-size: 16px;
+	color: #E0001A;
+	display: inline-block;
+	padding-left: 5px;
+}
+.topheader{
+	margin-top: 10px;
+}
+.col{
+	width: 60px;
+	font-size: 20px;
+	text-align: center;
+}
+
+
+/* footer */
+footer{
+	background-color:  #F5A623;
+	height: 30px;
+	border-top: 1px solid #E0001A;
+	margin-top: 70px;
+}
+footer p{
+	font-size: 14px;
+	color: #444;
+	text-align: center;
+	margin-top: 5px;
+}
+
+/* ログイン画面 */
+
+.login-box{
+	width: 400px;
+	border: 1px solid #CCCCCC;
+	border-radius: 1px;        /* CSS3草案 */
+    -webkit-border-radius: 1px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 1px;   /* Firefox用 */
+    padding: 30px;
+}
+.login-txt{
+	font-size: 28px;
+}
+
+/*  TOP画面 */
+.sideber{
+	width: 300px;
+	border: 2px solid #CCCCCC;
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
+    padding: 20px 20px 20px 0;
+}
+.genre{
+	font-size: 18px;
+	border-bottom: 1px solid #CCCCCC;
+}
+.genre-menu{
+	color: #E07581;
+	font-size: 16px;
+	border-bottom: 1px solid #CCCCCC;
+	padding: 3px 0;
+}
+.ranking-box{
+	float:right;
+	margin-right: 100px;
+}
+.ranking{
+	width: 700px;
+	border: 1px solid #CCCCCC;
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
+    padding: 20px 20px 20px 20px;
+}
+.single-rank{
+	font-size: 18px;
+	color: #E07581;
+	border-bottom: 2px solid #EBC5C9;
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
+}
+.rank1{
+	float: left;
+	margin: 0 30px 0 50px;
+}
+.rank2{
+	float: left;
+	margin-right: 30px;
+}
+.rank3{
+	float: left;
+}
+.rank-box{
+	width: 150px;
+	height: 150px;
+	border: 1px solid #CCCCCC;
+	margin-bottom: 10px;
+}
+.titile-artists{
+	color: #4597F5;
+}
+.titile-artists span{
+	font-weight: bold;
+	font-size: 20px;
+}
+
+
+
+
+/* New シングル */
+.cd-box{
+	width: 150px;
+	height: 150px;
+	border: 1px solid #CCCCCC;
+	margin-bottom: 10px;
+}
+.cd-con{
+	float: left;
+	margin-right: 30px;
+}
+.cd-box-container{
+	margin: 0 0 30px 50px;
+}
+
+/*---------------------------------------------------------------------
+	見出し装飾
+-----------------------------------------------------------------------*/
+
+/* h2 */
+h2{
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #333333;
+	color: #ffffff;
+	padding: 3px 0 5px 25px;
+	margin-bottom: 30px;
+}
+
+/* h3 */
+h3{
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #666666;
+	color: #ffffff;
+	padding: 8px 0 8px 25px;
+	margin-bottom: 30px;
+}
+
+
+/* h5 */
+h5{
+	border: 1px solid #EBC5C9;
+	font-size: 17px;
+	color: #E07581;
+	font-weight: bold;
+	padding: 10px;
+}
+
+
+
+
+
+/* カートボタン */
+.cart-btn{
+	width: 150px;
+	background-color: #F5A623;
+	border: 1px solid #E07581;
+	border-radius: 2px;        /* CSS3草案 */
+    -webkit-border-radius: 2px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 2px;   /* Firefox用 */
+    text-align: center;
+    padding: 3px 0;
+}
+
+/*　price */
+.praice{
+	color: #666666;
+}
+
+/* マイページ */
+
+/* サイドメニュー*/
+.side-menu{
+	width: 300px;
+	margin-right: 30px;
+}
+.side-menu-bar{
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	background-color: #999999;
+	border: 1px solid #666666;
+	padding: 1px 1px 1px 5px;
+	margin-bottom: 10px;
+}
+
+/* マイページ　ul*/
+.mypage-navi{
+	font-size: 16px;
+	color: #4597F5;
+	margin-bottom: 2px;
+}
+.mypage-navi span{
+	color: #7FB6F5;
+	font-weight: bold;
+}
+
+/* マイページの中のショッピングカート */
+.mypage-cart{
+	float: left;
+	width: 520px;
+	margin-right: 30px;
+}
+
+.cd-box2{
+	width: 100px;
+	height: 100px;
+	border: 1px solid #CCCCCC;
+	margin: 0 15px 0 0;
+	float: left;
+}
+.titile-artists2{
+	font-size: 12px;
+	color: #4597F5;
+}
+.titile-artists2 span{
+	font-weight: bold;
+	font-size: 16px;
+}
+.price2{
+	color: #444;
+	font-size: 16px;
+}
+.price2 span{
+	font-size: 21px;
+	color: #E0001A;
+	font-weight: bold;
+}
+
+.cd-num{
+	width: 100px;
+}
+.cd-number-text{
+	float: left;
+	margin: 6px 5px 0 17px;
+}
+
+/* マイページ内の削除ボタン */
+.destroy-btn{
+	background-color: #999999;
+	color: #fff;
+	width: 120px;
+	border: 1px solid #ccc;
+	border-radius: 2px;        /* CSS3草案 */
+    -webkit-border-radius: 2px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 2px;   /* Firefox用 */
+    text-align: center;
+    padding: 5px 1px 5px 1px;
+}
+
+
+/* マイページのカートの線 */
+.mypage-cart-line{
+	width: 520px;
+	border-bottom: 1px solid #CCCCCC;
+	padding: 10px 0 20px 0;
+}
+
+
+
+/* マイページ内の購入 */
+.purchase{
+	float: left;
+	width: 250px;
+	border: 1px solid #999999;
+	border-radius: 3px;        /* CSS3草案 */
+    -webkit-border-radius: 3px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 3px;   /* Firefox用 */
+    padding: 20px;
+}
+
+.purchase-total-line{
+	width: 200px;
+	border-bottom: 1px solid #CCCCCC;
+	margin-bottom: 20px;
+}
+
+.total-price-txt{
+	font-size: 18px;
+	color: #444;
+}
+.total-txt{
+	font-size: 22px;
+	font-weight: bold;
+	color: #E0001A;
+	padding: 0 0 0 10px;
+}
+
+/* 購入へ進むボタン */
+.purchase-move-btn{
+	width: 200px;
+	font-size: 17px;
+	font-weight: bold;
+	text-align: center;
+	color: #fff;
+	background-color: #F5A623;
+	border: 1px solid #E0001A;
+	border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */
+    padding: 10px 0;
+}
+
+/* お買い物を続ける */
+.purchase-shopping-btn{
+	width: 200px;
+	font-size: 17px;
+	font-weight: bold;
+	text-align: center;
+	color: #fff;
+	background-color: #4597F5;
+	border: 1px solid #7FB6F5;
+	border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */
+    padding: 10px 0;
+}
+
+
+
+
+/* 商品詳細ページ */
+.cd-detail{
+	margin:50px 0;
+}
+.cd-box3{
+	width: 250px;
+	height: 250px;
+	border: 1px solid #CCCCCC;
+	margin: 0 15px 0 0;
+	float: left;
+}
+
+.titile-artists3{
+	font-size: 20px;
+	color: #4597F5;
+}
+.titile-artists3 span{
+	font-weight: bold;
+	font-size: 30px;
+	color: #333;
+}
+.category-txt{
+	font-size: 18px;
+	color: #444;
+}
+.price3-txt{
+	font-size: 21px;
+	color: #444;
+}
+.price3-txt span{
+	font-weight: bold;
+}
+.price-box{
+	width: 250px;
+	float: right;
+}
+.price3{
+	font-weight: bold;
+	font-size: 30px;
+	margin-left: 140px;
+}
+.cart-btn2{
+	width: 250px;
+	background-color: #F5A623;
+	border: 1px solid #E0001A;
+	border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */
+    text-align: center;
+    padding: 9px 0;
+    font-weight: bold;
+    font-size: 20px;
+}
+.stock-txt{
+	font-size: 16px;
+	color: #000000;
+}
+.stock-txt2{
+	font-size: 16px;
+	color: #E0001A;
+}
+.stock-txt2-note{
+	font-size: 14px;
+	color: #000000;
+}
+
+
+
+
+/* 商品紹介　*/
+.introduction-txt{
+	font-size: 14px;
+	color: #444;
+	margin-bottom: 30px;
+}
+.recording-titile-txt{
+	font-size: 26px;
+	font-weight: bold;
+	color: #4597F5;
+	margin-bottom: 20px;
+}
+.disk-titile{
+	font-size: 20px;
+	color: #333333;
+font-weight: bold;
+}
+
+
+
+/* 曲名 */
+.table-bg1{
+	background-color: #fbfbfb;
+	font-size: 17px;
+	padding:7px 0 7px 15px;
+	color: #444;
+	width: 1200px;
+	border-bottom: 1px solid #eee;
+	font-weight:normal;
+}
+.table-bg2{
+	font-size: 17px;
+	padding:7px 0 7px 15px;
+	color: #444;
+	width: 1200px;
+	border-bottom: 1px solid #eee;
+	font-weight:normal;
+}
+
+
+
+
+/*---------------------------------------------------------------------
+	ログイン画面
+-----------------------------------------------------------------------*/
+.login-box{
+	width: 420px;
+	border: 1px solid #ccc;
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
+    padding: 20px 34px 15px 34px;
+    margin: 50px auto;
+}
+.login-title-txt{
+	font-size: 28px;
+	color: #444;
+	margin-bottom: 20px;
+}
+.login-txt{
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.login-btn{
+	width: 350px;
+	background-color: #F5C87F;
+	border: 1px solid #E07581;
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
+    text-align: center;
+    padding: 5px 0;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+
+/*---------------------------------------------------------------------
+	購入履歴画面
+-----------------------------------------------------------------------*/
+.genre-txt{
+	font-size: 12px;
+	color: #333;
+}
+.price4{
+	color: #333;
+	font-size: 14px;
+	font-weight:normal;
+}
+.price4 span{
+	font-weight: bold;
+	font-size: 16px;
+}
+.purchase-line{
+	padding: 20px 0;
+	border-bottom: 1px solid #ccc;
+	width: 1135px;
+}
+
+
+
+
+
+/*---------------------------------------------------------------------
+	退会手続き画面
+-----------------------------------------------------------------------*/
+.unsubscribe-titile-txt{
+	font-size: 24px;
+	color: #444;
+	margin-bottom: 20px;
+}
+.unsubscribe-caution-txt{
+	font-size: 15px;
+	color: #444;
+	margin-bottom: 50px;
+}
+.unsubscribe-btn-box{
+	width: 350px;
+	margin: 0 auto;
+}
+
+/*　退会確認ボタン　*/
+.unsubscribe-btn{
+	width: 150px;
+	background-color: #fbfbfb;
+	border: 1px solid #999999;
+	border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */
+    text-align: center;
+    padding: 5px 0;
+    font-size: 16px;
+}
+.unsubscribe-box{
+	width: 500px;
+	margin: 0 auto;
+	text-align: center;
+}
+.no-btn{
+	float: left;
+}
+.no-btn2{
+	float: right;
+}
+
+
+
+/*---------------------------------------------------------------------
+	受け取り方法画面
+-----------------------------------------------------------------------*/
+.list-bar-box{
+	width: 950px;
+	margin: 0 auto;
+}
+.list-txt{
+	font-weight: bold;
+	font-size: 20px;
+	color: #4597F5;
+	margin: 0 0 10px 0;
+}
+
+.list{
+	position: relative;
+    width: 200px;
+    float: left;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 11px;
+    z-index: 5;
+}
+.list-circle1{
+	display: inline-block;
+    width: 34px;
+    height: 34px;
+    margin-top: 5px;
+    border: 1px solid #4597F5;
+    background: #4597F5;
+    border-radius: 20px;
+}
+.list-circle2{
+	display: inline-block;
+    width: 34px;
+    height: 34px;
+    margin-top: 5px;
+    border: 1px solid #4597F5;
+    background: #fff;
+    border-radius: 20px;
+}
+.list-bar{
+	position: relative;
+    text-align: center;
+    font-size: 11px;
+    z-index: 5;
+}
+.list-bar:before{
+    content: "";
+    position: absolute;
+    display: block;
+    height: 3px;
+    width: 650px;
+    top: 60px;
+    left: 22px;
+    background: #4597F5;
+    z-index: 1;
+    margin-left: 140px;
+}
+.acceptance-box-title{
+	font-size: 16px;
+	color: #444;
+	padding: 0 0 20px 0;
+	border-bottom: 1px solid #999999;
+}
+
+.radio-box{
+	float: right;
+	margin-right: 400px;
+}
+
+.acceptance-table{
+	width: 1200px;
+	margin-bottom: 50px;
+}
+.table-line{
+	padding: 20px 0;
+	width: 1200px;
+	border-bottom: 1px solid #eeeeee;
+	border-top: 1px solid #eeeeee;
+}
+.table-txt{
+	font-weight: bold;
+	font-size: 14px;
+	float: left;
+	padding: 20px 0;
+	margin-left: 30px;
+	width: 160px;
+}
+.form-control1{
+	width: 500px;
+}
+.acceptance-box-form{
+	float: left;
+	margin: 18px 0 0 0;
+}
+
+/* 受け取りボタンボックス　*/
+.acceptance-btn-box{
+	width: 500px;
+	margin: 0 auto;
+}
+
+.back-btn{
+	width: 200px;
+	background-color: #E07581;
+	border: 1px solid #EBC5C9;
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
+    text-align: center;
+    padding: 5px 0;
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+}
+.acceptance-btn{
+	width: 200px;
+	background-color: #F5C87F;
+	border: 1px solid #E07581;
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
+    text-align: center;
+    padding: 5px 0;
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+}
+
+
+/*---------------------------------------------------------------------
+	支払い方法画面
+-----------------------------------------------------------------------*/
+.credit-txt{
+	font-size: 16px;
+	float: left;
+	font-weight: normal;
+	margin: 10px 0 0 0;
+}
+
+/*---------------------------------------------------------------------
+	注文内容画面
+-----------------------------------------------------------------------*/
+.acceptance-btn-box2{
+	width: 200px;
+	margin: 0 auto;
+}
+
+/*---------------------------------------------------------------------
+	注文内容画面
+-----------------------------------------------------------------------*/
+
+.order-txt{
+	font-size: 24px;
+	color: #444;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
