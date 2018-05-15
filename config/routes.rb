@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # devise_for :users
 # #利用者側コントローラー
 #   namespace :user do
 #     get 'carts/index'
@@ -44,6 +45,8 @@ Rails.application.routes.draw do
 
   # devise_for :members あとで実装
 
+ get 'admins/admin'
+# get 'home/top'
   # 管理者側のpath
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',

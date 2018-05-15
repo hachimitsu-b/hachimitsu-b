@@ -1,2 +1,6 @@
 class ApplicationController < ActionController::Base
+	def after_sign_in_path_for(resource)
+		admin_admins_show_path #転送先を入力
+	end
+
 end
