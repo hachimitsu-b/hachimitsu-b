@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-class ApplicationController < ActionController::Base4
-=======
 class ApplicationController < ActionController::Base
 
 	# 新規登録時に、使用できるカラムを設定
@@ -17,5 +14,4 @@ class ApplicationController < ActionController::Base
 	    																									 :delete_flag,
 	    																									 :emal])
 	  end
->>>>>>> ikegami
 end
