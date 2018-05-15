@@ -15,3 +15,17 @@
  */
 	@import "bootstrap-sprockets";
   @import "bootstrap";
+  .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #66CC99;
+}
+body  {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}

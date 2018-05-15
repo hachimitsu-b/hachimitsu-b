@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+	# def after_sign_in_path_for(resource)
+	# 	admin_admins_show_path #転送先を入力
+	# end
+
 
 	# 新規登録時に、使用できるカラムを設定
 	before_action :configure_permitted_parameters, if: :devise_controller?
