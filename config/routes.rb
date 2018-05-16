@@ -52,7 +52,7 @@ Rails.application.routes.draw do
 # # get 'home/top'
 
 # # TOP画面
-
+ root 'user/cds#index'
 
   # 管理者側のpath
   devise_for :admins, controllers: {
