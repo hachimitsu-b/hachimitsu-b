@@ -52,7 +52,6 @@ Rails.application.routes.draw do
 # # get 'home/top'
 
 # # TOP画面
-# root to: 'user/index'
 
 
   # 管理者側のpath
@@ -71,7 +70,7 @@ Rails.application.routes.draw do
 
 	# usersディレクトリ内のコントローラーのpath
 	# 生成されるpath => ooo_path
-	scope module: :users do
+	scope module: :user do
 		resources :users, only: [:show, :edit, :update, :destroy]
 		# 退会手続き
 		# post ''
