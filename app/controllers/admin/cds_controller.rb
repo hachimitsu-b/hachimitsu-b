@@ -4,7 +4,7 @@ class Admin::CdsController < ApplicationController
   end
 
   def show
-    is_there_cd(params[:id])
+    is_there_cd(params[:id])  # CDが存在するか確認
   end
 
   def new
@@ -17,17 +17,34 @@ class Admin::CdsController < ApplicationController
   end
 
   def edit
+    is_there_cd(params[:id])  # CDが存在するか確認
   end
 
   def update
+    is_there_cd(params[:id])  # CDが存在するか確認
+    cd = Cd.update(cds_params)  # 変更を保存
+    redirect_to admin_cd_path(cd.id)
   end
 
+  def destroy
+    cd = CD.find(params[:id])
+    if cd.bought
+      cd.display = false
+    else
+      cd.destroy
+    end
+    redirect_to admin_cds_path
+  end
+
+# ----------------------------------------------------------------------------
+# 以下privateメソッド
+# ----------------------------------------------------------------------------
   private
 
-    # 指定のidのCDが存在していなかったら、飛ばす
+    # 指定のidのCDが存在していなかったら、cd一覧に飛ばす
     def is_there_cd(cd_id)
       unless @cd =  Cd.find_by(id: cd_id)
-        redirect_to admin_admins_path(1)
+        redirect_to admin_cds_path
       end
     end
 
@@ -45,11 +62,3 @@ class Admin::CdsController < ApplicationController
                                   :introduction)
     end
 end
-
-
-
-
-
-
-
-
