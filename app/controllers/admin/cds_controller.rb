@@ -36,6 +36,10 @@ class Admin::CdsController < ApplicationController
     redirect_to admin_cds_path
   end
 
+  def seach
+    
+  end
+
 # ----------------------------------------------------------------------------
 # 以下privateメソッド
 # ----------------------------------------------------------------------------
