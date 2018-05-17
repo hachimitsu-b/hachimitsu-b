@@ -1,3 +1,163 @@
 // Place all the styles related to the user::carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*---------------------------------------------------------------------
+	受け取り方法画面
+-----------------------------------------------------------------------*/
+.list-bar-box{
+	width: 950px;
+	margin: 0 auto;
+}
+.list-txt{
+	font-weight: bold;
+	font-size: 20px;
+	color: #4597F5;
+	margin: 0 0 10px 0;
+}
+
+.list{
+	position: relative;
+    width: 200px;
+    float: left;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 11px;
+    z-index: 5;
+}
+.list-circle1{
+	display: inline-block;
+    width: 34px;
+    height: 34px;
+    margin-top: 5px;
+    border: 1px solid #4597F5;
+    background: #4597F5;
+    border-radius: 20px;
+}
+.list-circle2{
+	display: inline-block;
+    width: 34px;
+    height: 34px;
+    margin-top: 5px;
+    border: 1px solid #4597F5;
+    background: #fff;
+    border-radius: 20px;
+}
+.list-bar{
+	position: relative;
+    text-align: center;
+    font-size: 11px;
+    z-index: 5;
+}
+.list-bar:before{
+    content: "";
+    position: absolute;
+    display: block;
+    height: 3px;
+    width: 650px;
+    top: 60px;
+    left: 22px;
+    background: #4597F5;
+    z-index: 1;
+    margin-left: 140px;
+}
+.acceptance-box-title{
+	font-size: 16px;
+	color: #444;
+	padding: 0 0 20px 0;
+	border-bottom: 1px solid #999999;
+}
+
+.radio-box{
+	float: right;
+	margin-right: 400px;
+}
+
+.acceptance-table{
+	width: 1200px;
+	margin-bottom: 50px;
+}
+.table-line{
+	padding: 20px 0;
+	width: 1200px;
+	border-bottom: 1px solid #eeeeee;
+	border-top: 1px solid #eeeeee;
+}
+.table-txt{
+	font-weight: bold;
+	font-size: 14px;
+	float: left;
+	padding: 20px 0;
+	margin-left: 30px;
+	width: 160px;
+}
+.form-control1{
+	width: 500px;
+}
+.acceptance-box-form{
+	float: left;
+	margin: 18px 0 0 0;
+}
+
+/* 受け取りボタンボックス　*/
+.acceptance-btn-box{
+	width: 500px;
+	margin: 0 auto;
+}
+
+.back-btn{
+	width: 200px;
+	background-color: #E07581;
+	border: 1px solid #EBC5C9;
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
+    text-align: center;
+    padding: 5px 0;
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+}
+.acceptance-btn{
+	width: 200px;
+	background-color: #F5C87F;
+	border: 1px solid #E07581;
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
+    text-align: center;
+    padding: 5px 0;
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+}
+
+
+/*---------------------------------------------------------------------
+	支払い方法画面
+-----------------------------------------------------------------------*/
+.credit-txt{
+	font-size: 16px;
+	float: left;
+	font-weight: normal;
+	margin: 10px 0 0 0;
+}
+
+/*---------------------------------------------------------------------
+	注文内容画面
+-----------------------------------------------------------------------*/
+.acceptance-btn-box2{
+	width: 200px;
+	margin: 0 auto;
+}
+
+/*---------------------------------------------------------------------
+	注文内容画面
+-----------------------------------------------------------------------*/
+
+.order-txt{
+	font-size: 24px;
+	color: #444;
+	text-align: center;
+}

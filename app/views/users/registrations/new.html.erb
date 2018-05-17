@@ -1,0 +1,54 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
+
+
+
+<div class='container'>
+  <div class="login-box">
+    <div class="login-title-txt">新規会員登録</div>
+    <div class="login-txt">名前</div>
+    <input type="text" class="form-control mb15">
+    <div class="login-txt">フリガナ</div>
+    <input type="text" class="form-control mb15">
+    <div class="login-txt">郵便番号</div>
+    <input type="text" class="form-control mb15">
+    <div class="login-txt">住所</div>
+    <input type="text" class="form-control mb15">
+    <div class="login-txt">電話番号</div>
+    <input type="text" class="form-control mb15">
+    <div class="login-txt">メールアドレス</div>
+    <input type="text" class="form-control mb15">
+    <div class="login-txt">パスワード</div>
+    <input type="text" class="form-control mb15">
+    <div class="login-txt">もう一度パスワードを入力してください</div>
+    <input type="text" class="form-control mb30">
+    <div class="login-btn">登録する</div>
+  </div>
+</div><!-- /.container -->

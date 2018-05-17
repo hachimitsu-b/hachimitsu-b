@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  # devise_for :users
 # #利用者側コントローラー
 #   namespace :user do
 #     get 'carts/index'
@@ -42,11 +41,20 @@ Rails.application.routes.draw do
 #     get 'users/edit'
 #     get 'users/update'
 #   end
+# 　namespace :admin do
+#   　get 'carts/index'
+# 　end
+
 
   # devise_for :members あとで実装
 
- get 'admins/admin'
-# get 'home/top'
+#  get 'admins/admin'
+# # get 'home/top'
+
+# # TOP画面
+# root to: 'user/index'
+
+
   # 管理者側のpath
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -56,9 +64,9 @@ Rails.application.routes.draw do
 
 	# ユーザー側のpath
 	devise_for :users, controllers: {
-	  sessions:      'users/sessions',
-	  passwords:     'users/passwords',
-	  registrations: 'users/registrations'
+	sessions:      'users/sessions',
+	passwords:     'users/passwords',
+	registrations: 'users/registrations'
 	}
 
 	# usersディレクトリ内のコントローラーのpath
@@ -84,6 +92,11 @@ Rails.application.routes.draw do
 		# get ''
 		resources :cds
 		resources :carts, only: [:index]
+	end
+
+	# adminのマイページのみ、変更
+	# admin/admins/:id  => admins/:id
+	scope module: :admin do
 		resources :admins, only: [:show]
 	end
 end

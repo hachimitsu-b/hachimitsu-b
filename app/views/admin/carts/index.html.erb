@@ -1,1 +1,25 @@
-<h1>発送状態確認<h2>
+<%= render 'admins_footer/list' %>
+<div class="container">
+  <table class="table table-bordered">
+  	<h1>発送状態確認</h1>
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>ふりがな</th>
+        <th>商品名</th>
+      </tr>
+    </thead>
+       <% @carts.each do |cart| %>
+		    <tbody>
+		      <tr>
+		        <th scope="row"><%= user.id %></th>
+		          <td><%= cart.user.name_kanji %></td>
+                  <td><%= cart.user.name_kana %></td>
+		          <td><%= cart.name %></td>
+		          <td><%= link_to '詳細', admin_user_path(1) ,class: "btn btn-primary btn-lg active btncolor"%></td>
+		          <td><%= link_to '削除', admin_users_path ,class: "btn btn-danger btn-lg active btncolor"%></td>
+		      </tr>
+		    </tbody>
+     	<% end %>
+  </table>
+</div>
