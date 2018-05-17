@@ -21,29 +21,40 @@
 @import "bootstrap";
 
 
-/* common */
+/*---------------------------------------------------------------------
+	共通CSS
+-----------------------------------------------------------------------*/
+/* デフォルト設定 */
+*{
+	color: #444;
+}
+ul {
+  list-style: none;
+}
+/* フロート */
 .clearfix:after {
   content: "";
   clear: both;
   display: block;
 }
-ul {
-  list-style: none;
-}
+.fl{float: left;}
+.fr{float: right;}
+/* アイコンカラー */
 .color-icon-red{
 	color: #E0001A;
 }
 .color-icon-gray{
 	color: #333333;
 }
+/* フォントサイズ */
 .fs12{
 	font-size: 12px;
 }
+/* テキスト位置 */
 .tac{
 	text-align: center;
 }
-.fl{float: left;}
-.fr{float: right;}
+/* マージン */
 .mb5{margin-bottom: 5px;}
 .mb10{margin-bottom: 10px;}
 .mb15{margin-bottom: 15px;}
@@ -52,9 +63,9 @@ ul {
 .mb50{margin-bottom: 50px;}
 .mb70{margin-bottom: 70px;}
 
-
-
-
+/*---------------------------------------------------------------------
+	部分テンプレート
+-----------------------------------------------------------------------*/
 /* header */
 header{
 	background-color: #F5A623;
@@ -83,8 +94,6 @@ header{
 	font-size: 20px;
 	text-align: center;
 }
-
-
 /* footer */
 footer{
 	background-color:  #F5A623;
@@ -99,8 +108,9 @@ footer p{
 	margin-top: 5px;
 }
 
-/* ログイン画面 */
-
+/*---------------------------------------------------------------------
+	ログイン画面
+-----------------------------------------------------------------------*/
 .login-box{
 	width: 400px;
 	border: 1px solid #CCCCCC;
@@ -113,7 +123,9 @@ footer p{
 	font-size: 28px;
 }
 
-/*  TOP画面 */
+/*---------------------------------------------------------------------
+	トップ画面
+-----------------------------------------------------------------------*/
 .sideber{
 	width: 300px;
 	border: 2px solid #CCCCCC;
@@ -132,6 +144,7 @@ footer p{
 	border-bottom: 1px solid #CCCCCC;
 	padding: 3px 0;
 }
+/* ランキング */
 .ranking-box{
 	float:right;
 	margin-right: 100px;
@@ -142,7 +155,7 @@ footer p{
 	border-radius: 4px;        /* CSS3草案 */
     -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 4px;   /* Firefox用 */
-    padding: 20px 20px 20px 20px;
+    padding: 20px 20px 8px 20px;
 }
 .single-rank{
 	font-size: 18px;
@@ -151,6 +164,7 @@ footer p{
 	border-radius: 4px;        /* CSS3草案 */
     -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 4px;   /* Firefox用 */
+    margin-bottom: 12px;
 }
 .rank1{
 	float: left;
@@ -167,7 +181,23 @@ footer p{
 	width: 150px;
 	height: 150px;
 	border: 1px solid #CCCCCC;
-	margin-bottom: 10px;
+	margin-bottom: 6px;
+}
+.rank-icon-box{
+	position: relative;
+	text-align: center;
+	margin-bottom: 1px;
+}
+.rank-icon-txt{
+	position: absolute;
+    color: #363636;
+    top: 9px;
+    left: 66px;
+    font-size: 10px;
+    font-weight: bold;
+}
+.rank-icon-txt span{
+	font-size: 14px;
 }
 .titile-artists{
 	color: #4597F5;
@@ -176,10 +206,6 @@ footer p{
 	font-weight: bold;
 	font-size: 20px;
 }
-
-
-
-
 /* New シングル */
 .cd-box{
 	width: 150px;
@@ -198,17 +224,15 @@ footer p{
 /*---------------------------------------------------------------------
 	見出し装飾
 -----------------------------------------------------------------------*/
-
 /* h2 */
 h2{
 	font-size: 20px;
 	font-weight: bold;
-	background-color: #333333;
-	color: #ffffff;
-	padding: 3px 0 5px 25px;
+/*	background-color: #333333;
+*/	color: #ffffff;
+	padding: 5px 0 7px 25px;
 	margin-bottom: 30px;
 }
-
 /* h3 */
 h3{
 	font-size: 18px;
@@ -218,8 +242,6 @@ h3{
 	padding: 8px 0 8px 25px;
 	margin-bottom: 30px;
 }
-
-
 /* h5 */
 h5{
 	border: 1px solid #EBC5C9;
@@ -229,10 +251,9 @@ h5{
 	padding: 10px;
 }
 
-
-
-
-
+/*---------------------------------------------------------------------
+	ボタン装飾
+-----------------------------------------------------------------------*/
 /* カートボタン */
 .cart-btn{
 	width: 150px;
@@ -244,14 +265,14 @@ h5{
     text-align: center;
     padding: 3px 0;
 }
-
 /*　price */
 .praice{
 	color: #666666;
 }
 
-/* マイページ */
-
+/*---------------------------------------------------------------------
+	マイページ
+-----------------------------------------------------------------------*/
 /* サイドメニュー*/
 .side-menu{
 	width: 300px;
