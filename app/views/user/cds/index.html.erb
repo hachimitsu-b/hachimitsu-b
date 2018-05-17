@@ -16,35 +16,84 @@
 			</div>
 		</div>
 		<div class='ranking-box'>
-			<div class="ranking">
-				<div class="single-rank">シングル ランキング</div>
-				<div class="clearfix">
-					<div class="rank1">
+			<div class="slide">
 						<div class="rank-icon-box">
-							<%= image_tag("rank1-icon.png") %>
-							<div class="rank-icon-txt"><span>1 </span>位</div>
+								<%= image_tag("rank1-icon.png") %>
+									
+								</div>						<div class="rank-icon-box">
+								<%= image_tag("rank1-icon.png") %>
+									
+								</div>						<div class="rank-icon-box">
+								<%= image_tag("rank1-icon.png") %>
+									
+								</div>						<div class="rank-icon-box">
+								<%= image_tag("rank1-icon.png") %>
+									
+								</div>
+								<div class="rank-icon-txt"><span>1 </span>位</div>
+							</div>							<div class="rank-icon-box">
+								<%= image_tag("rank1-icon.png") %>
+								<div class="rank-icon-txt"><span>1 </span>位</div>
+							</div>
+				<div class="ranking">
+					<div class="single-rank">シングル ランキング</div>
+					<div class="clearfix">
+						<div class="rank1">
+							<div class="rank-icon-box">
+								<%= image_tag("rank1-icon.png") %>
+								<div class="rank-icon-txt"><span>1 </span>位</div>
+							</div>
+							<div class="rank-box">CD</div>
+							<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
 						</div>
-						<div class="rank-box">CD</div>
-						<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
-					</div>
-					<div class="rank2">
-						<div class="rank-icon-box">
-							<%= image_tag("rank2-icon.png") %>
-							<div class="rank-icon-txt"><span>2 </span>位</div>
+						<div class="rank2">
+							<div class="rank-icon-box">
+								<%= image_tag("rank2-icon.png") %>
+								<div class="rank-icon-txt"><span>2 </span>位</div>
+							</div>
+							<div class="rank-box">CD</div>
+							<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
 						</div>
-						<div class="rank-box">CD</div>
-						<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
-					</div>
-					<div class="rank3">
-						<div class="rank-icon-box">
-							<%= image_tag("rank3-icon.png") %>
-							<div class="rank-icon-txt"><span>3 </span>位</div>
+						<div class="rank3">
+							<div class="rank-icon-box">
+								<%= image_tag("rank3-icon.png") %>
+								<div class="rank-icon-txt"><span>3 </span>位</div>
+							</div>
+							<div class="rank-box">CD</div>
+							<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
 						</div>
-						<div class="rank-box">CD</div>
-						<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
-					</div>
-				</div><!-- /.clearfix -->
-			</div>
+					</div><!-- /.clearfix -->
+				</div>
+				<div class="ranking">
+					<div class="single-rank">アルバム ランキング</div>
+					<div class="clearfix">
+						<div class="rank1">
+							<div class="rank-icon-box">
+								<%= image_tag("rank1-icon.png") %>
+								<div class="rank-icon-txt"><span>1 </span>位</div>
+							</div>
+							<div class="rank-box">CD</div>
+							<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
+						</div>
+						<div class="rank2">
+							<div class="rank-icon-box">
+								<%= image_tag("rank2-icon.png") %>
+								<div class="rank-icon-txt"><span>2 </span>位</div>
+							</div>
+							<div class="rank-box">CD</div>
+							<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
+						</div>
+						<div class="rank3">
+							<div class="rank-icon-box">
+								<%= image_tag("rank3-icon.png") %>
+								<div class="rank-icon-txt"><span>3 </span>位</div>
+							</div>
+							<div class="rank-box">CD</div>
+							<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
+						</div>
+					</div><!-- /.clearfix -->
+				</div>
+			</div><!-- /.slide -->
 		</div>
 	</div><!-- /.clearfix -->
 	<h2>NEW シングル</h2>
@@ -126,3 +175,12 @@
 		</div>
 	</div><!-- /.clearfix -->
 </div><!-- /.container -->
+
+<script>
+$('.slide').slick({
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
+});
+</script>
