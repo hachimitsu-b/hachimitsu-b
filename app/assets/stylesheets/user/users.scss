@@ -71,7 +71,20 @@ header{
 	background-color: #F5A623;
     border-bottom: 1px solid #E0001A;
     height: 55px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+}
+.logo{
+	float: left;
+	margin: 0 20px 5px 10px;
+}
+.search-box{
+	margin: 10px 0 0 0;
+}
+.top-form{
+	float: left;
+}
+.header-login-box{
+	margin: 13px 0 0 0;
 }
 .top-login{
 	font-size: 16px;
@@ -80,9 +93,9 @@ header{
 	border-right: 1px solid #333333;
 	padding:3px 8px 2px 0;
 }
-.signin{
+.top-signin{
 	font-size: 16px;
-	color: #E0001A;
+	color: #E0001A !important;
 	display: inline-block;
 	padding-left: 5px;
 }
@@ -93,6 +106,13 @@ header{
 	width: 60px;
 	font-size: 20px;
 	text-align: center;
+}
+.header-icon-box{
+	margin: 10px 0 0 0;
+}
+.header-p{
+	font-size: 12px;
+	color: #E0001A;
 }
 /* footer */
 footer{
@@ -193,6 +213,11 @@ input[type="password"] {
 /*---------------------------------------------------------------------
 	トップ画面
 -----------------------------------------------------------------------*/
+/* サイドバー */
+.sideber-box{
+	float: left;
+	margin: 0 30px 0 80px;
+}
 .sideber{
 	width: 300px;
 	border: 2px solid #CCCCCC;
@@ -213,16 +238,17 @@ input[type="password"] {
 }
 /* ランキング */
 .ranking-box{
-	float:right;
-	margin-right: 100px;
-}
-.ranking{
-	width: 700px;
+	width: 650px;
 	border: 1px solid #CCCCCC;
 	border-radius: 4px;        /* CSS3草案 */
     -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 4px;   /* Firefox用 */
+    float:left;
+}
+.ranking{
+	width: 650px;
     padding: 20px 20px 8px 20px;
+    z-index: 2;
 }
 .single-rank{
 	font-size: 18px;
@@ -252,13 +278,14 @@ input[type="password"] {
 }
 .rank-icon-box{
 	position: relative;
-	text-align: center;
-	margin-bottom: 1px;
+}
+.rank-icon-img{
+	margin:0 0 1px 60px;
 }
 .rank-icon-txt{
 	position: absolute;
     color: #363636;
-    top: 9px;
+    top: 10px;
     left: 66px;
     font-size: 10px;
     font-weight: bold;
@@ -293,12 +320,12 @@ input[type="password"] {
 -----------------------------------------------------------------------*/
 /* h2 */
 h2{
-	font-size: 20px;
-	font-weight: bold;
+	font-size: 20px !important;
+	font-weight: bold !important;
 	background-color: #333333;
-	color: #ffffff;
+	color: #ffffff !important;
 	padding: 5px 0 7px 25px;
-	margin-bottom: 30px;
+	margin-bottom: 30px !important;
 }
 /* h3 */
 h3{
@@ -307,7 +334,7 @@ h3{
 	background-color: #666666;
 	color: #ffffff !important;
 	padding: 8px 0 8px 25px;
-	margin-bottom: 30px;
+	margin-bottom: 30px !important;
 }
 /* h5 */
 h5{
