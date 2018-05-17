@@ -17,3 +17,6 @@ module Hachimitsu
     # the framework and any gems in your application.
   end
 end
+
+# config.i18n.default_locale = :de のコメントアウトがあるのでこれを利用すればよい
+config.i18n.default_locale = :ja
