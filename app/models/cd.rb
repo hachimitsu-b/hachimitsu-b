@@ -7,4 +7,5 @@ class Cd < ApplicationRecord
 
 	# おすすめ機能のモデルと関連付け
 	has_many :recommends
+	attachment :jacket
 end

@@ -47,17 +47,6 @@ class Admin::CdsController < ApplicationController
 end
 
 
-def create
-  # ログイン中のユーザーを代入
-  uesr = User.find(current_user.id)
-  # ユーザーの未購入カートを取得
-  cart = user.cart.find_by(status_flag: 0)
-  # カートの中に商品を追加
-  cart.item_in_cart.create()
-end
-
-
-
 
 
 

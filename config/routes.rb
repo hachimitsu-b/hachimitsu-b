@@ -96,5 +96,7 @@ Rails.application.routes.draw do
 
 	# adminのマイページのみ、変更
 	# admin/admins/:id  => admins/:id
-	resources :admins, only: [:show]
+	scope module: :admin do
+		resources :admins, only: [:show]
+	end
 end

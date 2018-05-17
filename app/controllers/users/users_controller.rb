@@ -5,7 +5,7 @@ class User::UsersController < ApplicationController
 
   def show
 
-  	if User.find_by(:id params[:id])
+  	if User.find_by(id: params[:id])
 
   	@user = User.find(params[:id])
   	@user_cart = @user.cart
