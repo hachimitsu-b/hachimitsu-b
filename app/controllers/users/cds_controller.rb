@@ -1,6 +1,5 @@
-class User::CdsController < ApplicationController
+class Users::CdsController < ApplicationController
   def show
-
   	if Cd.find_by(id: params[:id])
 
   	@cd = Cd.find(params[:id])
