@@ -1,3 +1,31 @@
 // Place all the styles related to the admin::cds controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// cdのフォーム
+#form-music-oder {
+	width: 10%;
+	display: inline-block;
+}
+
+#form-music-name {
+	width: 88%;
+	display: inline-block;
+}
+
+// ボタンを大きく
+#form-submit-btn {
+	height: 60px;
+}
+
+.form-cd-image-box {
+	display: inline-block;
+	margin-top: 40px;
+  width: 250px;
+  height: 250px;
+}
+
+.jacket {
+	width: 100%;
+}

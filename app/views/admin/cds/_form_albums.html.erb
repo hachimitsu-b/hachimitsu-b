@@ -1,0 +1,24 @@
+<!-- 使用変数 :f-->
+<!-- アルバムの追加フォーム -->
+<div class="album-form form-group">
+	<!-- アルバムの名前を入力 -->
+	<%= f.fields_for :albums do |album| %>
+		<div class="form-group">
+			<%= album.label :name, "アルバム名" %>
+			<%= album.text_field :name, class: "form-control", placeholder: "アルバム名" %>
+		</div>
+
+		<!-- アルバム内の曲名を入力 -->
+		<div class="form-group">
+			<!-- 1曲目 -->
+			<%= album.label  "曲名" %>
+			<%= album.fields_for :music_in_cds do |music| %>
+				<div>
+					<%= music.text_field :oder, class: "form-control ", id: "form-music-oder", placeholder: "順番" %>
+					<%= music.text_field :name, class: "form-control ", id: "form-music-name", placeholder: "曲名" %>
+				</div>
+			<% end %>
+			
+		</div>
+	<% end %><!-- album.fields_for -->
+</div>

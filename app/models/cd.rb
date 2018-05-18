@@ -8,5 +8,9 @@ class Cd < ApplicationRecord
 	has_many :carts, through: :item_in_carts
 	# おすすめ機能のモデルと関連付け
 	has_many :recommends
+	# refileの画像表示の設定
 	attachment :jacket
+
+	# fields_forの設定
+	accepts_nested_attributes_for :albums
 end

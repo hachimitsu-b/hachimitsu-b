@@ -5,6 +5,7 @@ class CreateCds < ActiveRecord::Migration[5.2]
       t.integer :artist_id
       t.boolean :single_album
       t.string :jacket_id
+      t.date :release_date
       t.integer :price
       t.integer :label_id
       t.integer :genre_id
