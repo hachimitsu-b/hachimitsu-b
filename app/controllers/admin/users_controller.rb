@@ -42,8 +42,7 @@ class Admin::UsersController < ApplicationController
     if User.find_by(id: params[:id])
 
       @user = User.find(params[:id])
-      @user_cart = @user.cart
-      @cart = Cart.where(status_flag: 0)
+      @cart = @user.carts.find_by(status_flag: 0)
       @cart_cd = @cart.cds
 
     else

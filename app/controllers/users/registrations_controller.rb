@@ -9,10 +9,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
+   POST /resource
+   def create
+     super
+  @user = User.find(current_user.id)
+  @cart_create = user.carts.create
+   end
 
   # GET /resource/edit
   # def edit
@@ -59,4 +61,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+
+
 end

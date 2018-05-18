@@ -1,5 +1,4 @@
 class User::UsersController < ApplicationController
-
 	#作業が一通り済んだらコメントアウトを切る
 	#before_action :authenticate_user!
 
@@ -8,8 +7,7 @@ class User::UsersController < ApplicationController
   	if User.find_by(id: params[:id])
 
   	@user = User.find(params[:id])
-  	@user_cart = @user.cart
-  	@cart = user_cart.where(status_flag: 0)
+  	@cart = @user.carts.find_by(status_flag: 0)
   	@cart_cd = @cart.cds
   	else
   		redirect_to cds_path
