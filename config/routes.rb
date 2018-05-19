@@ -88,7 +88,7 @@ Rails.application.routes.draw do
 	namespace :admin do
 		resources :users, only: [:index, :show, :edit, :update, :destroy]
 		# 購入履歴を表示
-		# get ''
+		get 'users/:id/history', to: 'users#history', as: 'history'
 		resources :cds
 		resources :carts, only: [:index]
 	end

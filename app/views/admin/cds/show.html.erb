@@ -1,17 +1,18 @@
-div class='container'>
+<%= render 'layouts/admins_header' %>
+<div class='container'>
 	<div class="cd-detail">
 		<div class="clearfix">
 			<div class="clearfix">
 				<div class="cd-box3">CD</div>
 				<div class="fl">
-					<p class="titile-artists3 mb10"><span>タイトル</span><br>アーティスト名</p>
-					<p class="category-txt" style="margin-bottom: 0;">ジャンル</p>
-					<p class="category-txt">レーベル</p>
+					<p class="titile-artists3 mb10"><span><%= @cd.name %></span><br><%= @cd.artist.name %></p>
+					<p class="category-txt" style="margin-bottom: 0;"><%= @cd.genre.name %></p>
+					<p class="category-txt"><%= @cd.label.name %></p>
 				</div>
 				<div class="price-box">
 					<p class="price3-txt"><span>価格</span>(税込)</p>
-					<p class="price3">0,000円</span></p>
-					<div class="cart-btn2 mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
+					<p class="price3"><%= @cd.price %>円</span></p>
+					<div class="cart-btn2 mb5"><%= link_to '商品編集', edit_admin_cd_path %></div>
 					<p class="stock-txt">在庫あり</p>
 					<p class="stock-txt2">在庫なし</p>
 					<p class="stock-txt2-note">※(例)○月○日頃入荷予定、未定</p>
@@ -21,47 +22,32 @@ div class='container'>
 	</div>
 	<div>
 		<h3>商品紹介</h3>
-		<div class="introduction-txt">・テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>・テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>・テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>・テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br> ・テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
+		<div class="introduction-txt"><%= @cd.introduction %></div>
 		<h3>収録曲</h3>
-		<div class="recording-titile-txt">タイトル名</div>
-		<p class="disk-titile">ディスク 1</p>
-		<table class="mb70">
-			<tr>
-				<th class="table-bg1">01.　曲名</th>
-			</tr>
-			<tr>
-				<th class="table-bg2">02.　曲名</th>
-			</tr>
-			<tr>
-				<th class="table-bg1">03.　曲名</th>
-			</tr>
-			<tr>
-				<th class="table-bg2">04.　曲名</th>
-			</tr>
-			<tr>
-				<th class="table-bg1">05.　曲名</th>
-			</tr>
-			<tr>
-				<th class="table-bg2">06.　曲名</th>
-			</tr>
-			<tr>
-				<th class="table-bg1">07.　曲名</th>
-			</tr>
-			<tr>
-				<th class="table-bg2">08.　曲名</th>
-			</tr>
-			<tr>
-				<th class="table-bg1">09.　曲名</th>
-			</tr>
-			<tr>
-				<th class="table-bg2">10.　曲名</th>
-			</tr>
-			<tr>
-				<th class="table-bg1">11.　曲名</th>
-			</tr>
-			<tr>
-				<th class="table-bg2">12.　曲名</th>
-			</tr>
-		</table>
-	</div>
-</div>
+		<div class="recording-titile-txt">
+			<% if @cd.single_album %>
+				<%= @cd.name %>
+			<% else %>
+				<table>
+					<thead>
+						<tr>
+							<th><h1><%= @cd.name %></h1></th>
+						</tr>
+						<tr>
+							<th><h2><%= @cd.albums.name %></h2></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @cd.albums.each do |album| %>
+								<% album.music_in_cds.each do |music|%>
+									<tr>
+										<th class="table-bg1"><%= music.name %></th>
+									</tr>
+								<% end %>
+						<% end %>
+					</tbody>
+			<% end %>
+
+		</div>
+	</div><!-- /.container -->
+</div><!-- /.container -->
