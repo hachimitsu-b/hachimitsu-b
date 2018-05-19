@@ -4,7 +4,7 @@ class Admin::CdsController < ApplicationController
   end
 
   def show
-    is_there_cd(params[:id])  # CDが存在するか確認
+   is_there_cd(params[:id])  # CDが存在するか確認
   end
 
   def new

@@ -1,25 +1,66 @@
-<%= render 'admins_footer/list' %>
-<div class="container">
-  <table class="table table-bordered">
-  	<h1>発送状態確認</h1>
+<%= render 'layouts/admins_header' %>
+<div class="container"> <!-- ここを追加 -->
+    <div class="row">
+      <div class="col-xs-12">
+  	<h1>発送状態確認一覧</h1>
+<head>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<form class="form-horizontal" action="/hoge/foo" method="post">
+  <div class="form-group">
+    <label for="name" class="control-label col-xs-2">検索する名前を入力</label>
+    <div class="col-xs-5">
+      <input type="text" class="form-control" id="name" name="name" placeholder="your name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="number" class="control-label col-xs-2">選択してください</label>
+    <div class="col-xs-3">
+      <select class="form-control" id="number" name="number">
+        <option value="1">ユーザー名</option>
+        <option value="2" selected="selected">商品名</option>
+        <option value="3">発送済みのものでかつユーザー名で検索</option>
+        <option value="3">発送済みのものでかつ商品名で検索</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-offset-2 col-xs-10">
+      <button type="submit" class="btn btn-primary">検索</button>
+    </div>
+  </div>
+</form>
+</body>
+    <li>
+    </li>
+    <table class="table table-condensed">
     <thead>
-      <tr>
-        <th>名前</th>
-        <th>ふりがな</th>
-        <th>商品名</th>
-      </tr>
+        <tr>
+            <th>#</th>
+            <th>ユーザー名</th>
+            <th>商品名</th>
+            <th>送付先</th>
+            <th>発送済みにする</th>
+        </tr>
     </thead>
-       <% @carts.each do |cart| %>
-		    <tbody>
-		      <tr>
-		        <th scope="row"><%= user.id %></th>
-		          <td><%= cart.user.name_kanji %></td>
-                  <td><%= cart.user.name_kana %></td>
-		          <td><%= cart.name %></td>
-		          <td><%= link_to '詳細', admin_user_path(1) ,class: "btn btn-primary btn-lg active btncolor"%></td>
-		          <td><%= link_to '削除', admin_users_path ,class: "btn btn-danger btn-lg active btncolor"%></td>
-		      </tr>
-		    </tbody>
-     	<% end %>
-  </table>
+    <tbody>
+        <tr>
+            
+            <th class="success">1</th>
+            <td class="info">Taro</td>
+            <td class="danger">お茶<br>みかん<br>弁当</td>
+            <td class="warning">アメリカ合衆国ワシントン州</td>
+            <td><p><%= link_to 'この商品を発送済みにする', admin_cd_path(1) ,class: "btn btn-primary btn-lg active btncolor"%></p></td>
+        </tr>
+    </tbody>
+</table>
+      </div>
+    </div>
 </div>
