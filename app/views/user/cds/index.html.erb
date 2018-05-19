@@ -7,14 +7,27 @@
 			<div class="sideber">
 				<ul style="padding-left: 20px;">
 					<li class="genre"><i class="glyphicon glyphicon-search"></i> ジャンルから探す</li>
-					<li class="genre-menu">J-pop</li>
-					<li class="genre-menu">K-pop</li>
-					<li class="genre-menu">ロック</li>
-					<li class="genre-menu">ラップ</li>
-					<li class="genre-menu">ブルース</li>
-					<li class="genre-menu">ジャズ</li>
-					<li class="genre-menu">サウンドトラック</li>
-					<li class="genre-menu">アニメ</li>
+					<%= link_to(carts_path) do %>
+						<li class="genre-menu">J-pop</li>
+					<% end %>
+					<%= link_to(carts_path) do %>
+						<li class="genre-menu">K-pop</li>
+					<% end %>
+					<%= link_to(carts_path) do %>
+						<li class="genre-menu">ロック</li>
+					<% end %>
+					<%= link_to(carts_path) do %>
+						<li class="genre-menu">ブルース</li>
+					<% end %>
+					<%= link_to(carts_path) do %>
+						<li class="genre-menu">ジャズ</li>
+					<% end %>
+					<%= link_to(carts_path) do %>
+						<li class="genre-menu">サウンドトラック</li>
+					<% end %>
+					<%= link_to(carts_path) do %>
+						<li class="genre-menu">アニメ</li>
+					<% end %>
 				</ul>
 			</div>
 		</div>
@@ -22,58 +35,74 @@
 				<div class="ranking">
 					<div class="single-rank">シングル ランキング</div>
 					<div class="clearfix">
-						<div class="rank1">
-							<div class="rank-icon-box">
-								<div class="rank-icon-img"><%= image_tag("rank1-icon.png") %></div>
-								<div class="rank-icon-txt"><span>1 </span>位</div>
+						<%= link_to(carts_path) do %>
+							<div class="rank1">
+								<div class="rank-icon-box">
+									<div class="rank-icon-img"><%= image_tag("rank1-icon.png") %></div>
+									<div class="rank-icon-txt"><span>1 </span>位</div>
+								</div>
+								<div class="rank-box">CD</div>
+								<div class="titile-name">タイトル</div>
+								<div class="artists-name">アーティスト名</div>
 							</div>
-							<div class="rank-box">CD</div>
-							<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
-						</div>
-						<div class="rank2">
-							<div class="rank-icon-box">
-								<div class="rank-icon-img"><%= image_tag("rank2-icon.png") %></div>
-								<div class="rank-icon-txt"><span>2 </span>位</div>
+						<% end %>
+						<%= link_to(carts_path) do %>
+							<div class="rank2">
+								<div class="rank-icon-box">
+									<div class="rank-icon-img"><%= image_tag("rank2-icon.png") %></div>
+									<div class="rank-icon-txt"><span>2 </span>位</div>
+								</div>
+								<div class="rank-box">CD</div>
+								<div class="titile-name">タイトル</div>
+								<div class="artists-name">アーティスト名</div>
 							</div>
-							<div class="rank-box">CD</div>
-							<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
-						</div>
-						<div class="rank3">
-							<div class="rank-icon-box">
-								<div class="rank-icon-img"><%= image_tag("rank3-icon.png") %></div>
-								<div class="rank-icon-txt"><span>3 </span>位</div>
+						<% end %>
+						<%= link_to(carts_path) do %>
+							<div class="rank3">
+								<div class="rank-icon-box">
+									<div class="rank-icon-img"><%= image_tag("rank3-icon.png") %></div>
+									<div class="rank-icon-txt"><span>3 </span>位</div>
+								</div>
+								<div class="rank-box">CD</div>
+								<div class="titile-name">タイトル</div>
+								<div class="artists-name">アーティスト名</div>
 							</div>
-							<div class="rank-box">CD</div>
-							<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
-						</div>
+						<% end %>
 					</div><!-- /.clearfix -->
 				</div><!-- /.ranking-->
 				<div class="ranking">
 					<div class="single-rank">アルバム ランキング</div>
 					<div class="clearfix">
-						<div class="rank1">
-							<div class="rank-icon-box">
-								<div class="rank-icon-img"><%= image_tag("rank1-icon.png") %></div>
-								<div class="rank-icon-txt"><span>1 </span>位</div>
+						<%= link_to(carts_path) do %>
+							<div class="rank1">
+								<div class="rank-icon-box">
+									<div class="rank-icon-img"><%= image_tag("rank1-icon.png") %></div>
+									<div class="rank-icon-txt"><span>1 </span>位</div>
+								</div>
+								<div class="rank-box">CD</div>
+								<div class="titile-name">タイトル</div>
+								<div class="artists-name">アーティスト名</div>
 							</div>
-							<div class="rank-box">CD</div>
-							<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
-						</div>
-						<div class="rank2">
-							<div class="rank-icon-box">
-								<div class="rank-icon-img"><%= image_tag("rank2-icon.png") %></div>
-								<div class="rank-icon-txt"><span>2 </span>位</div>
+						<% end %>
+						<%= link_to(carts_path) do %>
+							<div class="rank2">
+								<div class="rank-icon-box">
+									<div class="rank-icon-img"><%= image_tag("rank2-icon.png") %></div>
+									<div class="rank-icon-txt"><span>2 </span>位</div>
+								</div>
+								<div class="rank-box">CD</div>
+								<div class="titile-name">タイトル</div>
+								<div class="artists-name">アーティスト名</div>
 							</div>
-							<div class="rank-box">CD</div>
-							<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
-						</div>
+						<% end %>
 						<div class="rank3">
 							<div class="rank-icon-box">
 								<div class="rank-icon-img"><%= image_tag("rank3-icon.png") %></div>
 								<div class="rank-icon-txt"><span>3 </span>位</div>
 							</div>
 							<div class="rank-box">CD</div>
-							<p class="titile-artists"><span>タイトル</span><br>アーティスト名</p>
+							<div class="titile-name">タイトル</div>
+							<div class="artists-name">アーティスト名</div>
 						</div>
 					</div><!-- /.clearfix -->
 			</div><!-- /.ranking-->
@@ -81,82 +110,44 @@
 	</div><!-- /.clearfix -->
 	<h2>NEW シングル</h2>
 	<div class="cd-box-container clearfix">
-		<div class="cd-con">
-			<div class="cd-box">CD</div>
-			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-			<p class="titile-artists" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-			<p class="price">値段 ｜ 0,000円</p>
-		</div>
-		<div class="cd-con">
-			<div class="cd-box">CD</div>
-			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-			<p class="titile-artists" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-			<p class="price">値段 ｜ 0,000円</p>
-		</div>
-		<div class="cd-con">
-			<div class="cd-box">CD</div>
-			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-			<p class="titile-artists" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-			<p class="price">値段 ｜ 0,000円</p>
-		</div>
-		<div class="cd-con">
-			<div class="cd-box">CD</div>
-			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-			<p class="titile-artists" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-			<p class="price">値段 ｜ 0,000円</p>
-		</div>
-		<div class="cd-con">
-			<div class="cd-box">CD</div>
-			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-			<p class="titile-artists" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-			<p class="price">値段 ｜ 0,000円</p>
-		</div>
-		<div class="cd-con">
-			<div class="cd-box">CD</div>
-			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-			<p class="titile-artists" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-			<p class="price">値段 ｜ 0,000円</p>
-		</div>
-	</div><!-- /.clearfix -->
+		<% @cd.first(6).each do |cd| %>
+			<div class="cd-con">
+				<%= link_to(carts_path) do %>
+					<div class="cd-box">CD</div>
+				<% end %>
+				<%= link_to(carts_path) do %>
+					<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
+				<% end %>
+				<%= link_to(carts_path) do %>
+					<div class="titile-name">タイトル</div>
+				<% end %>
+				<%= link_to(carts_path) do %>
+					<div class="artists-name">アーティスト名</div>
+				<% end %>
+				<p class="price">値段 ｜ 0,000円</p>
+			</div>
+		<% end %>
+	</div><!-- /.cd-box-container -->
 	<h2>NEW アルバム</h2>
 	<div class="cd-box-container clearfix">
-		<div class="cd-con">
-			<div class="cd-box">CD</div>
-			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-			<p class="titile-artists" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-			<p class="price">値段 ｜ 0,000円</p>
-		</div>
-		<div class="cd-con">
-			<div class="cd-box">CD</div>
-			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-			<p class="titile-artists" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-			<p class="price">値段 ｜ 0,000円</p>
-		</div>
-		<div class="cd-con">
-			<div class="cd-box">CD</div>
-			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-			<p class="titile-artists" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-			<p class="price">値段 ｜ 0,000円</p>
-		</div>
-		<div class="cd-con">
-			<div class="cd-box">CD</div>
-			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-			<p class="titile-artists" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-			<p class="price">値段 ｜ 0,000円</p>
-		</div>
-		<div class="cd-con">
-			<div class="cd-box">CD</div>
-			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-			<p class="titile-artists" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-			<p class="price">値段 ｜ 0,000円</p>
-		</div>
-		<div class="cd-con">
-			<div class="cd-box">CD</div>
-			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-			<p class="titile-artists" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-			<p class="price">値段 ｜ 0,000円</p>
-		</div>
-	</div><!-- /.clearfix -->
+		<% @cd.first(6).each do |cd| %>
+			<div class="cd-con">
+				<%= link_to(carts_path) do %>
+					<div class="cd-box">CD</div>
+				<% end %>
+				<%= link_to(carts_path) do %>
+					<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
+				<% end %>
+				<%= link_to(carts_path) do %>
+					<div class="titile-name">タイトル</div>
+				<% end %>
+				<%= link_to(carts_path) do %>
+					<div class="artists-name">アーティスト名</div>
+				<% end %>
+				<p class="price">値段 ｜ 0,000円</p>
+			</div>
+		<% end %>
+	</div><!-- /.cd-box-container -->
 
 	<%= render 'user/footer' %>
 

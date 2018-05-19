@@ -31,6 +31,16 @@
 ul {
   list-style: none;
 }
+ol {
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration:none;
+}
 /* フロート */
 .clearfix:after {
   content: "";
@@ -113,6 +123,13 @@ header{
 .header-p{
 	font-size: 12px;
 	color: #E0001A;
+}
+/* ログインページなどの簡易header */
+#header{
+	background-color:  #F5A623;
+	height: 30px;
+	border-top: 1px solid #E0001A;
+	margin-bottom: 40px;
 }
 /* footer */
 footer{
@@ -234,7 +251,7 @@ input[type="password"] {
 	color: #E07581;
 	font-size: 16px;
 	border-bottom: 1px solid #CCCCCC;
-	padding: 3px 0;
+	padding: 6px 0;
 }
 /* ランキング */
 .ranking-box{
@@ -293,14 +310,16 @@ input[type="password"] {
 .rank-icon-txt span{
 	font-size: 14px;
 }
-.titile-artists{
+.artists-name{
 	color: #4597F5;
+	word-break: break-all;	/* 文字を改行させる */
 }
-.titile-artists span{
+.titile-name{
 	font-weight: bold;
 	font-size: 20px;
+	word-break: break-all;	/* 文字を改行させる */
 }
-/* New シングル */
+/* cdの箱 */
 .cd-box{
 	width: 150px;
 	height: 150px;
@@ -308,6 +327,7 @@ input[type="password"] {
 	margin-bottom: 10px;
 }
 .cd-con{
+	width: 150px;
 	float: left;
 	margin-right: 30px;
 }
@@ -350,6 +370,7 @@ h5{
 -----------------------------------------------------------------------*/
 /* カートボタン */
 .cart-btn{
+	color: #444;
 	width: 150px;
 	background-color: #F5A623;
 	border: 1px solid #E07581;
@@ -358,6 +379,7 @@ h5{
     -moz-border-radius: 2px;   /* Firefox用 */
     text-align: center;
     padding: 3px 0;
+    display: inline-block;
 }
 /*　price */
 .praice{
@@ -519,7 +541,7 @@ h5{
 	width: 250px;
 	height: 250px;
 	border: 1px solid #CCCCCC;
-	margin: 0 15px 0 0;
+	margin: 0 15px 0 100px;
 	float: left;
 }
 .titile-artists3{
@@ -543,8 +565,15 @@ h5{
 	font-weight: bold;
 }
 .price-box{
-	width: 250px;
+	width: 290px;
 	float: right;
+	margin-right: 100px;
+	padding: 20px;
+	background-color: #fbfbfb;
+	border: 1px solid #CCCCCC;
+	border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */
 }
 .price3{
 	font-weight: bold;
@@ -593,22 +622,22 @@ h5{
 font-weight: bold;
 }
 /* 曲名 */
-.table-bg1{
-	background-color: #fbfbfb;
-	font-size: 17px;
-	padding:7px 0 7px 15px;
-	color: #444;
-	width: 1200px;
-	border-bottom: 1px solid #eee;
-	font-weight:normal;
-}
-.table-bg2{
-	font-size: 17px;
-	padding:7px 0 7px 15px;
-	color: #444;
-	width: 1200px;
-	border-bottom: 1px solid #eee;
-	font-weight:normal;
+ol {
+  counter-reset: counter-name;
+  li {
+    margin: 0;
+    list-style: none;
+    position: relative;
+    padding: 7px 10px 7px 20px;
+    border-bottom: dotted 3px #eee;
+    font-size: 17px;
+  }
+  li:before {
+    counter-increment: counter-name;
+    content: counter(counter-name) ".";
+    position: absolute;
+    left: 0;
+ }
 }
 
 /*---------------------------------------------------------------------
