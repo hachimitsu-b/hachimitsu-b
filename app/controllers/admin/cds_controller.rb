@@ -12,12 +12,12 @@ class Admin::CdsController < ApplicationController
     @artists = Artist.all
     @labels = Label.all
     @genres = Genre.all
+    # fields_forの設定
     @cd.albums.build.music_in_cds.build
   end
 
   def create
     cd = Cd.create(cd_params)
-    binding.pry
     redirect_to admin_cd_path(cd.id)
   end
 
@@ -32,7 +32,6 @@ class Admin::CdsController < ApplicationController
     # CDが存在するか確認
     cd = Cd.find(params[:id])
     cd.update(cd_params)  # 変更を保存
-    binding.pry
     redirect_to admin_cd_path(cd.id)
   end
 
@@ -81,6 +80,6 @@ class Admin::CdsController < ApplicationController
 
     # albumの登録、編集で使用するストロングパラメーター
     def album_params
-      
     end
+
 end

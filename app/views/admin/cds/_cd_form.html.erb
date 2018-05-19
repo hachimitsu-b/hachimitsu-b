@@ -9,7 +9,11 @@
 				<%= f.attachment_field :jacket, id: "cd-image" %>
 				<!-- ajaxに対応した登録cdのイメージ表示 -->
 				<div class="form-cd-image-box">
-					<%= attachment_image_tag cd, :jacket, format: 'jpg', id: "form-cd-image" %>
+					<% if cd.jacket_id%>
+						<%= attachment_image_tag cd, :jacket, format: 'jpg', id: "form-cd-image" %>
+					<% else %>
+						<img src="" id="form-cd-image">
+					<% end %>
 				</div>
 			</div>
 
@@ -30,6 +34,8 @@
 				<!-- アーティストを選択 -->
 				<div class="form-group">
 					<%= f.label :artist_id, "アーティスト名" %>
+					<%= form_tag(admin_cd_seach_path) %>
+
 					<%= f.select :artist_id, @artists.map{|o| [o.name, o.id]}, class: "form-control" %>
 				</div>
 
@@ -95,4 +101,9 @@
     reader.readAsDataURL(e.target.files[0]);
     $("#form-cd-image").attr('style', "width: 100%; height: 100%;");
 	});
+
+	// 検索機能
+	$('seach').on('click', function(){
+
+	})
 </script>

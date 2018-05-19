@@ -12,5 +12,6 @@ class Cd < ApplicationRecord
 	attachment :jacket
 
 	# fields_forの設定
-	accepts_nested_attributes_for :albums
+	accepts_nested_attributes_for :albums, allow_destroy: true
+
 end
