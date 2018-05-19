@@ -1,11 +1,4 @@
-<%= render 'layouts/admins_header' %>
-<div class="container"> <!-- ここを追加 -->
-      <div class="row">
-             <div class="col-xs-12">
-<h1>新規商品登録画面</h1>
-<%= form_for(@cd) do |f| %>
-<%= f.attachment_field :jacket %>
-<% end %>
-</div>
-</div>
-</div>
+<%= render 'layouts/admins_footer' %>
+<!-- 登録フォーム -->
+<%= render 'admin/cds/cd_form', cd: @cd, title: "新規商品紹介", action: "create" %>
+

@@ -4,8 +4,8 @@ class User::CartsController < ApplicationController
 
       @user = User.find(current_user.id)
       @user_cart = @user.cart
-      @cart = user_cart.where(status_flag: 1).
-      @cart_cd = @cart.cds
+      @cart = user_cart.where(status_flag: 1)
+      @cart_cd= @cart.cds
 
     else
       redirect_to cds_path

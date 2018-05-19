@@ -1,0 +1,50 @@
+<header>
+	<div class="container">
+		<div class="clearfix">
+			<%= link_to(cds_path, class: 'logo') do %>
+				<%= image_tag("logo.png") %>
+			<% end %>
+		    <div class="col-md-6 col-xs-6 search-box">
+		    	<div class="input-group">
+					<input type="text" class="form-control" placeholder="商品名やアーティスト名で検索">
+					<span class="input-group-btn">
+					<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+					</span>
+				</div>
+		    </div>
+		    <div class="col-md-2 col-xs-1 header-login-box">
+		    	<%= link_to 'ログイン', 'new_user_session_path', class:'top-login' %>
+		    	<%= link_to '新規登録', 'new_user_registration_path', class:'top-signin' %>
+		    </div>
+  		</div><!-- /.clearfix -->
+  	</div><!-- /container -->
+</header><!-- /header -->
+
+<% if user_signed_in? %>
+
+	<header>
+		<div class="container">
+			<div class="clearfix">
+	  			<%= link_to(cds_path, class: 'logo') do %>
+					<%= image_tag("logo.png") %>
+				<% end %>
+			    <div class="col-md-6 col-xs-6 search-box">
+			    	<div class="input-group">
+						<input type="text" class="form-control" placeholder="商品名やアーティスト名で検索">
+						<span class="input-group-btn">
+						<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+						</span>
+					</div>
+			    </div>
+			    <div class="col-md-2 col-xs-1 header-icon-box">
+			    	<%= link_to(carts_path, class: 'header-p') do %>
+						<i class="glyphicon glyphicon-user col color-icon-red"></i> マイページ
+					<% end %>
+			    	<%= link_to(carts_path, class: 'header-p') do %>
+						<i class="glyphicon glyphicon-user col color-icon-red"></i> カート
+					<% end %>
+			    </div>
+	  		</div><!-- /.clearfix -->
+	  	</div><!-- /container -->
+	</header><!-- /header -->
+<% end %>
