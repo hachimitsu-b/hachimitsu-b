@@ -9,20 +9,29 @@ class Admin::CdsController < ApplicationController
 
   def new
     @cd = Cd.new
+    @artists = Artist.all
+    @labels = Label.all
+    @genres = Genre.all
+    # fields_forの設定
+    @cd.albums.build.music_in_cds.build
   end
 
   def create
-    cd = Cd.create(cds_params)
+    cd = Cd.create(cd_params)
     redirect_to admin_cd_path(cd.id)
   end
 
   def edit
     is_there_cd(params[:id])  # CDが存在するか確認
+    @artists = Artist.all
+    @labels = Label.all
+    @genres = Genre.all
   end
 
   def update
-    is_there_cd(params[:id])  # CDが存在するか確認
-    cd = Cd.update(cds_params)  # 変更を保存
+    # CDが存在するか確認
+    cd = Cd.find(params[:id])
+    cd.update(cd_params)  # 変更を保存
     redirect_to admin_cd_path(cd.id)
   end
 
@@ -34,6 +43,9 @@ class Admin::CdsController < ApplicationController
       cd.destroy
     end
     redirect_to admin_cds_path
+  end
+
+  def seach
   end
 
 # ----------------------------------------------------------------------------
@@ -49,16 +61,25 @@ class Admin::CdsController < ApplicationController
     end
 
     # CDの登録、編集で使用するストロングパラメーター
-    def cds_params
-      params.require(:cds).permit(:name,
+    def cd_params
+      params.require(:cd).permit(:name,
                                   :artist_id,
                                   :single_album,
-                                  :jachet_id,
+                                  :jacket,
                                   :price,
                                   :label_id,
                                   :genre_id,
                                   :stock,
                                   :display,
-                                  :introduction)
+                                  :introduction,
+                                    # cdに紐づいたalbumのparams
+                                    albums_attributes: [:name, :oder,
+                                      # albumに紐づいたmusic_in_cdのparams
+                                      music_in_cds_attributes: [:name, :oder]])
     end
+
+    # albumの登録、編集で使用するストロングパラメーター
+    def album_params
+    end
+
 end

@@ -90,9 +90,10 @@ Rails.application.routes.draw do
 		# 購入履歴を表示
 		get 'users/:id/history', to: 'users#history', as: 'history'
 		resources :cds
+		# cd内の検索機能
+		post 'admin/cd/seach' => 'cds#"seach'
 		resources :carts, only: [:index]
 	end
-
 	# adminのマイページのみ、変更
 	# admin/admins/:id  => admins/:id
 	scope module: :admin do

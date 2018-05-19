@@ -1,0 +1,2 @@
+# refileのconfigファイル
+Refile.secret_key = 'dfc6c8e4a9c88d535d017a91ada0a5a96f2b16be4f9b9b73e63070b78206a0d18dd4278d4b3693bb6ae8ab659ba845af8964aba93d7fd75bb6fc0b66fdb36023'
