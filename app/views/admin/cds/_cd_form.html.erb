@@ -1,0 +1,109 @@
+<!-- 使用変数 :cd, :title, :action -->
+<!-- cdの登録のフォーム -->
+<div class="container">
+	<h1><%= title %></h1>
+	<%= form_for(cd, url: {controller: "admin/cds", action: "#{action}"}) do |f| %>
+		<div class="row">
+			<!-- 左側の表示 -->
+			<div class="col-md-6">
+				<%= f.attachment_field :jacket, id: "cd-image" %>
+				<!-- ajaxに対応した登録cdのイメージ表示 -->
+				<div class="form-cd-image-box">
+					<% if cd.jacket_id%>
+						<%= attachment_image_tag cd, :jacket, format: 'jpg', id: "form-cd-image" %>
+					<% else %>
+						<img src="" id="form-cd-image">
+					<% end %>
+				</div>
+			</div>
+
+			<!-- 右側の表示 -->
+			<div class="col-md-6">
+				<!-- シングルかアルバムかの選択肢 -->
+				<div class="form-group">
+					<%= f.label :single_album, "アルバムかシングルかを選択してください" %><br>
+					<%= f.select :single_album, [["シングル", true], ["アルバム", false]], class: "form-control" %>
+				</div>
+
+				<!-- CDの商品名を入力 -->
+				<div class="form-group">
+					<%= f.label :name, "商品名" %>
+					<%= f.text_field :name, class: "form-control" %>
+				</div>
+
+				<!-- アーティストを選択 -->
+				<div class="form-group">
+					<%= f.label :artist_id, "アーティスト名" %>
+					<%= form_tag(admin_cd_seach_path) %>
+
+					<%= f.select :artist_id, @artists.map{|o| [o.name, o.id]}, class: "form-control" %>
+				</div>
+
+				<!-- レーベルを選択 -->
+				<div class="form-group">
+					<%= f.label :label_id, "レーベル名" %>
+					<%= f.select :label_id, @labels.map{|o| [o.name, o.id]}, class: "form-control" %>
+				</div>
+
+				<!-- ジャンルを選択 -->
+				<div class="form-group">
+					<%= f.label :genre_id, "ジャンル" %>
+					<%= f.select :genre_id, @genres.map{|o| [o.name, o.id]}, class: "form-control" %>
+				</div>
+
+				<!-- 値段を入力 -->
+				<div class="form-group">
+					<%= f.label :price, "値段" %>
+					<%= f.text_field :price, class: "form-control" %>
+				</div>
+
+				<!-- 在庫数を入力 -->
+				<div class="form-group">
+					<%= f.label :stock, "在庫数" %>
+					<%= f.text_field :stock, class: "form-control" %>
+				</div>
+
+				<!-- user側に表示させるかを選択 -->
+				<div class="form-group">
+					<%= f.label :display, "ユーザー画面での表示" %>
+					<%= f.select :display, [["表示", true], ["非表示", false]], class: "form-control" %>
+				</div>
+
+				<!-- アルバムの追加フォーム -->
+				<%= render 'admin/cds/form_albums', f: f %>
+			</div>
+
+			<!-- 紹介文を入力 -->
+			<div class="col-md-12">
+				<div class="form-group">
+				<%= f.label :introduction, "商品紹介" %>
+					<%= f.text_area :introduction, class: "form-control", style: "height: 200px;" %>
+				</div>
+			</div>
+
+			<!-- 送信ボタン -->
+			<div class="col-md-offset-4 col-md-4">
+				<div class="form-group">
+					<%= f.submit "保存", class: "form-control btn btn-info", id:"form-submit-btn"%>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+<script>
+	// 画像のプレビューを表示
+	$('#cd-image').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#form-cd-image").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+    $("#form-cd-image").attr('style', "width: 100%; height: 100%;");
+	});
+
+	// 検索機能
+	$('seach').on('click', function(){
+
+	})
+</script>
