@@ -1,9 +1,9 @@
+
 <%= render 'layouts/admins_header' %>
 <div class="container">
-	<h1>既存商品一覧</h1>
-
-            <div class="cd-box-container clearfix">
-		<% @cds.each do |cd| %>
+	<h1>購入履歴</h1>
+<div class="cd-box-container clearfix">
+		<% @user.each do |user| %>
 		<div class="cd-con">
 			<div class="cd-box">CD</div>
 			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
@@ -12,6 +12,7 @@
 			<p><%= link_to '詳細', admin_cd_path(1) ,class: "btn btn-primary btn-lg active btncolor"%></p>
 		</div>
 		<% end %>
+		
 		</div>
 	</div><!-- /.clearfix -->
 </div><!-- /.container -->

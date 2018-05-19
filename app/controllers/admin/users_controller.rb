@@ -42,7 +42,13 @@ class Admin::UsersController < ApplicationController
     if User.find_by(id: params[:id])
 
       @user = User.find(params[:id])
-      @cart = @user.carts.find_by(status_flag: 0)
+
+      # わからないからコメントアウト
+      # @cart = @user.carts.find_by(status_flag: 0)
+
+      # わからないから以下2行を使用
+      @user_carts = @user.carts
+      @cart = Cart.where(status_flag: 0)
       @cart_cd = @cart.cds
 
     else

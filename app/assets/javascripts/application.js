@@ -17,3 +17,4 @@
   //= require slick
   //= require bootstrap-sprockets
   //= require_tree .
+
