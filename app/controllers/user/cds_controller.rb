@@ -8,6 +8,7 @@ class User::CdsController < ApplicationController
   		redirect_to cds_path
   	end
 
+
   end
 
   def index
