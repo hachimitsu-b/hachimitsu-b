@@ -3,7 +3,8 @@
 	<div class="album-form-content form-group">
 		<!-- アルバムの名前を入力 -->
 		<%= f.fields_for :albums do |album| %>
-			<div class="album-form-box form-group"> <!-- album追加ようのdiv -->
+			<div class="album-form-box form-group"> 
+			<!-- album追加ようのdiv -->
 				<div class="album-form form-group">
 					<%= album.label :name, "アルバム名" %>
 					<%= album.text_field :name, class: "form-control", placeholder: "アルバム名" %>
@@ -13,20 +14,19 @@
 				<div class="form-group">
 					<%= album.label "曲名" %>
 					<!-- 曲名追加フォームの追加ボタン -->
-					<%= album.fields_for :music_in_cds do |music| %>
-						<!-- 曲名フォームの全体のdiv -->
-						<div class="clearfix music-form-box-<%= album.index %>" id="<%= music.index %>">
+					<span class="btn btn-primary add-music-btn" id="<%= album.index %>">＋</span>
+					<div class="clearfix music-form-box-<%= album.index %>">
+						<%= album.fields_for :music_in_cds do |music| %>
 							<!-- 曲名フォームの全体のdiv -->
-							<span class="btn btn-primary add-music-btn" id="<%= album.index %>">＋</span>
-							<div class="music-form-items music-form-<%= music.index %>">
-								<%= music.text_field :oder, class: "form-control ", id: "form-music-oder", placeholder: "順番" %>
+							<div class="music-form-items">
+								<%= music.text_field :oder, class: "form-control number", id: "form-music-oder", placeholder: "順番" %>
 								<%= music.text_field :name, class: "form-control ", id: "form-music-name", placeholder: "曲名" %>
 								<!-- 曲の削除ボタン -->
 								<%= music.check_box :_destroy, style: "display: none;" %>
 								<span class="btn btn-danger remove-music-form" data-id="<%= music.index %>" data-default="default">削除</span>
 							</div>
-						</div>
-					<% end %>
+						<% end %>
+					</div>
 				</div>
 			</div>
 		<% end %><!-- album.fields_for -->
@@ -44,9 +44,9 @@ $(function() {
 		var music_num = "0";
 		var input = '<div class="album-form-box form-group">'
 									// アルバムの追加
-							+ 	'<div class="form-group">'
+							+ 	'<div class="album-form form-group">'
 							+ 		'<label for="cd_albums_attributes_' + album_num + '_name">アルバム名</label>'
-							+ 		'<input class="form-control" placeholder="アルバム名" type="text" value="" name="cd[albums_attributes][' + album_num + '][name]" id="cd_albums_attributes_' + album_num + '_name" >'
+							+ 		'<input class="form-control" placeholder="アルバム名" type="text" value="" name="cd[albums_attributes][' + album_num + '][name]" 		      id="cd_albums_attributes_' + album_num + '_name" >'
 							+ 	'</div>'
 
 									// 曲名を１曲追加
@@ -54,16 +54,16 @@ $(function() {
 							+ 		'<label for="cd_albums_attributes_' + album_num + '_曲名">曲名</label>'
 							+ 		'<div class=" clearfix music-form-box-' + album_num + '" id="' + music_num + '">'
 							+ 			'<span class="btn btn-primary add-music-btn" id="' + album_num + '">＋</span>'
+							+				'<div class="clearfix music-form-box-' + album_num + '">'
+											// 曲の塊
 							+ 			'<div class="music-form-items added-music-form-' + album_num + '">'
-							+ 				'<input class="form-control " id="form-music-oder" placeholder="順番" type="text" value="" name="cd[albums_attributes][' + album_num  + '][music_in_cds_attributes][' + music_num  + '][oder]" >'
+							+ 				'<input class="form-control number" id="form-music-oder" placeholder="順番" type="text" value="" name="cd[albums_attributes][' + album_num  + '][music_in_cds_attributes][' + music_num  + '][oder]" >'
 							+ 				'<input class="form-control " id="form-music-name" placeholder="曲名" type="text" value="" name="cd[albums_attributes][' + album_num  + '][music_in_cds_attributes][' + music_num  + '][name]" >'
-							+					'<span class="btn btn-danger remove-music-form" data-id="' + music_num + '" data-default="default">削除</span>'
-							+ 				'<input type="hidden" value="6" name="cd[albums_attributes][' + album_num  + '][music_in_cds_attributes][' + music_num  + '][id]" id="cd_albums_attributes_0_music_in_cds_attributes_0_id" >'
+							+					'<span class="btn btn-danger remove-music-form" data-id="' + music_num + '" data-default="">削除</span>'
 							+				'</div>'
-							+			'<input type="hidden" value="18" name="cd[albums_attributes][' + album_num + '][id]" id="cd_albums_attributes_' + album_num + '_id" >'
 							+			'<div>'
 							+		'</div>'
-							+ '<div>';
+							+ '</div>';
 		$('.album-form-content').append(input);
 
 	});
@@ -75,21 +75,19 @@ $(function() {
   	// どのアルバムかのidを取得
   	var album_num = $(this).attr('id');
   	// 曲の数を取得
-  	var music_index = $('.music-form-box-' + album_num).attr('id');
-  	var music_num = $('.music-form-' + music_index).length + $('.added-music-form' + album_num).length;
+  	var music_index = $('.music-form-box-' + album_num).find('.number').length;
+  	var music_num = $('.music-form-box-' + album_num).children('.music-form-items').length + $('.added-music-form-' + album_num).length;
   	// 曲の追加フォームを一行追加
-    var input =			'<div class="music-form-items added-music-form-' + album_num + '">'
-								+ 			'<input class="form-control " id="form-music-oder" placeholder="順番" type="text" value="" name="cd[albums_attributes][' + 						album_num  + '][music_in_cds_attributes][' + music_num  + '][oder]" >'
-								+ 			'<input class="form-control " id="form-music-name" placeholder="曲名" type="text" value="" name="cd[albums_attributes][' + 						album_num  + '][music_in_cds_attributes][' + music_num  + '][name]" >'
-								+				'<input style="display: none;" type="checkbox" value="1" name="cd[albums_attributes][' + album_num + '][music_in_cds_attributes][' + music_num + '][_destroy]" id="cd_albums_attributes_' + album_num + '_music_in_cds_attributes_' + music_num + '__destroy" />'
-								+				'<span class="btn btn-danger remove-music-form" data-id="' + music_num + '"">削除</span>'
-								+ 	'</div>'
-								+ '<input type="hidden" value="6" name="cd[albums_attributes][' + album_num  + '][music_in_cds_attributes][' + music_num  + '][id]" id="cd_albums_attributes_0_music_in_cds_attributes_0_id" >';
-    $('.music-form-box-' + album_num ).append(input);
+    var input = '<div class="music-form-items">'
+    						+	'<input class="form-control number" id="form-music-oder" placeholder="順番" type="text" value="" name="cd[albums_attributes][' + album_num + '][music_in_cds_attributes][' + music_num + '][oder]">'
+    						+ '<input class="form-control " id="form-music-name" placeholder="曲名" type="text" value="" name="cd[albums_attributes][' + album_num + '][music_in_cds_attributes][' + music_num + '][name]">'
+								+ '<span class="btn btn-danger remove-music-form" data-id="' + music_num + '" data-default="default">削除</span>'
+								+ '</div>'
+    $('.music-form-box-' + album_num ).last().append(input);
   	});
   });
 
-// 削除ボタン
+// 曲の削除ボタン
 $(document).on('click', '.remove-music-form', function() {
     var album_num = $(this).data('id');
     var defaultData = $(this).data('default');
@@ -101,6 +99,10 @@ $(document).on('click', '.remove-music-form', function() {
       console.log(this)
     }
   });
+
+
+
+
 
 
 </script>

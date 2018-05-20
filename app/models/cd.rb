@@ -14,4 +14,8 @@ class Cd < ApplicationRecord
 	# fields_forの設定
 	accepts_nested_attributes_for :albums, allow_destroy: true
 
+	# バリデーション
+	# 空の保存を制限
+	validates :name, :single_album, :price, :stock, :display, presence: true
+
 end

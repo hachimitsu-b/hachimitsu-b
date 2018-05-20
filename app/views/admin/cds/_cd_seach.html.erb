@@ -5,14 +5,21 @@
 	<%= form_tag("#") do %>
 			<%= text_field_tag "seach_" + seach_name_eng, "", placeholder: "#{seach_name_kana}を検索", class: "form-control form-seach-field" %>
 			<%= hidden_field_tag "seach_name_" + seach_name_eng, "#{seach_name_eng}"  %>
+			<!-- 検索ボタン -->
 			<span class="btn btn-primary form-control  form-seach form-seach-btn-<%= seach_name_eng %>">検索</span>
 	<% end %>
 	<div class="box-<%= seach_name_eng %>">
 		<table class="table table-hover">
 			<tbody id="cd-seach-<%= seach_name_eng %>">
-				<!-- 検索したものを一覧表示 -->
+				<!-- 編集画面の時には登録されているものをひょうじ -->
+				<% if  f.object.artist_id %>
+					<tr>
+						<th style="width: 20%;">現在の設定：</th>
+						<th><%= f.object.send(seach_name_eng.downcase).name %></th>
+					</tr>
+				<% end %>
 			</tbody>
-			<%= f.hidden_field :"#{seach_name_eng}_id".downcase , value: "" %>
+			<%= f.hidden_field :"#{seach_name_eng}_id".downcase , value: f.object.send(seach_name_eng.downcase + "_id")%>
 		</table>
 	</div>
 </div>
@@ -23,7 +30,7 @@
 		var object_id = $(this).attr('id');
 		// 他のものの色を削除
 		$(this).parent().parent().find('tr').find('th').css('background-color', 'white');
-		$('#<%= seach_name_eng %>_id_').attr('value', object_id);
+		$(this).parent().parent().parent().parent().find('#cd_<%= seach_name_eng.downcase %>_id').attr('value', object_id);
 		$(this).css('background-color', '#dcdcdc');
 		$(this).data('coler', '<%= seach_name_eng %>');
 	});
