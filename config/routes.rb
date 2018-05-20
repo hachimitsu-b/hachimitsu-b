@@ -91,7 +91,7 @@ Rails.application.routes.draw do
 		get 'users/:id/history', to: 'users#history', as: 'history'
 		resources :cds
 		# cd内の検索機能
-		post 'admin/cd/seach' => 'cds#"seach'
+		post 'cd/seach' => 'cds#seach'
 		resources :carts, only: [:index]
 	end
 	# adminのマイページのみ、変更

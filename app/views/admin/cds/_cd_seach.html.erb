@@ -1,0 +1,58 @@
+<!-- 使用変数 :f, :seach_name_kana, :seach_name_eng -->
+
+<%= f.label :artist_id, "#{seach_name_kana}" %>
+<div class="form-group">
+	<%= form_tag("#") do %>
+			<%= text_field_tag "seach_" + seach_name_eng, "", placeholder: "#{seach_name_kana}を検索", class: "form-control form-seach-field" %>
+			<%= hidden_field_tag "seach_name_" + seach_name_eng, "#{seach_name_eng}"  %>
+			<span class="btn btn-primary form-control  form-seach form-seach-btn-<%= seach_name_eng %>">検索</span>
+	<% end %>
+	<div class="box-<%= seach_name_eng %>">
+		<table class="table table-hover">
+			<tbody id="cd-seach-<%= seach_name_eng %>">
+				<!-- 検索したものを一覧表示 -->
+			</tbody>
+			<%= f.hidden_field :"#{seach_name_eng}_id".downcase , value: "" %>
+		</table>
+	</div>
+</div>
+
+<script>
+	// 選択したら、背景の色を変更
+	$(document).on('click', '.seach-object-btn', function(e){
+		var object_id = $(this).attr('id');
+		// 他のものの色を削除
+		$(this).parent().parent().find('tr').find('th').css('background-color', 'white');
+		$('#<%= seach_name_eng %>_id_').attr('value', object_id);
+		$(this).css('background-color', '#dcdcdc');
+		$(this).data('coler', '<%= seach_name_eng %>');
+	});
+
+	// ajaxの検索機能
+	$('.form-seach-btn-<%= seach_name_eng %>').on('click',function(){
+		$.ajax({
+			url: '<%= admin_cd_seach_path %>',
+			type: 'POST',
+			data:{
+				'seach' : $('#seach_<%= seach_name_eng %>').val(),
+	      'seach_name' : $('#seach_name_<%= seach_name_eng %>').val()
+	    }
+		}).done( (data) => {  // Ajaxリクエストが成功した時発動
+				// 前回の検索を削除
+				$('#cd-seach-<%= seach_name_eng %>').text('');
+				// はみ出したらスクロール
+				$('.box-<%= seach_name_eng %>').css('overflow-y', 'scroll');
+				$('.box-<%= seach_name_eng %>').css('height', '200px');
+				$.each(data, function(i){
+					var input = '<tr>'
+										+ 	'<th class="seach-object-btn" id="' + data[i].id + '" data-<%= seach_name_eng %>="<%= seach_name_eng %>">'
+										+			data[i].name
+										+		'</th>'
+										+	'</tr>';
+					$('#cd-seach-<%= seach_name_eng %>').append( input );
+			});
+    }).fail( (data) => {  // Ajaxリクエストが失敗した時発動
+    })
+	});
+</script>
+

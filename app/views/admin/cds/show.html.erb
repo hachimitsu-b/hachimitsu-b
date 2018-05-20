@@ -39,6 +39,10 @@
 					</thead>
 					<tbody>
 						<% @cd.albums.each do |album| %>
+								<tr>
+										<th class="table-bg1"><%= album.name %></th>
+									</tr>
+						<%= album.name %>
 								<% album.music_in_cds.each do |music|%>
 									<tr>
 										<th class="table-bg1"><%= music.name %></th>

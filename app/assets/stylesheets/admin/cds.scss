@@ -4,19 +4,37 @@
 
 
 // cdのフォーム
+.music-form-items{
+	float: right;
+	width: 90%;
+}
+
 #form-music-oder {
-	width: 8%;
-	display: inline-block;
+	width: 15% !important;
+	display: inline-block !important;
 }
 
 #form-music-name {
-	width: 75%;
-	display: inline-block;
+	width: 70% !important;
+	display: inline-block !important;
+}
+
+// 値段、在庫数のフォームを少し小さく
+.form-price-label, .form-stock-label {
+	width: 10% !important;
+	display: inline-block !important;
+}
+
+.form-price-field, .form-stock-field {
+	width: 20% !important;
+	display: inline-block !important;
 }
 
 // ボタンを大きく
 #form-submit-btn {
 	height: 60px;
+	margin: 0 auto;
+	width: 100%;
 }
 
 .form-cd-image-box {
@@ -26,10 +44,29 @@
   height: 250px;
 }
 
+// 表示画像の大きさ
 .jacket {
 	width: 100%;
 }
 
 .album-form-box {
-	border: 2px solid;
+	border: 2px solid #ccc;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.form-seach-field {
+	width: 80% !important;
+	display: inline-block !important;
+}
+.form-seach {
+	width: 15% !important;
+	display: inline-block !important;
+	float: right;
+}
+
+.add-music-btn {
+	width: 8%;
+	display: inline-block !important;
+	float: left;
 }

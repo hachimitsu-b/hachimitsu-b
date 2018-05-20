@@ -47,9 +47,7 @@ class Admin::UsersController < ApplicationController
       # @cart = @user.carts.find_by(status_flag: 0)
 
       # わからないから以下2行を使用
-      @user_carts = @user.carts
       @cart = Cart.where(status_flag: 0)
-      @cart_cd = @cart.cds
 
     else
       redirect_to cds_path
