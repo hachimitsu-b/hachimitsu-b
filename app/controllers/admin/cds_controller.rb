@@ -6,7 +6,7 @@ class Admin::CdsController < ApplicationController
   end
 
   def show
-   is_there_cd(params[:id])  # CDが存在するか確認
+    is_there_cd(params[:id])  # CDが存在するか確認
   end
 
   def new
@@ -16,8 +16,11 @@ class Admin::CdsController < ApplicationController
   end
 
   def create
-    cd = Cd.create(new_cd_params)
-    redirect_to admin_cd_path(cd.id)
+    if cd = Cd.create(new_cd_params)
+      redirect_to admin_cd_path(cd.id)
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -27,8 +30,11 @@ class Admin::CdsController < ApplicationController
   def update
     # CDが存在するか確認
     cd = Cd.find(params[:id])
-    cd.update(update_cd_params)  # 変更を保存
-    redirect_to admin_cd_path(cd.id)
+    if cd.update(update_cd_params)  # 変更を保存
+      redirect_to admin_cd_path(cd.id)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -41,7 +47,46 @@ class Admin::CdsController < ApplicationController
     redirect_to admin_cds_path
   end
 
-  def seach
+  # アーティストの一覧、新規登録
+  def artist_index
+    @artists = Artist.all.last(15)
+    @artist = Artist.new
+  end
+
+  # レーベルの一覧、新規登録
+  def label_index
+    @lagels = Lagel.all.last(15)
+    @artist = Lagel.new
+  end
+
+  # ジャンルの一覧、新規登録
+  def genre_index
+    @renres = Genre.all.last(15)
+    @genre = Genre.new
+  end
+
+  # アーティスト、レーベル、ジャンルの新規登録の処理
+  def object_create
+    if params[:name]
+      case params[:object_name]
+        when "Artist"
+          @object = Artist.create(artist_params)
+        when "Genre"
+          @object = Genre.create(genre_params)
+        when "Label"
+          @object = Label.create(label_params)
+      end
+      render :json => @object
+    end
+  end
+
+  # アーティスト、レーベル、ジャンルの編集
+  def object_update
+    
+  end
+
+  # フォームでのajaxの検索機能
+  def form_object_seach
     if seach_val = params[:seach]
       case params[:seach_name]
         when "Artist"
@@ -102,5 +147,19 @@ class Admin::CdsController < ApplicationController
                                       # albumに紐づいたmusic_in_cdのparams
                                       music_in_cds_attributes: [:name, :oder, :_destroy, :id]])
     end
+
+    def  artist_params
+      params.require(:artist).permit(:name, :name_kana)
+    end
+
+    def  label_params
+      params.require(:label).permit(:name)
+    end
+
+    def  genre_params
+      params.require(:genre).permit(:name)
+    end
+
+
 
 end
