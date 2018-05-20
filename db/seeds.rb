@@ -53,9 +53,8 @@ end
 
 
 # レーベルを作成
-label = ["テストレーベル1", "テストレーベル2", "テストレーベル3"]
-3.times do |n|
-	Label.create(name: label[n])
+50.times do |n|
+	Label.create(name: "テストレーベル#{n}")
 end
 
 

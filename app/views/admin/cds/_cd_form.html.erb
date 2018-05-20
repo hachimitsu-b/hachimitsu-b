@@ -21,7 +21,7 @@
 			<div class="col-md-6">
 				<!-- シングルかアルバムかの選択肢 -->
 				<div class="form-group">
-					<%= f.label :single_album, "アルバムかシングルかを選択してください" %><br>
+					<%= f.label :single_album, "アルバムかシングルかを選択" %>
 					<%= f.select :single_album, [["シングル", true], ["アルバム", false]], class: "form-control" %>
 				</div>
 
@@ -33,34 +33,32 @@
 
 				<!-- アーティストを選択 -->
 				<div class="form-group">
-					<%= f.label :artist_id, "アーティスト名" %>
-					<%= form_tag(admin_cd_seach_path) %>
-
-					<%= f.select :artist_id, @artists.map{|o| [o.name, o.id]}, class: "form-control" %>
+					<!-- 検索したものを表示 -->
+						<%= render 'admin/cds/cd_seach', f: f, seach_name_kana: "アーティスト", seach_name_eng: "Artist"  %>
 				</div>
 
 				<!-- レーベルを選択 -->
 				<div class="form-group">
-					<%= f.label :label_id, "レーベル名" %>
-					<%= f.select :label_id, @labels.map{|o| [o.name, o.id]}, class: "form-control" %>
+					<!-- 検索したものを表示 -->
+						<%= render 'admin/cds/cd_seach', f: f, seach_name_kana: "レーベル", seach_name_eng: "Label"  %>
 				</div>
 
 				<!-- ジャンルを選択 -->
 				<div class="form-group">
-					<%= f.label :genre_id, "ジャンル" %>
-					<%= f.select :genre_id, @genres.map{|o| [o.name, o.id]}, class: "form-control" %>
+					<!-- 検索したものを表示 -->
+						<%= render 'admin/cds/cd_seach', f: f, seach_name_kana: "ジャンル", seach_name_eng: "Genre"  %>
 				</div>
 
 				<!-- 値段を入力 -->
 				<div class="form-group">
-					<%= f.label :price, "値段" %>
-					<%= f.text_field :price, class: "form-control" %>
+					<%= f.label :price, "値段", class: "form-price-label"  %>
+					<%= f.text_field :price, class: "form-control form-price-field" %>
 				</div>
 
 				<!-- 在庫数を入力 -->
 				<div class="form-group">
-					<%= f.label :stock, "在庫数" %>
-					<%= f.text_field :stock, class: "form-control" %>
+					<%= f.label :stock, "在庫数", class: "form-stock-label" %>
+					<%= f.text_field :stock, class: "form-control form-stock-field" %>
 				</div>
 
 				<!-- user側に表示させるかを選択 -->
@@ -71,22 +69,22 @@
 
 				<!-- アルバムの追加フォーム -->
 				<%= render 'admin/cds/form_albums', f: f %>
-			</div>
 
-			<!-- 紹介文を入力 -->
-			<div class="col-md-12">
-				<div class="form-group">
-				<%= f.label :introduction, "商品紹介" %>
-					<%= f.text_area :introduction, class: "form-control", style: "height: 200px;" %>
-				</div>
-			</div>
+				<!-- 紹介文を入力 -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<%= f.label :introduction, "商品紹介" %>
+							<%= f.text_area :introduction, class: "form-control", style: "height: 200px;" %>
+						</div>
+					</div>
 
-			<!-- 送信ボタン -->
-			<div class="col-md-offset-4 col-md-4">
-				<div class="form-group">
-					<%= f.submit "保存", class: "form-control btn btn-info", id:"form-submit-btn"%>
+					<!-- 送信ボタン -->
+					<div class="col-md-4 col-md-offset-4 col-ld-4 col-ld-offset-4">
+						<%= f.submit "保存", class: "btn btn-info ", id: "form-submit-btn"%>
+					</div>
 				</div>
-			</div>
+
 		</div>
 	<% end %>
 </div>
