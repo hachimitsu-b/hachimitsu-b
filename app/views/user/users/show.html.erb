@@ -4,92 +4,55 @@
 		<div class="side-menu fl">
 			<ul class="mb30">
 				<li class="side-menu-bar">会員登録情報の変更</li>
-				<li class="mypage-navi"><span>＞ </span>プロフィールの変更</li>
-				<li class="mypage-navi"><span>＞ </span>退会手続き</li>
+				<%= link_to(carts_path) do %>
+					<li class="mypage-navi"><span>＞ </span>プロフィールの変更</li>
+				<% end %>
+				<%= link_to(users_destroying_path) do %>
+					<li class="mypage-navi"><span>＞ </span>退会手続き</li>
+				<% end %>
 			</ul>
 			<ul class="mb30">
 				<li class="side-menu-bar">ご注文の確認・変更</li>
-				<li class="mypage-navi"><span>＞ </span>注文履歴</li>
-				<li class="mypage-navi"><span>＞ </span>配送状況</li>
+				<%= link_to(carts_path) do %>
+					<li class="mypage-navi"><span>＞ </span>注文履歴</li>
+				<% end %>
 			</ul>
 		</div>
 		<div class="mypage-cart">
 			<h5 style="margin-top: 0px;">ショッピングカート</h5>
 			<div class="mypage-cart-line">
 				<div class="clearfix">
-					<div class="cd-box2">CD</div>
-					<div class="fl">
-						<p class="titile-artists2" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-						<p class="price2">(税込) :  <span>0,000円</span></p>
-					</div>
-					<div class="fr">
-						<div class="clearfix cd-num" style="margin-right: 0px;">
-							<div class="cd-number-text"><p>個数:</p></div>
-							<div class="btn-group fl" role="group" style="margin-right: 0px;">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-									1
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">１</a></li>
-									<li><a href="#">２</a></li>
-								</ul>
-							</div>
-						</div><!-- /.clearfix -->
-						<div class="destroy-btn">削除</div>
-					</div>
+					<% @cd.each do |cd| %>
+						<%= link_to(carts_path) do %>
+							<% if cd.jacket_id.present? %>
+								<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
+								<% else %>
+									<%= image_tag 'no-image150.jpg', size: '150x150' %>
+							<% end %>
+						<% end %>
+						<div class="fl">
+							<p class="titile-artists2" style="margin-bottom: 0;"><span><%= cd.name %></span><br><%= cd.artist.name %></p>
+							<p class="price2">(税込) :  <span><%= cd.price %>円</span></p>
+						</div>
+						<div class="fr">
+							<div class="clearfix cd-num" style="margin-right: 0px;">
+								<div class="cd-number-text"><p>個数:</p></div>
+								<div class="btn-group fl" role="group" style="margin-right: 0px;">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+										1
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">１</a></li>
+										<li><a href="#">２</a></li>
+									</ul>
+								</div>
+							</div><!-- /.clearfix -->
+							<div class="destroy-btn">削除</div>
+						</div>
+					<% end %>
 				</div><!-- /.clearfix -->
 			</div>
-			<div class="mypage-cart-line">
-				<div class="clearfix">
-					<div class="cd-box2">CD</div>
-					<div class="fl">
-						<p class="titile-artists2" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-						<p class="price2">(税込) :  <span>0,000円</span></p>
-					</div>
-					<div class="fr">
-						<div class="clearfix cd-num" style="margin-right: 0px;">
-							<div class="cd-number-text"><p>個数:</p></div>
-							<div class="btn-group fl" role="group" style="margin-right: 0px;">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-									1
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">１</a></li>
-									<li><a href="#">２</a></li>
-								</ul>
-							</div>
-						</div><!-- /.clearfix -->
-						<div class="destroy-btn">削除</div>
-					</div>
-				</div><!-- /.clearfix -->
-			</div>
-			<div class="mypage-cart-line">
-				<div class="clearfix">
-					<div class="cd-box2">CD</div>
-					<div class="fl">
-						<p class="titile-artists2" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
-						<p class="price2">(税込) :  <span>0,000円</span></p>
-					</div>
-					<div class="fr">
-						<div class="clearfix cd-num" style="margin-right: 0px;">
-							<div class="cd-number-text"><p>個数:</p></div>
-							<div class="btn-group fl" role="group" style="margin-right: 0px;">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-									1
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">１</a></li>
-									<li><a href="#">２</a></li>
-								</ul>
-							</div>
-						</div><!-- /.clearfix -->
-						<div class="destroy-btn">削除</div>
-					</div>
-				</div><!-- /.clearfix -->
-			</div><!-- /.mypage-cart-line -->
 		</div><!-- /.mypage-cart -->
 		<div class="purchase">
 			<div class="purchase-total-line">
@@ -97,9 +60,13 @@
 				<p class="total-txt">0,000円</p>
 			</div>
 			<div class="mb10">
-				<div class="purchase-move-btn">購入手続きへ進む  ></div>
+				<%= link_to(carts_path) do %>
+					<div class="purchase-move-btn">購入手続きへ進む  ></div>
+				<% end %>
 			</div>
-			<div class="purchase-shopping-btn">お買い物を続ける  ></div>
+			<%= link_to(carts_path) do %>
+				<div class="purchase-shopping-btn">お買い物を続ける  ></div>
+			<% end %>
 		</div>
 	</div><!-- /.clearfix -->
 </div><!-- /.container -->

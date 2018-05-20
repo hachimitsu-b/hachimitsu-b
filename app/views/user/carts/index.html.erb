@@ -8,10 +8,10 @@
 				<% end %>
 				<div class="fl">
 					<%= link_to(carts_path) do %>
-						<p class="titile-artists2" style="margin-bottom: 0;"><span>タイトル</span><br>アーティスト名</p>
+						<div class="titile-artists2"><span><%= cd.name %></span><br><%= cd.artist.name %></div>
 					<% end %>
-					<p class="genre-txt">ジャンル</p>
-					<p class="price4">価格(税込) :  <span>0,000円</span></p>
+					<p class="genre-txt"><%= cd.genre.name %></p>
+					<p class="price4">価格(税込) :  <span><%= cd.price %>円</span></p>
 				</div>
 			</div><!-- /.clearfix -->
 		<% end %>
