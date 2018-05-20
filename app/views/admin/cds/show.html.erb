@@ -9,13 +9,18 @@
 					<p class="category-txt" style="margin-bottom: 0;"><%= @cd.genre.name %></p>
 					<p class="category-txt"><%= @cd.label.name %></p>
 				</div>
-				<div class="price-box">
+				<div class="price-box2">
 					<p class="price3-txt"><span>価格</span>(税込)</p>
 					<p class="price3"><%= @cd.price %>円</span></p>
 					<div class="cart-btn2 mb5"><%= link_to '商品編集', edit_admin_cd_path %></div>
-					<p class="stock-txt"><span>在庫数</span><%= @cd.stock %></p>
-					<p class="stock-txt2"><span>いくつ買っているのか</span><%= @cd.bought %></p>
-					<p class="stock-txt2-note">一覧に表示させますか<%= @cd.display %></p>
+					<p class="stock-txt"><p class="padding-zaiko"><font size="5">在庫数<%= @cd.stock %></p></p></font>
+					<p class="stock-txt2"><span>こちらの商品は</span><%= @cd.bought %><span>個買われています</span></p>
+					<p class="stock-txt2-note">
+						<% if @cd.display %>
+							<div>こちらの商品はユーザー側に表示されています</div>
+						<% else %>
+							<div>こちらの商品はユーザー側に表示されていません</div>
+						<% end %>
 				</div>
 			</div><!-- /.clearfix -->
 		</div><!-- /.clearfix -->

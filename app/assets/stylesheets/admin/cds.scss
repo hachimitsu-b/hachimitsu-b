@@ -70,3 +70,20 @@
 	display: inline-block !important;
 	float: left;
 }
+.cd-box-container{
+	padding-top: 50px;
+}
+.price-box2{
+	width: 350px;
+	float: right;
+	margin-right: 100px;
+	padding: 20px;
+	background-color: #fbfbfb;
+	border: 1px solid #CCCCCC;
+	border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */
+}
+.padding-zaiko{
+	padding-top: 20px;
+}

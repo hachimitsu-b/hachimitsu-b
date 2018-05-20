@@ -1,6 +1,8 @@
 class Admin::CdsController < ApplicationController
+  PER = 10
   def index
     @cds = Cd.all
+    @cds = Cd.page(params[:page]).per(PER)
   end
 
   def show
