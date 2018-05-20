@@ -13,9 +13,9 @@
 					<p class="price3-txt"><span>価格</span>(税込)</p>
 					<p class="price3"><%= @cd.price %>円</span></p>
 					<div class="cart-btn2 mb5"><%= link_to '商品編集', edit_admin_cd_path %></div>
-					<p class="stock-txt">在庫あり</p>
-					<p class="stock-txt2">在庫なし</p>
-					<p class="stock-txt2-note">※(例)○月○日頃入荷予定、未定</p>
+					<p class="stock-txt"><span>在庫数</span><%= @cd.stock %></p>
+					<p class="stock-txt2"><span>いくつ買っているのか</span><%= @cd.bought %></p>
+					<p class="stock-txt2-note">一覧に表示させますか<%= @cd.display %></p>
 				</div>
 			</div><!-- /.clearfix -->
 		</div><!-- /.clearfix -->
@@ -27,27 +27,24 @@
 		<div class="recording-titile-txt">
 			<% if @cd.single_album %>
 				<%= @cd.name %>
-			<% else %>
-				<table>
-					<thead>
-						<tr>
-							<th><h1><%= @cd.name %></h1></th>
-						</tr>
-						<tr>
-							<th><h2><%= @cd.albums.name %></h2></th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @cd.albums.each do |album| %>
+				<% else %>
+					<table>
+						<thead>
+							<div class="recording-titile-txt"><%= @cd.name %></div>
+						</thead>
+						<tbody>
+							<% @cd.albums.each do |album| %>
+								<p class="disk-titile"><%= album.name %> </p>
 								<% album.music_in_cds.each do |music|%>
-									<tr>
-										<th class="table-bg1"><%= music.name %></th>
-									</tr>
+									<ol>
+										<li><%= music.name %></li>
+									</ol>
 								<% end %>
-						<% end %>
-					</tbody>
+					    	<% end %>
+						</tbody>
+					</table>
 			<% end %>
-
 		</div>
-	</div><!-- /.container -->
+	</div>
 </div><!-- /.container -->
+<%= render 'user/footer' %>

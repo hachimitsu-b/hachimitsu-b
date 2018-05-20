@@ -2,17 +2,15 @@
 <%= render 'layouts/admins_header' %>
 <div class="container">
 	<h1>購入履歴</h1>
-<div class="cd-box-container clearfix">
+	<div class="cd-box-container clearfix">
 		<% @user.each do |user| %>
-		<div class="cd-con">
-			<div class="cd-box">CD</div>
-			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-			<p class="titile-artists" style="margin-bottom: 0;"><span><%= cd.name %></span><br><%= cd.artist.name %></p>
-			<p class="price">値段 ｜ <%= cd.price %>円</p>
-			<p><%= link_to '詳細', admin_cd_path(1) ,class: "btn btn-primary btn-lg active btncolor"%></p>
-		</div>
+			<div class="cd-con">
+				<div class="cd-box">CD</div>
+				<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
+				<p class="titile-artists" style="margin-bottom: 0;"><span><%= cd.name %></span><br><%= cd.artist.name %></p>
+				<p class="price">値段 ｜ <%= cd.price %>円</p>
+				<p><%= link_to '詳細', admin_cd_path(1) ,class: "btn btn-primary btn-lg active btncolor"%></p>
+			</div>
 		<% end %>
-		
-		</div>
-	</div><!-- /.clearfix -->
+	</div>
 </div><!-- /.container -->
