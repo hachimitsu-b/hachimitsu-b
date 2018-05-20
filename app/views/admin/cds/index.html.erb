@@ -1,17 +1,25 @@
 <%= render 'layouts/admins_header' %>
 <div class="container">
-	<h1>既存商品一覧</h1>
+	<div class="row">
+        <div class="col-md-11 col-md-offset-1">
+			<h1>既存商品一覧</h1>
+				<div class="cd-box-container clearfix">
+					<% @cds.each do |cd| %>
+						<div class="cd-con">
+							<div class="cd-box">CD</div>
+							<div class="cart-btn mb5">
+								<i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる
+							</div>
+							<p class="titile-artists" style="margin-bottom: 0;">
+								<span><%= cd.name %></span>
+								<br><%= cd.artist.name %>
+							</p>
+							<p class="price">値段 ｜ <%= cd.price %>円</p>
+							<p><%= link_to '詳細', admin_cd_path(1) ,class: "btn btn-primary btn-lg active btncolor"%></p>
+						</div>
+					<% end %>
+				</div>
+		</div><!-- /.clearfix -->
+	</div><!-- /.container -->
+</div>
 
-            <div class="cd-box-container clearfix">
-		<% @cds.each do |cd| %>
-		<div class="cd-con">
-			<div class="cd-box">CD</div>
-			<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-			<p class="titile-artists" style="margin-bottom: 0;"><span><%= cd.name %></span><br><%= cd.artist.name %></p>
-			<p class="price">値段 ｜ <%= cd.price %>円</p>
-			<p><%= link_to '詳細', admin_cd_path(1) ,class: "btn btn-primary btn-lg active btncolor"%></p>
-		</div>
-		<% end %>
-		</div>
-	</div><!-- /.clearfix -->
-</div><!-- /.container -->
