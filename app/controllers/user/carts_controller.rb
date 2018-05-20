@@ -11,19 +11,22 @@ class User::CartsController < ApplicationController
     end
   end
 
-  def create
-    @user = User.find(current_user.id)
-    @cart = user.cart.find_by(status_flag: 0)
-    @cart.item_in_cart.create(item_in_cart_params)
-  end
+  # def create
+  #   @user = User.find(current_user.id)
+  #   @cart = @user.cart.find_by(status_flag: 0)
+  #   cd = Cd.find_by(params[:id])
+  #   @cart.item_in_cart.create(cd_id: cd.id,
+  #                             price: cd.price)
+  #   redirect_to user_path(@user.id)
+  # end
 
   def update
     @user = User.find(current_user.id)
-    if @user.carts.item_in_carts.update(item_in_cart_params)
-      redirect_to user_path(current_user.id)
-    else
-      redirect_to cds_path
-    end
+    @cart = @user.carts.find_by(status_flag: 0)
+    cd = Cd.find_by(id: params[:id])
+    @cart.item_in_carts.create(cd_id: cd.id,
+                              price: cd.price)
+    redirect_to user_path(@user.id)
   end
   # def お支払い方法
   # end
@@ -32,6 +35,6 @@ class User::CartsController < ApplicationController
 
   private
   def item_in_cart_params
-    params.require(:item_in_cart).permit(:id, :cart_id, :cd_id, :count, :price)
+    params.require(:cd).permit(:cd_id, :price)
   end
 end
