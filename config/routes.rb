@@ -72,10 +72,12 @@ Rails.application.routes.draw do
 	# 生成されるpath => ooo_path
 	scope module: :user do
 		resources :users, only: [:show, :edit, :update, :destroy]
+		# 退会１ページ
+		get '/users/destroying', to: 'users#destroying'
 		# 退会手続き
-		# post ''
+		# destroy
 		# 退会完了
-		# post ''
+		get '/users/destroyed', to: 'users#destroyed'
 		resources :carts, only: [:create, :index, :edit, :update]
 		# 支払い方法選択
 		# post ''

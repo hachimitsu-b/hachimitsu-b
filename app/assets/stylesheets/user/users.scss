@@ -276,16 +276,13 @@ input[type="password"] {
     -moz-border-radius: 4px;   /* Firefox用 */
     margin-bottom: 12px;
 }
-.rank1{
-	float: left;
-	margin: 0 30px 0 50px;
+.rank-container{
+	margin-left: 35px;
 }
-.rank2{
+.rank{
 	float: left;
-	margin-right: 30px;
-}
-.rank3{
-	float: left;
+	margin: 0 35px 0 0;
+	width: 150px;
 }
 .rank-box{
 	width: 150px;
@@ -315,6 +312,7 @@ input[type="password"] {
 	word-break: break-all;	/* 文字を改行させる */
 }
 .titile-name{
+	width: 150px;
 	font-weight: bold;
 	font-size: 20px;
 	word-break: break-all;	/* 文字を改行させる */
@@ -329,7 +327,6 @@ input[type="password"] {
 .cd-con{
 	width: 150px;
 	float: left;
-	width:250px;
 	margin-right: 30px;
 }
 
@@ -339,7 +336,7 @@ input[type="password"] {
 
 
 .cd-box-container{
-	margin: 0 0 30px 50px;
+	margin: 0 0 50px 50px;
 }
 
 /*---------------------------------------------------------------------
@@ -545,31 +542,38 @@ h5{
 	margin:50px 0;
 }
 .cd-box3{
-	width: 250px;
-	height: 250px;
+	width: 252px;
+	height: 252px;
 	border: 1px solid #CCCCCC;
 	margin: 0 15px 0 100px;
 	float: left;
 }
-.titile-artists3{
-	font-size: 20px;
-	color: #4597F5;
-}
-.titile-artists3 span{
+.titile-name2{
+	width: 320px;
+	word-break: break-all;	/* 文字を改行させる */
 	font-weight: bold;
 	font-size: 30px;
 	color: #333;
 }
+.artists-name2{
+	width: 320px;
+	word-break: break-all;	/* 文字を改行させる */
+	font-size: 20px;
+	color: #4597F5;
+}
 .category-txt{
+	width: 320px;
+	word-break: break-all;	/* 文字を改行させる */
 	font-size: 18px;
 	color: #444;
 }
 .price3-txt{
-	font-size: 21px;
+	font-size: 18px;
 	color: #444;
 }
 .price3-txt span{
 	font-weight: bold;
+	font-size: 21px;
 }
 .price-box{
 	width: 290px;
@@ -613,6 +617,8 @@ h5{
 }
 /* 商品紹介　*/
 .introduction-txt{
+	width: 1200px;
+	word-break: break-all;	/* 文字を改行させる */
 	font-size: 14px;
 	color: #444;
 	margin-bottom: 30px;
@@ -626,7 +632,7 @@ h5{
 .disk-titile{
 	font-size: 20px;
 	color: #333333;
-font-weight: bold;
+	font-weight: bold;
 }
 /* 曲名 */
 ol {

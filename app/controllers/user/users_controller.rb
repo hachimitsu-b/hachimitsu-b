@@ -30,12 +30,17 @@ class User::UsersController < ApplicationController
   		end
   end
 
-  # def 退会手続き
-  # end
-  # def 退会完了
-  # end
-  # def destroy
-  # end
+  # 退会ページの1ページめ
+  def destroying
+  end
+
+  # 退会処理
+  def destroy
+  end
+
+  # 処理後
+  def destroyed
+  end
 
 private
   def user_params

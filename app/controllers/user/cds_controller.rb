@@ -11,6 +11,6 @@ class User::CdsController < ApplicationController
   end
 
   def index
-    @cd = Cd.all.reverse
+    @cd = Cd.all
   end
 end

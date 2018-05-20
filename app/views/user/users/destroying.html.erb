@@ -1,0 +1,26 @@
+
+<%= render 'user/header' %>
+
+<div class='container'>
+	<h2 class="mb70">退会手続き</h2>
+	<div class="unsubscribe-box">
+		<p class="unsubscribe-titile-txt">本当に退会してよろしいですか？</p>
+		<p class="unsubscribe-caution-txt">※　(例)　退会後のカートの中の情報はなくなりますがよろしいですか？</p>
+		<div class="clearfix">
+			<div class="unsubscribe-btn-box">
+				<div class="fl">
+					<%= link_to(carts_path) do %>
+						<div class="unsubscribe-btn">いいえ</div>
+					<% end %>
+				</div>
+				<div class="fr">
+					<%= link_to(users_destroyed_path) do %>
+						<div class="unsubscribe-btn">はい</div>
+					<% end %>
+				</div>
+			</div>
+		</div><!-- /.clearfix -->
+	</div>
+</div><!-- /.container -->
+
+<%= render 'user/footer' %>
