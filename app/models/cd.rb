@@ -5,6 +5,7 @@ class Cd < ApplicationRecord
 	has_many :albums
 	has_many :music_in_items, through: :albums
 	has_many :item_in_carts
+	# has_many :carts
 	has_many :carts, through: :item_in_carts
 	# おすすめ機能のモデルと関連付け
 	has_many :recommends
