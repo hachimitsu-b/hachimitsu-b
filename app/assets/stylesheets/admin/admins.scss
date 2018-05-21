@@ -11,7 +11,7 @@
   background: #e0edff;
 }
 
-// 吹き出しの下の三角を表示
+/* 吹き出しの下の三角を表示 */
 .admin-balloon:after {
 	position: absolute;
 	content: '';
@@ -21,4 +21,39 @@
 	border-top: 15px solid #e0edff;
 	width: 0;
 	height: 0;
+}
+
+
+/* 管理者ヘッダー */
+h1.admin-header-logo{
+	width: 148px;
+	float: left;
+}
+ul.admin-navbar{
+	width: 640px;
+	float: left;
+	margin: 16px 0 0 0;
+}
+ul.admin-navbar li{
+	display: inline-block;
+	font-size: 18px;
+	padding: 0 15px;
+	border-right: 1px solid #444;
+
+}
+ul.admin-navbar li a{
+	color: #444;
+}li.header-line-none{
+	border-right: none !important;
+}
+
+/* 賞品一覧 */
+.admin-t-a-name{
+	color: #4597F5;
+}
+.admin-t-a-name span{
+	font-size: 15px;
+}
+.new-product{
+	margin-left: 100px;
 }
