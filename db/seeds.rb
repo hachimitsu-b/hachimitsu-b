@@ -53,16 +53,25 @@ end
 
 
 # レーベルを作成
-50.times do |n|
-	Label.create(name: "テストレーベル#{n}")
+label = [{ name: "テストレーベル名1", name_kana: "テストレーベルメイ1"},
+					{ name: "テストレーベル名2", name_kana: "テストレーベルメイ2"},
+					{ name: "テストレーベル名3", name_kana: "テストレーベルメイ3"},
+					{ name: "テストレーベル名4", name_kana: "テストレーベルメイ4"},
+					{ name: "テストレーベル名5", name_kana: "テストレーベルメイ5"}]
+5.times do |n|
+	Label.create(name: label[n][:name],
+								name_kana: label[n][:name_kana])
 end
-
 
 # ジャンルを生成
-genre = ["J-POP", "クラシック", "K-POP"]
+label = [{ name: "J-POP", name_kana: "ジェイポップ"},
+					{ name: "クラシック", name_kana: "クラシック"},
+					{ name: "K-POP", name_kana: "ケーポップ"}]
 3.times do |n|
-	Genre.create(name: genre[n])
+	Genre.create(name: label[n][:name],
+							name_kana: label[n][:name_kana])
 end
+
 
 
 
@@ -71,7 +80,7 @@ end
 15.times do |n|
 	cd_name = "テストname安室奈美恵" + n.to_s
 	artist_name = Artist.find_by(name: "安室奈美恵")
-	lebel_name = Label.find_by(name: "テストレーベル1")
+	lebel_name = Label.find_by(name: "テストレーベル名1")
 	genre_name = Genre.find_by(name: "J-POP")
 	Cd.create(name: cd_name,
 						artist_id: artist_name.id,
@@ -93,7 +102,7 @@ end
 5.times do |n|
 	cd_name = "テストnameアラシ" + n.to_s
 	artist_name = Artist.find_by(name: "嵐")
-	lebel_name = Label.find_by(name: "テストレーベル2")
+	lebel_name = Label.find_by(name: "テストレーベル名2")
 	genre_name = Genre.find_by(name: "クラシック")
 	Cd.create(name: cd_name,
 						artist_id: artist_name.id,
@@ -115,7 +124,7 @@ end
 5.times do |n|
 	cd_name = "テストnameAKB" + n.to_s
 	artist_name = Artist.find_by(name: "AKB")
-	lebel_name = Label.find_by(name: "テストレーベル3")
+	lebel_name = Label.find_by(name: "テストレーベル名3")
 	genre_name = Genre.find_by(name: "K-POP")
 	cd =	Cd.create(name: cd_name,
 									artist_id: artist_name.id,

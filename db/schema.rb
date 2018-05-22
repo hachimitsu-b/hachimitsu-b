@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2018_05_11_121908) do
     t.integer "artist_id"
     t.boolean "single_album"
     t.string "jacket_id"
+    t.date "release_date"
     t.integer "price"
     t.integer "label_id"
     t.integer "genre_id"
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 2018_05_11_121908) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.string "name_kana"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -90,6 +92,7 @@ ActiveRecord::Schema.define(version: 2018_05_11_121908) do
 
   create_table "labels", force: :cascade do |t|
     t.string "name"
+    t.string "name_kana"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

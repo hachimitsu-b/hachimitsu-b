@@ -37,6 +37,8 @@ Rails.application.routes.draw do
 	# adminディレクトリ内のコントローラーのpath
 	# 生成されるpath => admin_ooo_path
 	namespace :admin do
+		resources :carts, only: [:index]
+		resources :cds
 		resources :users, only: [:index, :show, :edit, :update, :destroy]
 		# 購入履歴を表示
 		get 'users/:id/history', to: 'users#history', as: 'history'
@@ -44,16 +46,14 @@ Rails.application.routes.draw do
 		# cd内の検索機能
 		post 'cds/seach' => 'cds#form_object_seach'
 		# アーティスト、レーベル、ジャンルの一覧、新規登録
-		get 'cds/artists' => 'cds#artist_index'
-		get 'cds/labels' => 'cds#label_index'
-		get 'cds/genres' => 'cds#genr_index'
+		get 'cds/:object_name/index' => 'cds#object_index'
 		# アーティスト、レーベル、ジャンルの新規登録の処理
 		post 'cds/objects' => 'cds#object_create'
 		# アーティスト、レーベル、ジャンルの編集
-		get 'cds/objects/update' => 'cds#object_update'
-		resources :cds
+		get 'cds/:object_name/:id/edit' => 'cds#object_edit', as: 'cds_object_edit'
+		# アーティスト、レーベル、ジャンルの編集処理
+		post 'cds/objects/:id/update' => 'cds#object_update'
 
-		resources :carts, only: [:index]
 	end
 
 	# adminのマイページのみ、変更

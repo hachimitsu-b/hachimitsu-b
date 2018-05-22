@@ -47,40 +47,55 @@ class Admin::CdsController < ApplicationController
     redirect_to admin_cds_path
   end
 
-  # アーティストの一覧、新規登録
-  def artist_index
-    @artists = Artist.all.last(15)
-    @artist = Artist.new
+  # アーティスト,レーベル,ジャンルの一覧、新規登録
+  def object_index
+    case params[:object_name]
+      when "artists"
+        @objects = Artist.all.last(15).reverse
+        @new_object = Artist.new
+      when "genres"
+        @objects = Genre.all.last(15).reverse
+        @new_object = Genre.new
+      when "labels"
+        @objects = Label.all.last(15).reverse
+        @new_object = Label.new
+      else
+        redirect_to "/admins/1"
+      end
   end
 
-  # レーベルの一覧、新規登録
-  def label_index
-    @lagels = Lagel.all.last(15)
-    @artist = Lagel.new
-  end
-
-  # ジャンルの一覧、新規登録
-  def genre_index
-    @renres = Genre.all.last(15)
-    @genre = Genre.new
-  end
 
   # アーティスト、レーベル、ジャンルの新規登録の処理
   def object_create
-    if params[:name]
-      case params[:object_name]
-        when "Artist"
-          @object = Artist.create(artist_params)
-        when "Genre"
-          @object = Genre.create(genre_params)
-        when "Label"
-          @object = Label.create(label_params)
-      end
-      render :json => @object
+    case params[:object_name]
+      when "Artist"
+        @object = Artist.create(artist_params)
+      when "Genre"
+        @object = Genre.create(genre_params)
+      when "Label"
+        @object = Label.create(label_params)
     end
+    redirect_to "/admin/cds/#{params[:object_name].downcase + "s"}/index"
   end
 
-  # アーティスト、レーベル、ジャンルの編集
+   # アーティスト、レーベル、ジャンルの編集
+  def object_edit
+     case params[:object_name]
+      when "artists"
+        @objects = Artist.all.last(15).reverse
+        @new_object = Artist.find(params[:id])
+      when "genres"
+        @objects = Genre.all.last(15).reverse
+        @new_object = Genre.find(params[:id])
+      when "labels"
+        @objects = Label.all.last(15).reverse
+        @new_object = Label.find(params[:id])
+      else
+        redirect_to "/admins/1"
+      end
+  end
+
+  # アーティスト、レーベル、ジャンルの編集処理
   def object_update
     
   end
@@ -154,11 +169,11 @@ class Admin::CdsController < ApplicationController
     end
 
     def  label_params
-      params.require(:label).permit(:name)
+      params.require(:label).permit(:name, :name_kana)
     end
 
     def  genre_params
-      params.require(:genre).permit(:name)
+      params.require(:genre).permit(:name, :name_kana)
     end
 
 

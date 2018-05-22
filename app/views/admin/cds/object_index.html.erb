@@ -1,0 +1,8 @@
+<%= render 'layouts/admins_header' %>
+<% if "artists" == params[:object_name] %>
+	<%= render 'admin/cds/create_form', object_name_eng: 'Artist', object_name: 'アーティスト', objects: @objects , new_object: @new_object %>
+<% elsif "labels" == params[:object_name] %>
+	<%= render 'admin/cds/create_form', object_name_eng: 'Label', object_name: 'レーベル', objects: @objects , new_object: @new_object %>
+<% elsif "genres" == params[:object_name] %>
+	<%= render 'admin/cds/create_form', object_name_eng: 'Genre', object_name: 'ジャンル', objects: @objects , new_object: @new_object %>
+<% end %>
