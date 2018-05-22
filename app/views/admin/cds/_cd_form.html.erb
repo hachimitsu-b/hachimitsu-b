@@ -1,11 +1,11 @@
 <!-- 使用変数 :cd, :title, :action -->
 <!-- cdの登録のフォーム -->
 <div class="container">
-	<h1><%= title %></h1>
 	<%= form_for(cd, url: {controller: "admin/cds", action: "#{action}"}) do |f| %>
 		<div class="row">
 			<!-- 左側の表示 -->
 			<div class="col-md-6">
+				<p style="font-size: 30px;"><%= title %></p>
 				<%= f.attachment_field :jacket, id: "cd-image" %>
 				<!-- ajaxに対応した登録cdのイメージ表示 -->
 				<div class="form-cd-image-box">

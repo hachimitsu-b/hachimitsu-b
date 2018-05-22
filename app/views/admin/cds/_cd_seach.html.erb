@@ -38,7 +38,7 @@
 	// ajaxの検索機能
 	$('.form-seach-btn-<%= seach_name_eng %>').on('click',function(){
 		$.ajax({
-			url: '<%= admin_cd_seach_path %>',
+			url: '<%= admin_cds_seach_path %>',
 			type: 'POST',
 			data:{
 				'seach' : $('#seach_<%= seach_name_eng %>').val(),
