@@ -3,6 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+body{
+	padding-top: 60px;
+}
+
 // cdのフォーム
 .music-form-items{
 	float: right;
@@ -78,6 +83,13 @@
 	width: 100%;
 	height: 50px;
 	background-color: #00bfff;
+	// 一時的
+	margin-top: 60px;
+}
+
+.object-index-head-text {
+	font-size: 30px;
+	margin-left: 20px
 }
 
 // ---------------------------------

@@ -1,12 +1,78 @@
-<!-- 使用変数 :object_name_eng, :-->
+<!-- 使用変数 :object_name_eng, :object_name, 新規フォームよう:new_object, 複数表示よう:objects-->
 <div class="container">
 	<div class="row">
 		<div class="object-index-head">
+		<!-- ページ上部にタイトル？を表示 -->
 			<p class="object-index-head-text"><%= object_name %></p>
 		</div>
+		<!-- 左画面 -->
+		<div class="col-md-9 form-group">
+			<!-- 検索フォーム -->
+			<div class="object-seach-form">
+				<%= form_tag("#") do %>
+					<%= hidden_field_tag :seach_name, "#{object_name_eng}"  %>
+					<%= text_field_tag :seach, "", placeholder: "#{object_name}を検索", class: "form-control form-seach-field" %>
+					<span class="btn btn-primary form-seach form-seach-btn">検索</span>
+				<% end %>
+			</div>
+			<!-- 一覧表示 -->
+			<div class="box-<%= object_name_eng %>">
+				<table class="table table-hover">
+					<tbody id="cd-seach">
+						<% objects.each do |object| %>
+							<tr>
+								<th><%= object.name %></th>
+								<th><%= object.name_kana %></th>
+								<th>
+									<!-- 編集ボタン -->
+									<span class="btn btn-info">編集</span>
+									<!-- 削除ボタン -->
+									<span class="btn btn-danger">削除</span>
+								</th>
+							</tr>
+						<% end %>
+					</tbody>
+					<%= hidden_field :"#{object_name_eng}_id".downcase , value: ""%>
+				</table>
+			</div>
+		</div>
+		<!-- 右画面 -->
+		<div class="col-md-3"></div>
 	</div>
 </div>
 
 <script>
+// ajaxの検索機能
+	$('.form-seach-btn').on('click',function(){
+		$.ajax({
+			url: '<%= admin_cds_seach_path %>',
+			type: 'POST',
+			data:{
+				'seach' : $('#seach').val(),
+	      'seach_name' : $('#seach_name').val()
+	    }
+		}).done( (data) => {  // Ajaxリクエストが成功した時発動
+				// 前回の検索を削除
+				$('#cd-seach').text('');
+				// はみ出したらスクロール
+				$('.box-<%= object_name_eng %>').css('overflow-y', 'scroll');
+				$('.box-<%= object_name_eng %>').css('height', '500px');
+				$.each(data, function(i){
+					var input = '<tr>'
+										+ 	'<th class="seach-object-btn" id="' + data[i].id + '" data-<%= object_name_eng %>="<%= object_name_eng %>">'
+										+			data[i].name
+										+		'</th>'
+										+		'<th>'
+													// <!-- 編集ボタン -->
+										+			'<span class="btn btn-info">編集</span>'
+													// <!-- 削除ボタン -->
+										+			'<span class="btn btn-danger">削除</span>'
+										+		'</th>'
+										+	'</tr>';
+					$('#cd-seach').append( input );
+			});
+    }).fail( (data) => {  // Ajaxリクエストが失敗した時発動
+    })
+	});
 
 </script>

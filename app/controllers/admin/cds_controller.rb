@@ -87,7 +87,8 @@ class Admin::CdsController < ApplicationController
 
   # フォームでのajaxの検索機能
   def form_object_seach
-    if seach_val = params[:seach]
+    if params[:seach].present?
+      seach_val = params[:seach]
       case params[:seach_name]
         when "Artist"
           @objects = Artist.where("name LIKE ?", "%#{seach_val}%")
