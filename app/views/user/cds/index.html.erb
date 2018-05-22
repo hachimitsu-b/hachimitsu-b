@@ -127,7 +127,7 @@
 							<%= image_tag 'no-image150.jpg', size: '150x150' %>
 					<% end %>
 				<% end %>
-				<%= link_to(cart_path(cd.id), method: :patch) do %>
+				<%= link_to cart_path(cd.id), method: :patch do %>
 					<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
 				<% end %>
 				<%= link_to(cd_path(cd.id)) do %>
