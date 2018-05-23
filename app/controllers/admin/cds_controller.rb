@@ -1,4 +1,5 @@
 class Admin::CdsController < ApplicationController
+  before_action :authenticate_admin!
   PER = 10
   def index
     @cds = Cd.all
