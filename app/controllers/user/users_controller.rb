@@ -1,6 +1,6 @@
 class User::UsersController < ApplicationController
-	#作業が一通り済んだらコメントアウトを切る
-	#before_action :authenticate_user!
+
+	before_action :authenticate_user!
 
   def show
 
@@ -8,7 +8,9 @@ class User::UsersController < ApplicationController
 
   	@user = User.find(params[:id])
   	@cart = @user.carts.find_by(status_flag: 0)
-  	@cart_cd = @cart.cds
+    @cart_cd = @cart.cds
+  	@items = @cart.item_in_carts
+    @total = ItemInCart.where(cart_id: @cart.id).sum(:price)
   	else
   		redirect_to cds_path
   	end
@@ -31,12 +33,20 @@ class User::UsersController < ApplicationController
   		end
   end
 
-  # 退会ページの1ページめ
+  # 退会ページの1ページ目
   def destroying
   end
 
   # 退会処理
   def destroy
+    now_user = User.find(current_user.id)
+    user = User.find(params[:id])
+    if user == now_user
+      # ユーザーを論理削除
+      user.delete_flag = 1
+      user.save
+    end
+    redirect_to users_destroyed_path
   end
 
   # 処理後
