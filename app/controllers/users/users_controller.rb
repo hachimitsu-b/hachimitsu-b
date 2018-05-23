@@ -1,7 +1,7 @@
 class User::UsersController < ApplicationController
 
 	#作業が一通り済んだらコメントアウトを切る
-	#before_action :authenticate_user!
+	before_action :authenticate_user!
 
   def show
 

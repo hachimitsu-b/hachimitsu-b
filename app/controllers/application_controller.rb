@@ -28,4 +28,5 @@ class ApplicationController < ActionController::Base
 	  		@user = User.find(current_user.id)
 	  	end
 	  end
+
 end
