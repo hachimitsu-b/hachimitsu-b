@@ -13,6 +13,5 @@ class User::CdsController < ApplicationController
 
   def index
     @cd = Cd.all
-    @user = User.find(current_user.id)
   end
 end
