@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
 # # TOP画面
  root 'user/cds#index'
- 
- namespace :admin do 
+
+ namespace :admin do
  	resources :users, only: [:destroy]
  end
 
@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   # 管理者側のpath
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
+  passwords:     'admins/passwords'
 	}
 
 	# ユーザー側のpath
