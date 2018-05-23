@@ -9,9 +9,16 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  # 論理削除を判別
+  def create
+    user = User.find_by(email: params[:user][:email])
+    if user && user.delete_flag == 0
+      sign_out(current_user)
+      redirect_to cds_path
+    else
+      super
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy
