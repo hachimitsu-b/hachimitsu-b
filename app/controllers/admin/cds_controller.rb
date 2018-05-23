@@ -80,24 +80,50 @@ class Admin::CdsController < ApplicationController
 
    # アーティスト、レーベル、ジャンルの編集
   def object_edit
-     case params[:object_name]
-      when "artists"
-        @objects = Artist.all.last(15).reverse
-        @new_object = Artist.find(params[:id])
-      when "genres"
-        @objects = Genre.all.last(15).reverse
-        @new_object = Genre.find(params[:id])
-      when "labels"
-        @objects = Label.all.last(15).reverse
-        @new_object = Label.find(params[:id])
-      else
-        redirect_to "/admins/1"
-      end
+   case params[:object_name]
+    when "artists"
+      @objects = Artist.all.last(15).reverse
+      @new_object = Artist.find(params[:id])
+    when "genres"
+      @objects = Genre.all.last(15).reverse
+      @new_object = Genre.find(params[:id])
+    when "labels"
+      @objects = Label.all.last(15).reverse
+      @new_object = Label.find(params[:id])
+    else
+      redirect_to "/admins/1"
+    end
   end
 
   # アーティスト、レーベル、ジャンルの編集処理
   def object_update
-    
+    case params[:object_name]
+      when "Artist"
+        @object = Artist.find(params[:id])
+        @object.update(artist_params)
+      when "Genre"
+        @object = Genre.find(params[:id])
+        @object.update(genre_params)
+      when "Label"
+        @object = Label.find(params[:id])
+        @object.update(label_params)
+    end
+    redirect_to "/admin/cds/#{params[:object_name].downcase + "s"}/index"
+  end
+
+  def object_destroy
+    case params[:object_name]
+      when "artists"
+        @object = Artist.find(params[:id])
+        @object.delete
+      when "genres"
+        @object = Genre.find(params[:id])
+        @object.delete
+      when "labels"
+        @object = Label.find(params[:id])
+        @object.delete
+    end
+    redirect_to "/admin/cds/#{params[:object_name].downcase}/index"
   end
 
   # フォームでのajaxの検索機能

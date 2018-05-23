@@ -46,13 +46,15 @@ Rails.application.routes.draw do
 		# cd内の検索機能
 		post 'cds/seach' => 'cds#form_object_seach'
 		# アーティスト、レーベル、ジャンルの一覧、新規登録
-		get 'cds/:object_name/index' => 'cds#object_index'
+		get 'cds/:object_name/index' => 'cds#object_index', as: 'cds_objects'
 		# アーティスト、レーベル、ジャンルの新規登録の処理
-		post 'cds/objects' => 'cds#object_create'
+		post 'cds/objects' => 'cds#object_create', as: 'cds_object_create'
 		# アーティスト、レーベル、ジャンルの編集
 		get 'cds/:object_name/:id/edit' => 'cds#object_edit', as: 'cds_object_edit'
 		# アーティスト、レーベル、ジャンルの編集処理
-		post 'cds/objects/:id/update' => 'cds#object_update'
+		patch 'cds/objects/:id/update' => 'cds#object_update', as: 'cds_object_update'
+		# アーティスト、レーベル、ジャンルの削除処理
+		delete 'cds/:object_name/:id/index' => 'cds#object_destroy', as: 'cds_object_delete'
 
 	end
 
