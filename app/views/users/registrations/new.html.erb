@@ -2,6 +2,7 @@
   <%= render 'user/header_out' %>
 
 <div class='container'>
+  <div class="user-contein-logo"><%= image_tag("logo.png") %></div>
   <div class="signin-box">
     <div class="devise-title-txt">新規会員登録</div>
 
@@ -10,27 +11,27 @@
 
       <div class="field">
         <%= f.label :名前 %><br />
-        <%= f.name_kanji_field :name_kanji, autofocus: true, autocomplete: "name_kanji" %>
+        <%= f.text_field :name_kanji, class: "field-box", autofocus: true, autocomplete: "name_kanji" %>
       </div>
       <div class="field">
         <%= f.label :フリガナ %><br />
-        <%= f.name_kana_field :name_kana, autofocus: true, autocomplete: "name_kana" %>
+        <%= f.text_field :name_kana, class: "field-box", autofocus: true, autocomplete: "name_kana" %>
       </div>
       <div class="field">
         <%= f.label :郵便番号 %><br />
-        <%= f.postcode_field :postcode, autofocus: true, autocomplete: "postcode" %>
+        <%= f.text_field :postcode, class: "field-box", autofocus: true, autocomplete: "postcode" %>
       </div>
       <div class="field">
         <%= f.label :住所 %><br />
-        <%= f.street_address_field :street_address, autofocus: true, autocomplete: "street_address" %>
+        <%= f.text_field :street_address, class: "field-box", autofocus: true, autocomplete: "street_address" %>
       </div>
       <div class="field">
         <%= f.label :電話番号 %><br />
-        <%= f.phone_number_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+        <%= f.text_field :phone_number, class: "field-box", autofocus: true, autocomplete: "phone_number" %>
       </div>
       <div class="field">
         <%= f.label :メールアドレス %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.text_field :email, class: "field-box", autofocus: true, autocomplete: "email" %>
       </div>
 
       <div class="field">

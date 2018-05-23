@@ -21,11 +21,15 @@
 				<div class="price-box">
 					<p class="price3-txt"><span>価格</span>(税込)</p>
 					<p class="price3"><%= @cd.price %>円</span></p>
-					<%= link_to(cart_path(@cd.id), method: :patch) do %>
-						<div class="cart-btn2 mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
+					<% if @cd.stock == 0 %>
+						<div class="cart-stock0-btn mb10">現在商品がありません</div>
+						<p class="stock-txt2">在庫なし</p>
+					<% else %>
+						<%= link_to(cart_path(@cd.id), method: :patch) do %>
+							<div class="cart-btn2 mb10"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
+						<% end %>
+						<p class="stock-txt">在庫あり<br>残り <%= @cd.stock %>個</p>
 					<% end %>
-					<p class="stock-txt">在庫あり<%= @cd.stock %></p>
-					<p class="stock-txt2">在庫なし<%= @cd.stock %></p>
 				</div>
 			</div><!-- /.clearfix -->
 		</div><!-- /.clearfix -->

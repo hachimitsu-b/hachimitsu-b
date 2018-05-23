@@ -2,6 +2,7 @@
   <%= render 'user/header' %>
 
 <div class='container'>
+  <div class="user-contein-logo"><%= image_tag("logo.png") %></div>
   <div class="login-box">
     <div class="devise-title-txt">ログイン</div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

@@ -7,8 +7,11 @@
 		<div class="side-menu fl">
 			<ul class="mb30">
 				<li class="side-menu-bar">会員登録情報の変更</li>
-				<%= link_to(edit_user_path) do %>
+				<%= link_to(edit_user_registration_path) do %>
 					<li class="mypage-navi"><span>＞ </span>プロフィールの変更</li>
+				<% end %>
+				<%= link_to(destroy_user_session_path) do %>
+					<li class="mypage-navi"><span>＞ </span>ログアウトする</li>
 				<% end %>
 				<%= link_to(users_destroying_path) do %>
 					<li class="mypage-navi"><span>＞ </span>退会手続き</li>
@@ -23,21 +26,18 @@
 		</div>
 		<div class="mypage-cart">
 			<h5 style="margin-top: 0px;">ショッピングカート</h5>
-			<div class="mypage-cart-line">
-				<div class="clearfix">
-
-<!-- 					<%# @cart.item_in_carts.each do |item| %>
-						￥<%#= item.price %><br>
-						名前<%#= item.cd.name %><br>
-					<%# end %> -->
-					<% @cart.cds.each do |cd| %>
-						<%= link_to carts_path do %>
-							<% if cd.jacket_id.present? %>
-								<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
-								<% else %>
-									<%= image_tag 'no-image150.jpg', size: '150x150' %>
+			<% @cart.cds.each do |cd| %>
+				<div class="mypage-cart-line">
+					<div class="clearfix">
+						<div class="fl">
+							<%= link_to carts_path do %>
+								<% if cd.jacket_id.present? %>
+									<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
+									<% else %>
+										<%= image_tag 'no-image150.jpg', size: '150x150' %>
+								<% end %>
 							<% end %>
-						<% end %>
+						</div>
 						<div class="fl">
 							<p class="titile-artists2" style="margin-bottom: 0;"><span><%= cd.name %></span><br><%= cd.artist.name %></p>
 							<p class="price2">(税込) :  <span><%= cd.price %>円</span></p>
@@ -56,11 +56,13 @@
 									</ul>
 								</div>
 							</div><!-- /.clearfix -->
-							<div class="destroy-btn">削除</div>
+							<%= link_to user_path do %>
+								<div class="destroy-btn">削除</div>
+							<% end %>
 						</div>
-					<% end %>
-				</div><!-- /.clearfix -->
-			</div>
+					</div><!-- /.clearfix -->
+				</div><!-- /.mypage-cart-line -->
+			<% end %>
 		</div><!-- /.mypage-cart -->
 		<div class="purchase">
 			<div class="purchase-total-line">

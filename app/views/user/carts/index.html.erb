@@ -1,19 +1,32 @@
+
+<%= render 'user/header' %>
+
 <div class='container'>
 	<h2>購入履歴</h2>
 	<div class="purchase-line">
-		<% @cd.each do |cd| %>
+		<% @cart.each do |cart| %>
 			<div class="clearfix">
-				<%= link_to(carts_path) do %>
-					<div class="cd-box2">CD</div>
-				<% end %>
-				<div class="fl">
+				<% cart.cds.each do |cd| %>
 					<%= link_to(carts_path) do %>
-						<div class="titile-artists2"><span><%= cd.name %></span><br><%= cd.artist.name %></div>
+						<div class="cd-box2">
+							<% if cd.jacket_id %>
+								<%= attachment_image_tag cart.cds, :jacket, :fill, 150, 150 %>
+								<% else %>
+									<%= image_tag 'no-image150.jpg', size: '150x150' %>
+							<% end %>
+						</div>
 					<% end %>
-					<p class="genre-txt"><%= cd.genre.name %></p>
-					<p class="price4">価格(税込) :  <span><%= cd.price %>円</span></p>
-				</div>
+					<div class="fl">
+						<%= link_to(carts_path) do %>
+							<div class="titile-artists2"><span><%= cd.name %></span><br><%= cd.artist.name %></div>
+						<% end %>
+						<p class="genre-txt"><%= cd.genre.name %></p>
+						<p class="price4">価格(税込) :  <span><%= cd.price %>円</span></p>
+					</div>
+				<% end %>
 			</div><!-- /.clearfix -->
 		<% end %>
 	</div><!-- /.purchase-line -->
 </div><!-- /.container -->
+
+<%= render 'user/footer' %>

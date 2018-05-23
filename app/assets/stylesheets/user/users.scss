@@ -126,6 +126,12 @@ h1{
 	color: #E0001A;
 	display: inline-block !important;
 }
+.user-login-name{
+	margin-top: 10px;
+	font-size: 16px;
+	color: #E0001A;
+	word-break: break-all;	/* 文字を改行させる */
+}
 /* ログインページなどの簡易header */
 #header{
 	background-color:  #F5A623;
@@ -462,9 +468,20 @@ h5{
 	color: #fff;
 	width: 120px;
 	border: 1px solid #ccc;
-	border-radius: 2px;        /* CSS3草案 */
-    -webkit-border-radius: 2px;    /* Safari,Google Chrome用 */
-    -moz-border-radius: 2px;   /* Firefox用 */
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
+    text-align: center;
+    padding: 5px 1px 5px 1px;
+}
+.destroy-btn a{
+	background-color: #999999;
+	color: #fff;
+	width: 120px;
+	border: 1px solid #ccc;
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
     text-align: center;
     padding: 5px 1px 5px 1px;
 }
@@ -531,6 +548,21 @@ h5{
 /*---------------------------------------------------------------------
 	新規登録編集画面
 -----------------------------------------------------------------------*/
+.user-contein-logo{
+	width: 145px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+.user-edit-box{
+	width: 400px;
+	height: 900px;
+	margin:0 auto;
+	border: 1px solid #CCCCCC;
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
+    padding: 30px;
+}
 .member-edit-txt{
 	font-size: 14px;
 	color: #444;
@@ -547,6 +579,40 @@ h5{
     color: #444;
     background-color: #F5C87F;
     text-align: center;
+}
+.field-box{
+	width: 352px;
+	height: 35px;
+	margin:0 auto;
+	border: 1px solid #CCCCCC;
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
+    margin-bottom: 10px;
+}
+.user-back-btn{
+	width: 352px;
+	height: 35px;
+	color: #666666;
+	margin:0 auto;
+	background-color: #fbfbfb;
+	border: 1px solid #999999;
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
+    margin-bottom: 10px;
+}
+.destroy-btn a{
+	width: 352px;
+	height: 35px;
+	color: #666666;
+	margin:0 auto;
+	background-color: #fbfbfb;
+	border: 1px solid #999999;
+	border-radius: 4px;        /* CSS3草案 */
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 4px;   /* Firefox用 */
+    margin-bottom: 10px;
 }
 
 /*---------------------------------------------------------------------
@@ -609,6 +675,19 @@ h5{
 	width: 250px;
 	background-color: #F5A623;
 	border: 1px solid #E0001A;
+	border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */
+    text-align: center;
+    padding: 9px 0;
+    font-weight: bold;
+    font-size: 20px;
+}
+.cart-stock0-btn{
+	width: 250px;
+	background-color: #F5A623;
+	border: 1px solid #E0001A;
+	color: #E0001A;
 	border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */

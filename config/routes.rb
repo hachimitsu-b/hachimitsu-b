@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 		resources :users, only: [:show, :edit, :update, :destroy]
 		# 退会手続き
 		# destroy
-		resources :carts, only: [:create, :index, :edit, :update]
+		resources :carts, only: [:create, :index, :edit, :update, :destroy]
 		# 支払い方法選択
 		# post ''
 		resources :cds, only: [:show, :index]

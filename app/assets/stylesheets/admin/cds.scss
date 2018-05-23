@@ -2,12 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
-body{
-	padding-top: 60px;
-}
-
 // cdのフォーム
 .music-form-items{
 	float: right;
@@ -45,8 +39,8 @@ body{
 .form-cd-image-box {
 	display: inline-block;
 	margin-top: 40px;
-  width: 250px;
-  height: 250px;
+  	width: 250px;
+  	height: 250px;
 }
 
 // 表示画像の大きさ
@@ -93,9 +87,7 @@ body{
 }
 
 // ---------------------------------
-.cd-box-container{
-	padding-top: 50px;
-}
+
 .price-box2{
 	width: 350px;
 	float: right;

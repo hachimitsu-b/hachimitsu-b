@@ -2,8 +2,8 @@ class Admin::CartsController < ApplicationController
   def index
 
   	@user = User.find_by(params[:id])
-  	@cart = Cart.where(status_flag: 1)
-  	# @cart_cd = @cart.cds
+  	@cart = Cart.find(status_flag: 1)
+  	@cart_cd = @cart.cdss
 
   	# @user = User.find_by(params[:id])
   	# @cart = Cart.where(status_flag: 1)

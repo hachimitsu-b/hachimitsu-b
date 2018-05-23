@@ -12,20 +12,23 @@
 					</span>
 				</div>
 		    </div>
-		    <% if user_signed_in? %>
-			    <div class="col-md-2 col-xs-1 header-login-box">
+			<% if user_signed_in? %>
+				<div class="col-md-2 col-xs-1 user-login-name">ようこそ<%= @user.name_kanji %> 様</div>
+			    <div class="col-md-2 col-xs-1 header-icon-box">
+			    	<%= link_to(user_path(current_user), class: 'header-p') do %>
+						<i class="glyphicon glyphicon-user col color-icon-red"></i><br> マイページ
+					<% end %>
+			    	<%= link_to(user_path(current_user), class: 'header-p') do %>
+						<i class="glyphicon glyphicon-shopping-cart col color-icon-red"></i><br> カート
+					<% end %>
+				</div>
+				<% else %>
+					<div class="col-md-2 col-xs-1"></div>
+					<div class="col-md-2 col-xs-1 header-login-box">
 			    	<%= link_to 'ログイン', new_user_session_path, class:'top-login' %>
 			    	<%= link_to '新規登録', new_user_registration_path, class:'top-signin' %>
-			    </div>
-		    <% end %>
-		    <div class="col-md-2 col-xs-1 header-icon-box">
-		    	<%= link_to(carts_path, class: 'header-p') do %>
-					<i class="glyphicon glyphicon-user col color-icon-red"></i><br> マイページ
-				<% end %>
-		    	<%= link_to(carts_path, class: 'header-p') do %>
-					<i class="glyphicon glyphicon-shopping-cart col color-icon-red"></i><br> カート
-				<% end %>
-			</div>
+			    	</div>
+			<% end %>
   		</div><!-- /.clearfix -->
   	</div><!-- /container -->
 </header><!-- /header -->
