@@ -3,8 +3,8 @@ class User::CartsController < ApplicationController
     if User.find_by(id: current_user.id)
 
       @user = User.find(current_user.id)
-      @cart = Cart.where(status_flag: 1)
-      @cart_cd = @cart.cds
+      @cart = @user.carts.where(status_flag: 1)
+      # @cart_cd = @cart.cds
 
     else
       redirect_to cds_path
@@ -27,10 +27,20 @@ class User::CartsController < ApplicationController
     @cart.item_in_carts.create(price: @cd.price, cd_id: @cd.id, count: 1)
     redirect_to user_path(@user.id)
   end
+
   # def お支払い方法
   # end
   # def 配送方法
   # end
+
+  def destroy
+    user = User.find_by(current_user)
+    cart = user.carts.find_by(status_flag: 0)
+    cd = cart.item_in_carts.find_by(cd_id: params[:id])
+    cd.delete
+    redirect_to user_path(user.id)
+  end
+
 
   private
   def item_in_cart_params

@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
 	# 新規登録時に、使用できるカラムを設定
 	before_action :configure_permitted_parameters, if: :devise_controller?
+	# 全ページに@userをセット
+	before_action :set_user
 
 	protected
 		def configure_permitted_parameters
@@ -17,5 +19,13 @@ class ApplicationController < ActionController::Base
 	    																									 :phone_number,
 	    																									 :delete_flag,
 	    																									 :emal])
+	  end
+
+	  # @userにログインユーザーを代入
+	  def set_user
+	  	# ユーザーがログインしていたら
+	  	if user_signed_in?
+	  		@user = User.find(current_user.id)
+	  	end
 	  end
 end

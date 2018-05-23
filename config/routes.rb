@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
 # # TOP画面
  root 'user/cds#index'
+ 
+ namespace :admin do 
+ 	resources :users, only: [:destroy]
+ end
+
 
   # 管理者側のpath
   devise_for :admins, controllers: {
@@ -27,7 +32,7 @@ Rails.application.routes.draw do
 		resources :users, only: [:show, :edit, :update, :destroy]
 		# 退会手続き
 		# destroy
-		resources :carts, only: [:create, :index, :edit, :update]
+		resources :carts, only: [:create, :index, :edit, :update, :destroy]
 		# 支払い方法選択
 		# post ''
 		resources :cds, only: [:show, :index]
@@ -40,6 +45,7 @@ Rails.application.routes.draw do
 		resources :carts, only: [:index]
 		resources :cds
 		resources :users, only: [:index, :show, :edit, :update, :destroy]
+		get 'users/:id', to: 'users#show', as: 'user_show'
 		# 購入履歴を表示
 		get 'users/:id/history', to: 'users#history', as: 'history'
 
