@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
 # # TOP画面
  root 'user/cds#index'
+ 
+ namespace :admin do 
+ 	resources :users, only: [:destroy]
+ end
+
 
   # 管理者側のpath
   devise_for :admins, controllers: {
@@ -37,7 +42,8 @@ Rails.application.routes.draw do
 	# adminディレクトリ内のコントローラーのpath
 	# 生成されるpath => admin_ooo_path
 	namespace :admin do
-		resources :users, only: [:index, :show, :edit, :update, :destroy]
+		resources :users, only: [:index, :edit, :update]
+		get 'users/:id', to: 'users#show', as: 'user_show'
 		# 購入履歴を表示
 		get 'users/:id/history', to: 'users#history', as: 'history'
 
