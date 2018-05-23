@@ -2,9 +2,6 @@ Rails.application.routes.draw do
 
 # # TOP画面
  root 'user/cds#index'
- # namespace :admin do
- # 	resources :users, only: [:destroy]
- # end
 
 
   # 管理者側のpath
