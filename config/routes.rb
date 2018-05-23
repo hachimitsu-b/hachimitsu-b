@@ -49,6 +49,9 @@ Rails.application.routes.draw do
 		post 'genre/seach' => 'genres#seach'
 		resources :labels, only: [:index, :create, :edit, :update, :destroy]
 		post 'label/seach' => 'labels#seach'
+		resources :recommends, only: [:index, :create, :edit, :update, :destroy]
+		resources :type_names, only: [:edit, :create, :edit, :update, :destroy]
+
 		get 'users/:id', to: 'users#show', as: 'user_show'
 		# 購入履歴を表示
 		get 'users/:id/history', to: 'users#history', as: 'history'
