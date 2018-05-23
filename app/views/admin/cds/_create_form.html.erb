@@ -7,16 +7,50 @@
 		</div>
 		<!-- 左画面 -->
 		<div class="col-md-9 form-group">
-			<!-- 検索フォーム -->
-			<div class="object-seach-form">
-				<%= form_tag("#") do %>
-					<%= hidden_field_tag :seach_name, "#{object_name_eng}"  %>
-					<%= text_field_tag :seach, "", placeholder: "#{object_name}を検索", class: "form-control form-seach-field" %>
-					<span class="btn btn-primary form-seach form-seach-btn">検索</span>
-				<% end %>
+			<!-- 新規登録のフォーム -->
+			<div class="new-object-box">
+				<div>
+					<h3><%= "#{object_name}を新規追加" %></h3>
+					<% if new_object.id %>
+						<!-- 登録したものを編集するフォーム -->
+						<%= form_for(new_object, url: admin_cds_object_update_path(new_object.id), html: {method: :patch}) do |f| %>
+							<!-- 保存の分岐にhiddenを使用 -->
+							<%= hidden_field_tag :object_name, object_name_eng %>
+							<!-- 名前を入力 -->
+							<div class="form-group">
+								<%= f.label :name, "#{object_name}名" %>
+								<%= f.text_field :name, class: "form-control", placeholder: "#{object_name}名" %>
+							</div>
+							<!-- 名前をカタカナで入力 -->
+							<div class="form-group">
+								<%= f.label :name_kana, "#{object_name}名（カタカナ）" %>
+								<%= f.text_field :name_kana, class: "form-control", placeholder: "#{object_name}名前をカタカナで入力" %>
+							</div>
+							<%= f.submit '保存する', class: "btn btn-info new-object-btn" %>
+						<% end %>
+					<% else %>
+						<!-- 新規で登録するフォーム -->
+						<%= form_for(new_object, url: admin_cds_object_create_path, html: {method: :post}) do |f| %>
+							<!-- 保存の分岐にhiddenを使用 -->
+							<%= hidden_field_tag :object_name, object_name_eng %>
+							<!-- 名前を入力 -->
+							<div class="form-group">
+								<%= f.label :name, "#{object_name}名" %>
+								<%= f.text_field :name, class: "form-control", placeholder: "#{object_name}名" %>
+							</div>
+							<!-- 名前をカタカナで入力 -->
+							<div class="form-group">
+								<%= f.label :name_kana, "#{object_name}名（カタカナ）" %>
+								<%= f.text_field :name_kana, class: "form-control", placeholder: "#{object_name}名前をカタカナで入力" %>
+							</div>
+							<%= f.submit '保存する', class: "btn btn-info new-object-btn" %>
+						<% end %>
+					<% end %>
+				</div>
 			</div>
 			<!-- 一覧表示 -->
 			<div class="box-<%= object_name_eng %>">
+				<h2><%= object_name %>一覧</h2>
 				<table class="table table-hover">
 					<tbody id="cd-seach">
 						<% objects.each do |object| %>
@@ -25,9 +59,13 @@
 								<th><%= object.name_kana %></th>
 								<th>
 									<!-- 編集ボタン -->
-									<span class="btn btn-info">編集</span>
+									<%= link_to admin_cds_object_edit_path(object_name: object_name_eng.downcase + "s", id: object.id) do %>
+										<span class="btn btn-info">編集</span>
+									<% end %>
 									<!-- 削除ボタン -->
-									<span class="btn btn-danger">削除</span>
+									<%= link_to admin_cds_object_delete_path(object_name: object_name_eng.downcase + "s", id: object.id), method: :delete, data: {confirm: "#{object_name}を本当に削除しますか?"} do %>
+										<span class="btn btn-danger">削除</span>
+									<% end %>
 								</th>
 							</tr>
 						<% end %>
@@ -37,13 +75,22 @@
 			</div>
 		</div>
 		<!-- 右画面 -->
-		<div class="col-md-3"></div>
+		<div class="col-md-3">
+			<!-- 検索フォーム -->
+			<div class="object-seach-form">
+				<%= form_tag("#") do %>
+					<%= hidden_field_tag :seach_name, "#{object_name_eng}"  %>
+					<%= text_field_tag :seach, "", placeholder: "#{object_name}を検索", class: "form-control form-seach-field" %>
+					<span class="btn btn-primary form-seach form-seach-btn-object">検索</span>
+				<% end %>
+			</div>
+		</div>
 	</div>
 </div>
 
 <script>
 // ajaxの検索機能
-	$('.form-seach-btn').on('click',function(){
+	$('.form-seach-btn-object').on('click',function(){
 		$.ajax({
 			url: '<%= admin_cds_seach_path %>',
 			type: 'POST',
@@ -62,9 +109,14 @@
 										+ 	'<th class="seach-object-btn" id="' + data[i].id + '" data-<%= object_name_eng %>="<%= object_name_eng %>">'
 										+			data[i].name
 										+		'</th>'
+										+		'<th class="seach-object-btn" id="' + data[i].id + '" data-<%= object_name_eng %>="<%= object_name_eng %>">'
+										+			data[i].name_kana
+										+		'</th>'
 										+		'<th>'
 													// <!-- 編集ボタン -->
-										+			'<span class="btn btn-info">編集</span>'
+										+			'<a href="/admin/cds/<%= object_name_eng.downcase + "s" %>/' + data[i].id + '/edit">'
+										+   		'<span class="btn btn-info">編集</span>'
+										+			'</a>'
 													// <!-- 削除ボタン -->
 										+			'<span class="btn btn-danger">削除</span>'
 										+		'</th>'

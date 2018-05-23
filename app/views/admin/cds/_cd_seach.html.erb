@@ -6,7 +6,7 @@
 			<%= text_field_tag "seach_" + seach_name_eng, "", placeholder: "#{seach_name_kana}を検索", class: "form-control form-seach-field" %>
 			<%= hidden_field_tag "seach_name_" + seach_name_eng, "#{seach_name_eng}"  %>
 			<!-- 検索ボタン -->
-			<span class="btn btn-primary form-control  form-seach form-seach-btn-<%= seach_name_eng %>">検索</span>
+			<span class="btn btn-primary form-control  form-seach-btn form-seach-btn-<%= seach_name_eng %>">検索</span>
 	<% end %>
 	<div class="box-<%= seach_name_eng %>">
 		<table class="table table-hover">

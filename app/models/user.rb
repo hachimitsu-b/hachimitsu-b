@@ -15,5 +15,5 @@ class User < ApplicationRecord
 	# 住所
 	validates :street_address, presence: true
 	# 電話番号
-	validates :phone_number, presence: true, length: { in: 10..13 }
+	validates :phone_number, presence: true, length: { in: 10..14 }
 end

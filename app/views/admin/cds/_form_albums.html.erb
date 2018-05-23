@@ -7,7 +7,10 @@
 			<!-- album追加ようのdiv -->
 				<div class="album-form form-group">
 					<%= album.label :name, "アルバム名" %>
-					<%= album.text_field :name, class: "form-control", placeholder: "アルバム名" %>
+					<!-- アルバムフォームの削除ボタン -->
+					<%= album.check_box :_destroy, class: "album-text-form", style: "display: none;" %>
+					<span class="remove-album-btn btn btn-danger" data-id="<%= album.index %>"" data-default="default">アルバムを削除</span>
+					<%= album.text_field :name, class: "form-control", placeholder: "アルバム名", style: "margin-top: 30px;" %>
 				</div>
 
 				<!-- アルバム内の曲名を入力 -->
@@ -23,7 +26,7 @@
 								<%= music.text_field :name, class: "form-control ", id: "form-music-name", placeholder: "曲名" %>
 								<!-- 曲の削除ボタン -->
 								<%= music.check_box :_destroy, style: "display: none;" %>
-								<span class="btn btn-danger remove-music-form" data-id="<%= music.index %>" data-default="default">削除</span>
+								<span class="btn btn-danger remove-music-btn" data-id="<%= music.index %>" data-default="default">削除</span>
 							</div>
 						<% end %>
 					</div>
@@ -32,7 +35,7 @@
 		<% end %><!-- album.fields_for -->
 	</div>
 <!-- アルバムフォームの追加ボタン -->
-<p class="add-album-btn btn btn-primary">アルバムを追加</p>
+<span class="add-album-btn btn btn-primary">アルバムを追加</span>
 
 
 <script>
@@ -46,7 +49,8 @@ $(function() {
 									// アルバムの追加
 							+ 	'<div class="album-form form-group">'
 							+ 		'<label for="cd_albums_attributes_' + album_num + '_name">アルバム名</label>'
-							+ 		'<input class="form-control" placeholder="アルバム名" type="text" value="" name="cd[albums_attributes][' + album_num + '][name]" 		      id="cd_albums_attributes_' + album_num + '_name" >'
+							+			'<span class="remove-album-btn btn btn-danger" data-id="' + album_num + ' " data-default="default">アルバムを削除</span>'
+							+ 		'<input class="form-control album-text-form" placeholder="アルバム名" type="text" value="" name="cd[albums_attributes][' + album_num + '][name]" 		      id="cd_albums_attributes_' + album_num + '_name" >'
 							+ 	'</div>'
 
 									// 曲名を１曲追加
@@ -59,7 +63,7 @@ $(function() {
 							+ 			'<div class="music-form-items added-music-form-' + album_num + '">'
 							+ 				'<input class="form-control number" id="form-music-oder" placeholder="順番" type="text" value="" name="cd[albums_attributes][' + album_num  + '][music_in_cds_attributes][' + music_num  + '][oder]" >'
 							+ 				'<input class="form-control " id="form-music-name" placeholder="曲名" type="text" value="" name="cd[albums_attributes][' + album_num  + '][music_in_cds_attributes][' + music_num  + '][name]" >'
-							+					'<span class="btn btn-danger remove-music-form" data-id="' + music_num + '" data-default="">削除</span>'
+							+					'<span class="btn btn-danger remove-music-btn" data-id="' + music_num + '">削除</span>'
 							+				'</div>'
 							+			'<div>'
 							+		'</div>'
@@ -81,24 +85,37 @@ $(function() {
     var input = '<div class="music-form-items">'
     						+	'<input class="form-control number" id="form-music-oder" placeholder="順番" type="text" value="" name="cd[albums_attributes][' + album_num + '][music_in_cds_attributes][' + music_num + '][oder]">'
     						+ '<input class="form-control " id="form-music-name" placeholder="曲名" type="text" value="" name="cd[albums_attributes][' + album_num + '][music_in_cds_attributes][' + music_num + '][name]">'
-								+ '<span class="btn btn-danger remove-music-form" data-id="' + music_num + '" data-default="default">削除</span>'
+								+ '<span class="btn btn-danger remove-music-btn" data-id="' + music_num + '">削除</span>'
 								+ '</div>'
     $('.music-form-box-' + album_num ).last().append(input);
   	});
   });
 
 // 曲の削除ボタン
-$(document).on('click', '.remove-music-form', function() {
-    var album_num = $(this).data('id');
+$(document).on('click', '.remove-music-btn', function() {
     var defaultData = $(this).data('default');
     if (defaultData == 'default') {
       $(this).prev().prop('checked', true);
       $(this).parent().hide();
     }else{
       $(this).parent().remove();
-      console.log(this)
     }
   });
+
+// アルバムの削除ボタン
+$(document).on('click', '.remove-album-btn', function() {
+	var defaultData = $(this).data('default');
+	if(window.confirm('本当に削除しますか？')) {
+	  if (defaultData == 'default') {
+	  	console.log("テスト")
+	    $(this).prev().prop('checked', true);
+	    $(this).parent().parent().hide();
+	  }else{
+	  	console.log("テストです")
+	    $(this).parent().parent().remove();
+	  }
+	}
+});
 
 
 
