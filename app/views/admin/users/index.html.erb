@@ -19,7 +19,7 @@
 		      <td><%= user.name_kanji %></td>
 		      <td><%= user.name_kana %></td>
 		      <td><%= link_to '詳細', admin_user_show_path(user.id) ,class: "btn btn-primary btn-lg active btncolor"%></td>
-		      <td><button type="button" class="btn btn-danger btn-lg active"><%= link_to "削除", user_path(user.id),class: "btncolor", method: :delete ,"data-confirm" => "本当に削除しますか？" %></button></td>
+		      <td><button type="button" class="btn btn-danger btn-lg active"><%= link_to "削除", admin_user_path(user.id),class: "btncolor", method: :delete ,"data-confirm" => "本当に削除しますか？" %></button></td>
 		    </tr>
 		  </tbody>
      <% end %>

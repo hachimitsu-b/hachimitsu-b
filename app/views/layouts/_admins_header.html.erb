@@ -5,10 +5,15 @@
         <h1 class="admin-header-logo"><%= image_tag("logo.png") %></h1>
       <% end %>
       <ul class="admin-navbar">
+        <li><%= link_to destroy_admin_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt">ログアウト</i>
+            <% end %>
+            </li>
         <li><%= link_to '管理一覧', admin_path(1) %></li>
         <li><%= link_to '商品一覧', admin_cds_path %></li>
         <li><%= link_to 'ユーザー情報一覧', admin_users_path %></li>
         <li class="header-line-none"><%= link_to '発送状態確認', admin_carts_path(1) %></li>
+
       </ul>
     </div><!-- /.clearfix -->
   </div><!-- /container -->
