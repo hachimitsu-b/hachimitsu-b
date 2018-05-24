@@ -13,9 +13,7 @@
 					<h3><%= "#{object_name}を新規追加" %></h3>
 					<% if new_object.id %>
 						<!-- 登録したものを編集するフォーム -->
-						<%= form_for(new_object, url: admin_cds_object_update_path(new_object.id), html: {method: :patch}) do |f| %>
-							<!-- 保存の分岐にhiddenを使用 -->
-							<%= hidden_field_tag :object_name, object_name_eng %>
+						<%= form_for(new_object, url: send("admin_#{object_name_eng.downcase}_path", new_object.id), html: {method: :patch}) do |f| %>
 							<!-- 名前を入力 -->
 							<div class="form-group">
 								<%= f.label :name, "#{object_name}名" %>
@@ -30,9 +28,7 @@
 						<% end %>
 					<% else %>
 						<!-- 新規で登録するフォーム -->
-						<%= form_for(new_object, url: admin_cds_object_create_path, html: {method: :post}) do |f| %>
-							<!-- 保存の分岐にhiddenを使用 -->
-							<%= hidden_field_tag :object_name, object_name_eng %>
+						<%= form_for(new_object, url: send("admin_#{object_name_eng.downcase + "s"}_path"), html: {method: :post}) do |f| %>
 							<!-- 名前を入力 -->
 							<div class="form-group">
 								<%= f.label :name, "#{object_name}名" %>
@@ -59,11 +55,11 @@
 								<th><%= object.name_kana %></th>
 								<th>
 									<!-- 編集ボタン -->
-									<%= link_to admin_cds_object_edit_path(object_name: object_name_eng.downcase + "s", id: object.id) do %>
+									<%= link_to send("edit_admin_#{object_name_eng.downcase}_path", object.id) do %>
 										<span class="btn btn-info">編集</span>
 									<% end %>
 									<!-- 削除ボタン -->
-									<%= link_to admin_cds_object_delete_path(object_name: object_name_eng.downcase + "s", id: object.id), method: :delete, data: {confirm: "#{object_name}を本当に削除しますか?"} do %>
+									<%= link_to send("admin_#{object_name_eng.downcase}_path", object.id), method: :delete, data: {confirm: "#{object_name}を本当に削除しますか?"} do %>
 										<span class="btn btn-danger">削除</span>
 									<% end %>
 								</th>
@@ -79,7 +75,6 @@
 			<!-- 検索フォーム -->
 			<div class="object-seach-form">
 				<%= form_tag("#") do %>
-					<%= hidden_field_tag :seach_name, "#{object_name_eng}"  %>
 					<%= text_field_tag :seach, "", placeholder: "#{object_name}を検索", class: "form-control form-seach-field" %>
 					<span class="btn btn-primary form-seach form-seach-btn-object">検索</span>
 				<% end %>
@@ -92,11 +87,10 @@
 // ajaxの検索機能
 	$('.form-seach-btn-object').on('click',function(){
 		$.ajax({
-			url: '<%= admin_cds_seach_path %>',
+			url: '<%= send("admin_#{object_name_eng.downcase}_seach_path") %>',
 			type: 'POST',
 			data:{
 				'seach' : $('#seach').val(),
-	      'seach_name' : $('#seach_name').val()
 	    }
 		}).done( (data) => {  // Ajaxリクエストが成功した時発動
 				// 前回の検索を削除
@@ -123,7 +117,7 @@
 										+	'</tr>';
 					$('#cd-seach').append( input );
 			});
-    }).fail( (data) => {  // Ajaxリクエストが失敗した時発動
+    }).fail((data) => {  // Ajaxリクエストが失敗した時発動
     })
 	});
 

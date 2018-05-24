@@ -21,7 +21,7 @@
 							 postcode: post_code,
 							 street_address: address.kanji + "1-2-3",
 							 phone_number: "080-1234-5678",
-							 delete_flag: 1)
+							 delete_flag: 0)
 	# delete_flagは１は入会中
 end
 

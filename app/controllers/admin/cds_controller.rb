@@ -17,7 +17,8 @@ class Admin::CdsController < ApplicationController
   end
 
   def create
-    if cd = Cd.create(new_cd_params)
+    @cd = Cd.new(new_cd_params)
+    if @cd.save
       redirect_to admin_cd_path(cd.id)
     else
       render 'new'
@@ -48,100 +49,14 @@ class Admin::CdsController < ApplicationController
     redirect_to admin_cds_path
   end
 
-  # アーティスト,レーベル,ジャンルの一覧、新規登録
-  def object_index
-    case params[:object_name]
-      when "artists"
-        @objects = Artist.all.last(15).reverse
-        @new_object = Artist.new
-      when "genres"
-        @objects = Genre.all.last(15).reverse
-        @new_object = Genre.new
-      when "labels"
-        @objects = Label.all.last(15).reverse
-        @new_object = Label.new
-      else
-        redirect_to "/admins/1"
-      end
-  end
-
-
-  # アーティスト、レーベル、ジャンルの新規登録の処理
-  def object_create
-    case params[:object_name]
-      when "Artist"
-        @object = Artist.create(artist_params)
-      when "Genre"
-        @object = Genre.create(genre_params)
-      when "Label"
-        @object = Label.create(label_params)
-    end
-    redirect_to "/admin/cds/#{params[:object_name].downcase + "s"}/index"
-  end
-
-   # アーティスト、レーベル、ジャンルの編集
-  def object_edit
-   case params[:object_name]
-    when "artists"
-      @objects = Artist.all.last(15).reverse
-      @new_object = Artist.find(params[:id])
-    when "genres"
-      @objects = Genre.all.last(15).reverse
-      @new_object = Genre.find(params[:id])
-    when "labels"
-      @objects = Label.all.last(15).reverse
-      @new_object = Label.find(params[:id])
-    else
-      redirect_to "/admins/1"
-    end
-  end
-
-  # アーティスト、レーベル、ジャンルの編集処理
-  def object_update
-    case params[:object_name]
-      when "Artist"
-        @object = Artist.find(params[:id])
-        @object.update(artist_params)
-      when "Genre"
-        @object = Genre.find(params[:id])
-        @object.update(genre_params)
-      when "Label"
-        @object = Label.find(params[:id])
-        @object.update(label_params)
-    end
-    redirect_to "/admin/cds/#{params[:object_name].downcase + "s"}/index"
-  end
-
-  def object_destroy
-    case params[:object_name]
-      when "artists"
-        @object = Artist.find(params[:id])
-        @object.delete
-      when "genres"
-        @object = Genre.find(params[:id])
-        @object.delete
-      when "labels"
-        @object = Label.find(params[:id])
-        @object.delete
-    end
-    redirect_to "/admin/cds/#{params[:object_name].downcase}/index"
-  end
-
-  # フォームでのajaxの検索機能
-  def form_object_seach
+  def seach
     if params[:seach].present?
       seach_val = params[:seach]
-      case params[:seach_name]
-        when "Artist"
-          @objects = Artist.where("name LIKE ?", "%#{seach_val}%")
-        when "Genre"
-          @objects = Genre.where("name LIKE ?", "%#{seach_val}%")
-        when "Label"
-          @objects = Label.where("name LIKE ?", "%#{seach_val}%")
-      end
-      render :json => @objects
+      @cds = Cd.where("name LIKE ?", "%#{seach_val}%")
+      render :json => @cds
     end
   end
+
 
 # ----------------------------------------------------------------------------
 # 以下privateメソッド
@@ -165,6 +80,7 @@ class Admin::CdsController < ApplicationController
                                   :label_id,
                                   :genre_id,
                                   :stock,
+                                  :release_date,
                                   :display,
                                   :introduction,
                                     # cdに紐づいたalbumのparams
@@ -183,24 +99,13 @@ class Admin::CdsController < ApplicationController
                                   :label_id,
                                   :genre_id,
                                   :stock,
+                                  :release_date,
                                   :display,
                                   :introduction,
                                     # cdに紐づいたalbumのparams
                                     albums_attributes: [:name, :oder, :_destroy, :id,
                                       # albumに紐づいたmusic_in_cdのparams
                                       music_in_cds_attributes: [:name, :oder, :_destroy, :id]])
-    end
-
-    def  artist_params
-      params.require(:artist).permit(:name, :name_kana)
-    end
-
-    def  label_params
-      params.require(:label).permit(:name, :name_kana)
-    end
-
-    def  genre_params
-      params.require(:genre).permit(:name, :name_kana)
     end
 
 

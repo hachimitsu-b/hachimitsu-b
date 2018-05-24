@@ -4,7 +4,6 @@
 <div class="form-group">
 	<%= form_tag("#") do %>
 			<%= text_field_tag "seach_" + seach_name_eng, "", placeholder: "#{seach_name_kana}を検索", class: "form-control form-seach-field" %>
-			<%= hidden_field_tag "seach_name_" + seach_name_eng, "#{seach_name_eng}"  %>
 			<!-- 検索ボタン -->
 			<span class="btn btn-primary form-control  form-seach-btn form-seach-btn-<%= seach_name_eng %>">検索</span>
 	<% end %>
@@ -38,11 +37,10 @@
 	// ajaxの検索機能
 	$('.form-seach-btn-<%= seach_name_eng %>').on('click',function(){
 		$.ajax({
-			url: '<%= admin_cds_seach_path %>',
+			url: '<%= send("admin_#{seach_name_eng.downcase}_seach_path") %>',
 			type: 'POST',
 			data:{
 				'seach' : $('#seach_<%= seach_name_eng %>').val(),
-	      'seach_name' : $('#seach_name_<%= seach_name_eng %>').val()
 	    }
 		}).done( (data) => {  // Ajaxリクエストが成功した時発動
 				// 前回の検索を削除

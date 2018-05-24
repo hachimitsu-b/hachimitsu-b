@@ -1,0 +1,82 @@
+<div class='container'>
+  <div class="clearfix">
+  	<!-- recommendの新規ジャンル追加フォーム -->
+  	<div class="type-name-form col-md-offset-3 col-md-6">
+  		<%= form_for(type_new, url: admin_type_names_path) do |f| %>
+				<div class="form-group">
+					<%= f.label :name, "帯のジャンル名" %>
+					<%= f.text_field :name, class: "form-control" %>
+				</div>
+				<%= f.submit "新規帯を追加" %>
+  		<% end %>
+  	</div>
+  	<!-- 左サイドバー -->
+		<div class='sideber-box'>
+			<div class="sideber">
+				<!-- typeの検索 -->
+				<%= form_tag("#") do %>
+					<%= text_field_tag :seach, "" %>
+					<i class="glyphicon glyphicon-search btn btn-default"></i>
+				<% end %>
+				<ul style="padding-left: 20px;">
+					<% type_names.each do |type| %>
+
+						<li class="genre-menu" data-id="<%= type.id %>"><%= type.name %></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+
+		<%= form_for(recommend, url: admin_recommends_path) do |f| %>
+			<%= f.hidden_field :recommend_type, value: "" %>
+			<%= f.hidden_field :cd_id, value: "" %>
+
+				<div class="ranking-box">
+					<!-- cdの検索フォーム -->
+					<%= form_tag("#") do %>
+						<%= text_field_tag :seach, "" %>
+						<span class="btn btn-primary">CDを検索</span>
+					<% end %>
+
+					<p class="recomend-table-head-text">登録するCDを選択</p>
+					<table class="table table-hover">
+						<tbody id="">
+							<!-- 最新の５件を表示 -->
+							<% cds.each do |cd| %>
+								<tr class="cd-btn" data-id="<%= cd.id %>">
+									<th><%= cd.name %></th>
+									<th><%= cd.artist.name %></th>
+									<th><%= cd.genre.name %></th>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div><!-- /.ranking-box -->
+
+			<%= f.submit "登録する" %>
+		<% end %>
+	</div><!-- /.clearfix -->
+	<h2>話題の</h2>
+	<div class="cd-box-container clearfix">
+	<!-- 抜き取った -->
+	</div><!-- /.cd-box-container -->
+</div><!-- /.container -->
+
+
+
+
+<script>
+	
+	$(document).on('click', '.cd-btn', function(){
+		var cd_id = $(this).
+	}
+
+</script>
+
+
+
+
+
+
+
+
