@@ -2,7 +2,7 @@
 <div class="container"> <!-- ここを追加 -->
     <div class="row">
         <div class="col-md-5 col-md-offset-4">
-            <h1>ユーザー詳細編集ページ</h1>
+            <font size="6">ユーザー詳細編集ページ</font>
             <% if @user.errors.any? %>
               <div id="error_explanation" class="alert alert-danger">
                 <ul>
@@ -13,7 +13,7 @@
               </div>
             <% end %>
             <%= form_for(@user, url: admin_user_path, html:{method: :patch}) do |f| %>
-                <h4>名前（漢字）</h4>
+                <br><h4>名前（漢字）</h4>
                     <%= f.text_field :name_kanji %>
                 <h4>名前（ひらがな）</h4>
                     <%= f.text_field :name_kana %>
