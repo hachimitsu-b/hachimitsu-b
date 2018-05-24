@@ -40,6 +40,7 @@ cart.item_in_carts.create(cd_id: 3,
 												 price: 500)
 
 
+
 # アーティストを作成
 artist = [{ name: "宇多田ヒカル", name_kana: "ウタダヒカル"},
 					{ name: "SMAP", name_kana: "スマップ"},
