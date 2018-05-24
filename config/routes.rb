@@ -6,15 +6,15 @@ Rails.application.routes.draw do
 
   # 管理者側のpath
   devise_for :admins, controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
+  	sessions:      'admins/sessions',
+  	passwords:     'admins/passwords',
 	}
 
 	# ユーザー側のpath
 	devise_for :users, controllers: {
-	sessions:      'users/sessions',
-	passwords:     'users/passwords',
-	registrations: 'users/registrations'
+		sessions:      'users/sessions',
+		passwords:     'users/passwords',
+		registrations: 'users/registrations'
 	}
 
 	# usersディレクトリ内のコントローラーのpath

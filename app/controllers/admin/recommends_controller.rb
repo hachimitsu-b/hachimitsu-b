@@ -1,4 +1,5 @@
 class Admin::RecommendsController < ApplicationController
+	binding.pry
   def index
   	@type_new = TypeName.new
   	@type_names = TypeName.all

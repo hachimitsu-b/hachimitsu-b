@@ -49,7 +49,7 @@ class Admin::CdsController < ApplicationController
     redirect_to admin_cds_path
   end
 
-    def seach
+  def seach
     if params[:seach].present?
       seach_val = params[:seach]
       @cds = Cd.where("name LIKE ?", "%#{seach_val}%")
