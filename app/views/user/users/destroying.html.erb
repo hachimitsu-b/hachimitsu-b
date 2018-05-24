@@ -1,5 +1,5 @@
 
-<%= render 'user/header_out' %>
+<%= render 'user/header' %>
 
 <div class='container'>
 	<h2 class="mb70">退会手続き</h2>
@@ -13,7 +13,7 @@
 					<% end %>
 				</div>
 				<div class="fr">
-					<%= link_to(users_destroyed_path) do %>
+					<%= link_to(users_destroyed_path(@user)) do %>
 						<div class="unsubscribe-btn">はい</div>
 					<% end %>
 				</div>

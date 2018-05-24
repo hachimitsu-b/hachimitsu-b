@@ -1,0 +1,91 @@
+
+<%= render 'user/header_out' %>
+
+<div class='container'>
+	<h2 class="mb70">お受け取り方法</h2>
+	<div class="list-bar-box">
+		<ul class="list-bar clearfix mb50">
+			<li class="list">
+				<div class="list-txt">お受け取り方法</div>
+				<div class="list-circle1"></div>
+			</li>
+			<li class="list">
+				<div class="list-txt">お支払い方法</div>
+				<div class="list-circle2"></div>
+			</li>
+			<li class="list">
+				<div class="list-txt">注文内容</div>
+				<div class="list-circle2"></div>
+			</li>
+			<li class="list">
+				<div class="list-txt">注文完了</div>
+				<div class="list-circle2"></div>
+			</li>
+		</ul><!-- /.list-bar -->
+	</div>
+	<h5 class="mb50">お受け取り方法</h5>
+	<div class="acceptance-box">
+		<div class="acceptance-box-title">お届け方法を指定してください。</div>
+		<div class="clearfix mb50">
+			<div class="fl">
+				<div class="radio">
+	  				<label><input type="radio" name="radio" id="radio1" value="radio1"> 会員登録先住所</label>
+				</div>
+			</div>
+			<div class="radio-box">
+				<div class="radio">
+	  				<label><input type="radio" name="radio" id="radio1" value="radio1"> 新しいお届け先</label>
+				</div>
+			</div>
+		</div><!-- /.clearfix -->
+		<div class="acceptance-box-title mb30">お届け先を入力してください。</div>
+		<%= form_for(cart_buy_page_2(@user), html: {method: 'POST'} ) do |f| %>
+			<table class="acceptance-table clearfix">
+				<tr class="table-line">
+					<th class="table-txt">お名前</th>
+					<th class="acceptance-box-form">
+						<div class="input-group">
+							  <%= f.text_field :name_kanji %>
+						</div>
+					</th>
+				</tr>
+				<tr class="table-line">
+					<th class="table-txt">郵便番号</th>
+					<th class="acceptance-box-form">
+						<div class="input-group">
+							  <%= f.text_field :postcode %>
+						</div>
+					</th>
+				</tr>
+				<tr class="table-line">
+					<th class="table-txt">住所</th>
+					<th class="acceptance-box-form">
+						<div class="input-group">
+							  <%= f.text_field :street_address %>
+						</div>
+					</th>
+				</tr>
+				<tr class="table-line">
+					<th class="table-txt">電話番号</th>
+					<th class="acceptance-box-form">
+						<div class="input-group">
+							  <%= f.text_field :phone_number %>
+						</div>
+					</th>
+				</tr>
+			</table>
+			<div class="acceptance-btn-box2 clearfix">
+				<div class="fl">
+					<%= link_to(user_path(current_user)) do %>
+						<div class="form-back-btn">< 戻る</div>
+					<% end %>
+				</div>
+				<div class="fr">
+					<%= f.submit("お支払い方法 >", class:"acceptance-btn") %>
+				</div>
+			</div><!-- /.clearfix -->
+		<% end %>
+	</div>
+</div><!-- /.container -->
+
+<%= render 'user/footer' %>

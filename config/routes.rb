@@ -28,6 +28,12 @@ Rails.application.routes.draw do
 		# 退会手続き
 		# destroy
 		resources :carts, only: [:create, :index, :edit, :update, :destroy]
+		get '/cart/buy/page/1' => 'carts#buy_cds_page_1'
+		get '/cart/buy/page/2' => 'carts#buy_cds_page_2'
+		get '/cart/buy/page/3' => 'carts#buy_cds_page_3'
+		get '/cart/buy/page/4' => 'carts#buy_cds_page_4'
+
+		post 'cart/buy/:id' => 'carts#buy_cds_update'
 		# 支払い方法選択
 		# post ''
 		resources :cds, only: [:show, :index]
