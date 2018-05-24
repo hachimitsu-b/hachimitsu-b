@@ -61,6 +61,12 @@
 					<%= f.text_field :stock, class: "form-control form-stock-field" %>
 				</div>
 
+				<!-- 発売日をにゅりょく -->
+				<div class="form-group">
+					<%= f.label :release_date, "発売日", class: "form-stock-label" %>
+					<%= f.text_field :release_date, class: "form-control form-stock-field", placeholder: "20xx-xx-xx" %>
+				</div>
+
 				<!-- user側に表示させるかを選択 -->
 				<div class="form-group">
 					<%= f.label :display, "ユーザー画面での表示" %>

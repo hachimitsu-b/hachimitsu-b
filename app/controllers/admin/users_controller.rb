@@ -1,5 +1,4 @@
 class Admin::UsersController < ApplicationController
-  before_action :authenticate_admin!
   PER = 10
   #下のページ数を表している
   def index
