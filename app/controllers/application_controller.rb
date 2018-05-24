@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 	# 全ページに@userをセット
 	before_action :set_user
 
-	#before_action :authenticate_admin!, if: :admin_controller?
+	# before_action :authenticate_admin!, if: :admin_controller?
 
 	protected
 		def configure_permitted_parameters
@@ -28,6 +28,15 @@ class ApplicationController < ActionController::Base
 	  	# ユーザーがログインしていたら
 	  	if user_signed_in?
 	  		@user = User.find(current_user.id)
+	  	end
+	  end
+
+	  # 管理者のコントローラーか確認
+	  def admin_controller?
+	  	if /Admins/ =~ self.to_s
+	  		false
+	  	elsif /Admin/ =~ self.to_s
+	  		true
 	  	end
 	  end
 

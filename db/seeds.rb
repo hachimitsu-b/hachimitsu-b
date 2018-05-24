@@ -82,10 +82,11 @@ end
 	artist_name = Artist.find_by(name: "安室奈美恵")
 	lebel_name = Label.find_by(name: "テストレーベル名1")
 	genre_name = Genre.find_by(name: "J-POP")
-	Cd.create(name: cd_name,
+	d = Cd.create(name: cd_name,
 						artist_id: artist_name.id,
 						single_album: true,
 						jacket_id: nil,
+						release_date: Time.now,
 						price: 1000 + n,
 						label_id: lebel_name.id,
 						genre_id: genre_name.id,
@@ -108,6 +109,7 @@ end
 						artist_id: artist_name.id,
 						single_album: true,
 						jacket_id: nil,
+						release_date: Time.now,
 						price: 2000 + n,
 						label_id: lebel_name.id,
 						genre_id: genre_name.id,
@@ -130,6 +132,7 @@ end
 									artist_id: artist_name.id,
 									single_album: false,
 									jacket_id: nil,
+									release_date: Time.now,
 									price: 3000 + n,
 									label_id: lebel_name.id,
 									genre_id: genre_name.id,

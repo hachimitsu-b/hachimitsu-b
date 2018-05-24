@@ -1,0 +1,111 @@
+<!-- 使用変数  新規フォームよう:new_type_name, 複数表示よう:type_names-->
+<div class="container">
+	<div class="row">
+		<div class="object-index-head">
+		<!-- ページ上部にタイトル？を表示 -->
+			<p class="object-index-head-text">帯の追加</p>
+		</div>
+		<!-- 左画面 -->
+		<div class="col-md-9 form-group">
+			<!-- 新規登録のフォーム -->
+			<div class="new-object-box">
+				<div>
+					<h3><%= "帯を新規追加" %></h3>
+					<% if new_type_name.id %>
+						<!-- 登録したものを編集するフォーム -->
+						<%= form_for(new_type_name, url: admin_type_name_path(new_type_name.id), html: {method: :patch}) do |f| %>
+							<!-- 名前を入力 -->
+							<div class="form-group">
+								<%= f.label :name, "帯名" %>
+								<%= f.text_field :name, class: "form-control", placeholder: "帯名" %>
+							</div>
+							<%= f.submit '保存する', class: "btn btn-info new-object-btn" %>
+						<% end %>
+					<% else %>
+						<!-- 新規で登録するフォーム -->
+						<%= form_for(new_type_name, url: admin_type_names_path, html: {method: :post}) do |f| %>
+							<!-- 名前を入力 -->
+							<div class="form-group">
+								<%= f.label :name, "帯名" %>
+								<%= f.text_field :name, class: "form-control", placeholder: "帯名" %>
+							</div>
+							<%= f.submit '保存する', class: "btn btn-info new-object-btn" %>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+			<!-- 一覧表示 -->
+			<div class="box-type-name">
+				<h2>帯一覧</h2>
+				<table class="table table-hover">
+					<tbody id="cd-seach">
+						<% type_names.each do |type_name| %>
+							<tr>
+								<th><%= type_name.name %></th>
+								<th>
+									<!-- 編集ボタン -->
+									<%= link_to edit_admin_type_name_path(type_name.id) do %>
+										<span class="btn btn-info">編集</span>
+									<% end %>
+									<!-- 削除ボタン -->
+									<%= link_to admin_type_name_path(type_name.id), method: :delete, data: {confirm: "帯を本当に削除しますか?"} do %>
+										<span class="btn btn-danger">削除</span>
+									<% end %>
+								</th>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 右画面 -->
+		<div class="col-md-3">
+			<!-- 検索フォーム -->
+			<div class="object-seach-form">
+				<%= form_tag("#") do %>
+					<%= text_field_tag :seach, "", placeholder: "帯を検索", class: "form-control form-seach-field" %>
+					<span class="btn btn-primary form-seach form-seach-btn-object">検索</span>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+// ajaxの検索機能
+	$('.form-seach-btn-object').on('click',function(){
+		$.ajax({
+			url: '<%= admin_type_name_seach_path %>',
+			type: 'POST',
+			data:{
+				'seach' : $('#seach').val(),
+	    }
+		}).done( (data) => {  // Ajaxリクエストが成功した時発動
+				// 前回の検索を削除
+				$('#cd-seach').text('');
+				// はみ出したらスクロール
+				$('.box-type-name').css('overflow-y', 'scroll');
+				$('.box-type-name').css('height', '500px');
+				$.each(data, function(i){
+					var input = '<tr>'
+										+ 	'<th class="seach-object-btn" id="' + data[i].id + '" data-type-name="type-name">'
+										+			data[i].name
+										+		'</th>'
+										+		'<th>'
+													// <!-- 編集ボタン -->
+										+			'<a href="/admin/cds/type_name/' + data[i].id + '/edit">'
+										+   		'<span class="btn btn-info">編集</span>'
+										+			'</a>'
+													// <!-- 削除ボタン -->
+										+			'<a href="/admin/cds/type_name/' + data[i].id + '" data-method="delete">'
+										+				'<span class="btn btn-danger">削除</span>'
+										+			'</a>'
+										+		'</th>'
+										+	'</tr>';
+					$('#cd-seach').append( input );
+			});
+    }).fail((data) => {  // Ajaxリクエストが失敗した時発動
+    })
+	});
+
+</script>
