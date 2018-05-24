@@ -31,4 +31,13 @@ class ApplicationController < ActionController::Base
 	  	end
 	  end
 
+	  # 管理者のコントローラーか確認
+	  def admin_controller?
+	  	if /Admins/ =~ self.to_s
+	  		false
+	  	elsif /Admin/ =~ self.to_s
+	  		true
+	  	end
+	  end
+
 end
