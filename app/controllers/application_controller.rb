@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 	# 全ページに@userをセット
 	before_action :set_user
 
-	before_action :authenticate_admin!, if: :admin_controller?
+	#before_action :authenticate_admin!, if: :admin_controller?
 
 	protected
 		def configure_permitted_parameters
