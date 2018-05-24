@@ -25,22 +25,18 @@
 	共通CSS
 -----------------------------------------------------------------------*/
 /* デフォルト設定 */
-*{
-	color: #444;
-}
+*{color: #444;}
 ul {
   list-style: none;
+  padding-left: 0 !important;
 }
 ol {
 	margin: 0;
 	padding: 0;
 }
-a{
-	text-decoration: none !important;
-}
-a:hover{
-	text-decoration:none !important;
-}
+a{text-decoration: none !important;}
+a:hover{text-decoration:none !important;}
+p{margin-bottom: 0 !important;}
 /* フロート */
 .clearfix:after {
   content: "";
@@ -61,9 +57,7 @@ a:hover{
 	font-size: 12px;
 }
 /* テキスト位置 */
-.tac{
-	text-align: center;
-}
+.tac{text-align: center;}
 /* マージン */
 .mb5{margin-bottom: 5px;}
 .mb10{margin-bottom: 10px;}
@@ -241,7 +235,7 @@ input[type="password"] {
 /* サイドバー */
 .sideber-box{
 	float: left;
-	margin: 0 30px 0 80px;
+	margin:0 60px 0 50px;
 }
 .sideber{
 	width: 300px;
@@ -249,17 +243,21 @@ input[type="password"] {
 	border-radius: 4px;        /* CSS3草案 */
     -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 4px;   /* Firefox用 */
-    padding: 20px 20px 20px 0;
+    padding: 20px 20px 12px 0px;
+}
+.user-sidemenu{
+	padding-left: 20px !important;
 }
 .genre{
 	font-size: 18px;
 	border-bottom: 1px solid #CCCCCC;
+	padding-bottom: 9px;
 }
 .genre-menu{
 	color: #E07581;
 	font-size: 16px;
 	border-bottom: 1px solid #CCCCCC;
-	padding: 6px 0;
+	padding: 7px 0;
 }
 /* ランキング */
 .ranking-box{
@@ -317,18 +315,20 @@ input[type="password"] {
 }
 .artists-name{
 	color: #4597F5;
+	font-size: 16px;
 	word-break: break-all;	/* 文字を改行させる */
 }
 .titile-name{
 	width: 150px;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 18px;
+	padding-bottom: 3px;
 	word-break: break-all;	/* 文字を改行させる */
 }
 /* cdの表示の箱 */
 .cd-box{
-	width: 150px;
-	height: 150px;
+	width: 152px;
+	height: 152px;
 	border: 1px solid #CCCCCC;
 	margin-bottom: 10px;
 }
@@ -375,6 +375,8 @@ h5{
 	color: #E07581 !important;
 	font-weight: bold !important;
 	padding: 10px;
+	margin-top: 0 !important;
+	margin-bottom: 15px !important;
 }
 
 /*---------------------------------------------------------------------
@@ -393,9 +395,10 @@ h5{
     padding: 3px 0;
     display: inline-block;
 }
-/*　price */
+/*　値段 */
 .praice{
 	color: #666666;
+	font-size: 16px;
 }
 
 /*---------------------------------------------------------------------
@@ -416,10 +419,14 @@ h5{
 	margin-bottom: 10px;
 }
 /* マイページ　ul*/
+.user-mypage-ul{
+	margin-bottom: 30px;
+	padding-left: 20px !important;
+}
 .mypage-navi{
 	font-size: 16px;
 	color: #4597F5;
-	margin-bottom: 2px;
+	margin-bottom: 5px;
 }
 .mypage-navi span{
 	color: #7FB6F5;
@@ -432,19 +439,19 @@ h5{
 	margin-right: 30px;
 }
 .cd-box2{
-	width: 100px;
-	height: 100px;
+	width: 102px;
+	height: 102px;
 	border: 1px solid #CCCCCC;
 	margin: 0 15px 0 0;
 	float: left;
 }
 .titile-artists2{
-	font-size: 12px;
+	font-size: 15px;
 	color: #4597F5;
 }
 .titile-artists2 span{
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 17px;
 }
 .price2{
 	color: #444;
@@ -457,6 +464,7 @@ h5{
 }
 .cd-num{
 	width: 100px;
+	margin-bottom: 10px;
 }
 .cd-number-text{
 	float: left;
@@ -466,7 +474,7 @@ h5{
 .destroy-btn{
 	background-color: #999999;
 	color: #fff;
-	width: 120px;
+	width: 100px;
 	border: 1px solid #ccc;
 	border-radius: 4px;        /* CSS3草案 */
     -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
@@ -477,7 +485,7 @@ h5{
 .destroy-btn a{
 	background-color: #999999;
 	color: #fff;
-	width: 120px;
+	width: 100px;
 	border: 1px solid #ccc;
 	border-radius: 4px;        /* CSS3草案 */
     -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
@@ -490,6 +498,7 @@ h5{
 	width: 520px;
 	border-bottom: 1px solid #CCCCCC;
 	padding: 10px 0 20px 0;
+	margin-bottom: 10px;
 }
 /* マイページ内の購入 */
 .purchase{
@@ -511,10 +520,10 @@ h5{
 	color: #444;
 }
 .total-txt{
-	font-size: 22px;
-	font-weight: bold;
-	color: #E0001A;
-	padding: 0 0 0 10px;
+	font-size: 26px;
+    font-weight: bold;
+    color: #E0001A;
+    padding: 0 0 8px 20px;
 }
 /* 購入へ進むボタン */
 .purchase-move-btn{
@@ -812,6 +821,7 @@ ol {
 /*---------------------------------------------------------------------
 	受け取り方法画面
 -----------------------------------------------------------------------*/
+/* h２下の図形　*/
 .list-bar-box{
 	width: 950px;
 	margin: 0 auto;
@@ -862,7 +872,7 @@ ol {
     height: 3px;
     width: 650px;
     top: 60px;
-    left: 22px;
+    left: -8px;
     background: #4597F5;
     z-index: 1;
     margin-left: 140px;
@@ -903,13 +913,13 @@ ol {
 	margin: 18px 0 0 0;
 }
 /* 受け取りボタンボックス　*/
-.acceptance-btn-box{
-	width: 500px;
-	margin: 0 auto;
+.acceptance-btn-box2{
+	width: 500px !important;
+	margin: 0 auto !important;
 }
-.back-btn{
-	width: 200px;
-	background-color: #E07581;
+.form-back-btn{
+	width: 200px !important;
+	background-color: #E07581 !important;
 	border: 1px solid #EBC5C9;
 	border-radius: 4px;        /* CSS3草案 */
     -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
@@ -918,11 +928,11 @@ ol {
     padding: 5px 0;
     font-weight: bold;
     font-size: 18px;
-    color: #fff;
+    color: #fff !important;
 }
 .acceptance-btn{
-	width: 200px;
-	background-color: #F5C87F;
+	width: 200px !important;
+	background-color: #F5C87F !important;
 	border: 1px solid #E07581;
 	border-radius: 4px;        /* CSS3草案 */
     -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
@@ -931,9 +941,11 @@ ol {
     padding: 5px 0;
     font-weight: bold;
     font-size: 18px;
-    color: #fff;
+    color: #fff !important;
 }
-
+.form-edit-buy{
+	width: 350px !important;
+}
 /*---------------------------------------------------------------------
 	支払い方法画面
 -----------------------------------------------------------------------*/
@@ -949,7 +961,7 @@ ol {
 -----------------------------------------------------------------------*/
 .acceptance-btn-box2{
 	width: 200px;
-	margin: 0 auto;
+	margin: 50px auto;
 }
 
 /*---------------------------------------------------------------------
@@ -960,8 +972,11 @@ ol {
 	color: #444;
 	text-align: center;
 }
-
-
+.order-txt a{
+	font-size: 24px;
+	color: #444;
+	text-align: center;
+}
 
 
 

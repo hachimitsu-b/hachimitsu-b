@@ -5,7 +5,7 @@
 	<h2>マイページ</h2>
 	<div class="clearfix">
 		<div class="side-menu fl">
-			<ul class="mb30">
+			<ul class="user-mypage-ul">
 				<li class="side-menu-bar">会員登録情報の変更</li>
 				<%= link_to(edit_user_registration_path) do %>
 					<li class="mypage-navi"><span>＞ </span>プロフィールの変更</li>
@@ -17,7 +17,7 @@
 					<li class="mypage-navi"><span>＞ </span>退会手続き</li>
 				<% end %>
 			</ul>
-			<ul class="mb30">
+			<ul class="user-mypage-ul">
 				<li class="side-menu-bar">ご注文の確認・変更</li>
 				<%= link_to(carts_path) do %>
 					<li class="mypage-navi"><span>＞ </span>購入履歴</li>
@@ -25,21 +25,21 @@
 			</ul>
 		</div>
 		<div class="mypage-cart">
-			<h5 style="margin-top: 0px;">ショッピングカート</h5>
+			<h5>ショッピングカート</h5>
 			<% @cart.cds.each do |cd| %>
 				<div class="mypage-cart-line">
 					<div class="clearfix">
-						<div class="fl">
-							<%= link_to carts_path do %>
+						<div class="cd-box2">
+							<%= link_to cd_path do %>
 								<% if cd.jacket_id.present? %>
-									<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
+									<%= attachment_image_tag cd, :jacket, :fill, 100, 100 %>
 									<% else %>
-										<%= image_tag 'no-image150.jpg', size: '150x150' %>
+										<%= image_tag 'no-image100.png', size: '100x100' %>
 								<% end %>
 							<% end %>
 						</div>
 						<div class="fl">
-							<p class="titile-artists2" style="margin-bottom: 0;"><span><%= cd.name %></span><br><%= cd.artist.name %></p>
+							<p class="titile-artists2"><span><%= cd.name %></span><br><%= cd.artist.name %></p>
 							<p class="price2">(税込) :  <span><%= cd.price %>円</span></p>
 						</div>
 						<div class="fr">
@@ -56,7 +56,7 @@
 									</ul>
 								</div>
 							</div><!-- /.clearfix -->
-							<%= link_to user_path do %>
+							<%= link_to(cart_path(cd.id), method: :delete) do %>
 								<div class="destroy-btn">削除</div>
 							<% end %>
 						</div>
@@ -66,11 +66,11 @@
 		</div><!-- /.mypage-cart -->
 		<div class="purchase">
 			<div class="purchase-total-line">
-				<P class="total-price-txt" style="margin-bottom: 0;">合計金額</P>
-				<p class="total-txt">0,000円</p>
+				<P class="total-price-txt">合計金額</P>
+				<p class="total-txt"><%= @total %>円</p>
 			</div>
-			<div class="mb10">
-				<%= link_to(carts_path) do %>
+			<div class="mb15">
+				<%= link_to cart_buy_page_1_path do %>
 					<div class="purchase-move-btn">購入手続きへ進む  ></div>
 				<% end %>
 			</div>

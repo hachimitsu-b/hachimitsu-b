@@ -1,0 +1,54 @@
+
+<%= render 'user/header_out' %>
+
+<div class='container'>
+	<h2 class="mb70">注文内容</h2>
+	<div class="list-bar-box">
+		<ul class="list-bar clearfix mb50">
+			<li class="list">
+				<div class="list-txt">お受け取り方法</div>
+				<div class="list-circle2"></div>
+			</li>
+			<li class="list">
+				<div class="list-txt">お支払い方法</div>
+				<div class="list-circle2"></div>
+			</li>
+			<li class="list">
+				<div class="list-txt">注文内容</div>
+				<div class="list-circle1"></div>
+			</li>
+			<li class="list">
+				<div class="list-txt">注文完了</div>
+				<div class="list-circle2"></div>
+			</li>
+		</ul><!-- /.list-bar -->
+	</div>
+	<h5 class="mb30">注文内容</h5>
+	<% @cart.cds.each do |cd| %>
+	<div class="purchase-line">
+		<div class="clearfix">
+			<div class="cd-box2">
+				<%= link_to cds_path do %>
+					<% if cd.jacket_id.present? %>
+						<%= attachment_image_tag cd, :jacket, :fill, 100, 100 %>
+						<% else %>
+							<%= image_tag 'no-image100.png', size: '100x100' %>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="fl">
+				<p class="titile-artists2"><span><%= cd.name %></span><br><%= cd.artist.name %></p>
+				<p class="genre-txt"><%= cd.genre_id %></p>
+				<p class="price4">価格(税込) :  <span><%= cd.price %>円</span></p>
+			</div>
+		</div><!-- /.clearfix -->
+	</div><!-- /.purchase-line -->
+	<% end %>
+	<%= form_for(cart_buy_page_4(@user), html: {method: 'POST'} ) do |f| %>
+		<div class="acceptance-btn-box2">
+			<%= f.submit("注文を確定する >", class:"acceptance-btn") %>
+		</div>
+	<% end %>
+</div><!-- /.container -->
+
+<%= render 'user/footer' %>
