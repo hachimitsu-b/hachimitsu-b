@@ -6,7 +6,6 @@ class User::UsersController < ApplicationController
 
   	if User.find_by(id: params[:id])
 
-  	@user = User.find(params[:id])
   	@cart = @user.carts.find_by(status_flag: 0)
     @cart_cd = @cart.cds
   	@items = @cart.item_in_carts

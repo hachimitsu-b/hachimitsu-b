@@ -9,6 +9,6 @@ class Cart < ApplicationRecord
 
 
 	def total_price
-		(price * number_of_cd) 
+		(price * number_of_cd)
 	end
 end
