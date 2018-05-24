@@ -21,12 +21,10 @@ class User::CartsController < ApplicationController
   # 支払い方法
   def buy_cds_page_2
     @cart = @user.carts.find_by(status_flag: 0)
-    @cart = @user.carts.find_by(status_flag: 0)
     @cart.update(buy_cds_update_params)
   end
   # 注文内容
   def buy_cds_page_3
-    @cart = @user.carts.find_by(status_flag: 0)
     @cart = @user.carts.find_by(status_flag: 0)
     @cart.update(buy_cds_update_params)
   end

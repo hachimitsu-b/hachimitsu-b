@@ -21,17 +21,17 @@ Rails.application.routes.draw do
 	# 生成されるpath => ooo_path
 	scope module: :user do
 		# 退会１ページ
-		get '/users/destroying', to: 'users#destroying'
+		post '/users/destroying', to: 'users#destroying'
 		# 退会完了
-		get '/users/destroyed', to: 'users#destroyed'
+		post '/users/destroyed', to: 'users#destroyed'
 		resources :users, only: [:show, :edit, :update, :destroy]
 		# 退会手続き
 		# destroy
 		resources :carts, only: [:create, :index, :edit, :update, :destroy]
-		get '/cart/buy/page/1' => 'carts#buy_cds_page_1'
-		get '/cart/buy/page/2' => 'carts#buy_cds_page_2'
-		get '/cart/buy/page/3' => 'carts#buy_cds_page_3'
-		get '/cart/buy/page/4' => 'carts#buy_cds_page_4'
+		post '/cart/buy/page/1' => 'carts#buy_cds_page_1'
+		post '/cart/buy/page/2' => 'carts#buy_cds_page_2'
+		post '/cart/buy/page/3' => 'carts#buy_cds_page_3'
+		post '/cart/buy/page/4' => 'carts#buy_cds_page_4'
 
 		post 'cart/buy/:id' => 'carts#buy_cds_update'
 		# 支払い方法選択
