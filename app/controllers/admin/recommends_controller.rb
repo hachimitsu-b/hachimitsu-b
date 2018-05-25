@@ -16,23 +16,6 @@ class Admin::RecommendsController < ApplicationController
   	end
   end
 
-  def edit
-  	@type_names = TypeName.all
-  	@recommend = Recommend.find(params[:id])
-  	@cds = Cd.last(10)
-  end
-
-
-  def update
-  	@recommend = Recommend.find(params[:id])
-  	if @recommend.update(recommend_params)
-  		redirect_to admin_recommends_path
-  	else
-  		@type_names = TypeName.all
-  		@cds = Cd.last(10)
-  		render 'edit'
-  	end
-  end
 
   def destroy
   	@recommend = Recommend.find(params[:id])

@@ -55,7 +55,7 @@ Rails.application.routes.draw do
 		post 'label/seach' => 'labels#seach'
 		resources :type_names, only: [:index, :create, :edit, :update, :destroy]
 		post 'type_name/seach' => 'type_names#seach'
-		resources :recommends, only: [:index, :create, :edit, :update, :destroy]
+		resources :recommends, only: [:index, :create, :destroy]
 
 
 		get 'users/:id', to: 'users#show', as: 'user_show'

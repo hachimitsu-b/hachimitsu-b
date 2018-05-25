@@ -61,17 +61,17 @@
 			<div class="cd-box-container clearfix">
 				<% type.cds.each do |cd| %>
 					<div class="cd-con">
-						<%= link_to(cd_path(cd.id)) do %>
+						<%= link_to(admin_cd_path(cd.id)) do %>
 							<% if cd.jacket_id.present? %>
 								<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
 								<% else %>
 									<%= image_tag 'no-image150.jpg', size: '150x150' %>
 							<% end %>
 						<% end %>
-						<%= link_to(cart_path(cd.id), method: :patch) do %>
-							<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
+						<%= link_to(admin_recommend_path(cd.recommends.find_by(recommend_type: type.id).id), method: :delete) do %>
+							<div class="cart-btn mb5" style="background-color: #d9534f;">帯からCDを削除</div>
 						<% end %>
-						<%= link_to(cd_path(cd.id)) do %>
+						<%= link_to(admin_cd_path(cd.id)) do %>
 							<div class="titile-name"><%= cd.name %></div>
 						<% end %>
 						<div class="artists-name"><%= cd.artist.name %></div>
@@ -104,6 +104,7 @@
 		$('#recommend_recommend_type').attr('value', type_id);
 	});
 
+	// cdの検索機能
 	$('#cds-seach').on('click', function() {
 		$.ajax({
 			url: '<%= admin_cd_seach_path %>',
@@ -133,6 +134,7 @@
     }).fail((data) => {  /* Ajaxリクエストが失敗した時発動 */ });
 	});
 
+	// type_nameの検索機能
 	$('#recom-seach').on('click', function() {
 		$.ajax({
 			url: '<%= admin_type_name_seach_path %>',
