@@ -27,106 +27,137 @@
 	<div class="acceptance-box">
 		<div class="acceptance-box-title">お支払い方法を選択してください。</div>
 		<div class="clearfix mb50">
-			<div class="fl">
+			<div class="box-w500">
 				<div class="radio">
-	  				<label><input type="radio" name="radio" id="radio1" value="radio1"> クレジットカード</label>
+					<label><input type="radio" name="btn" id="radio1" value="radio1"> 代金引換</label>
 				</div>
 			</div>
-			<div class="radio-box">
+			<div class="fl">
 				<div class="radio">
-	  				<label><input type="radio" name="radio" id="radio1" value="radio1"> 代金引換</label>
+	  				<label><input type="radio" name="btn" id="radio2" value="radio1"> クレジットカード</label>
 				</div>
 			</div>
 		</div><!-- /.clearfix -->
-		<div class="acceptance-box-title mb30">クレジットカードご利用の方</div>
+		<div class="acceptance-box-title mb30">代金引換ご利用の方</div>
 		<%= form_for(@user, url: cart_buy_page_3_path(@user), html: {method: 'POST'}) do |f| %>
-			<table class="acceptance-table clearfix">
-				<tr class="table-line">
-					<th class="table-txt">クレジットカード番号</th>
-					<th class="acceptance-box-form">
-						<div class="input-group">
-							<%= f.text_field :name_kanji %>
-						</div>
-					</th>
-				</tr>
-				<tr class="table-line">
-					<th class="table-txt">カードに記載のお名前</th>
-					<th class="acceptance-box-form">
-						<div class="input-group">
-							<%= f.text_field :name_kana %>
-						</div>
-					</th>
-				</tr>
-				<tr class="table-line">
-					<th class="table-txt">有効期限</th>
-					<th class="acceptance-box-form">
-						<div class="clearfix mb50">
-							<div class="btn-group fl" role="group" style="margin-right: 0px;">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-									1
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">１</a></li>
-									<li><a href="#">２</a></li>
-									<li><a href="#">３</a></li>
-									<li><a href="#">４</a></li>
-									<li><a href="#">５</a></li>
-									<li><a href="#">６</a></li>
-									<li><a href="#">７</a></li>
-									<li><a href="#">８</a></li>
-									<li><a href="#">９</a></li>
-									<li><a href="#">１０</a></li>
-									<li><a href="#">１１</a></li>
-									<li><a href="#">１２</a></li>
-								</ul>
+			<div class="radio-cheackbox01">
+				<p class="mb30 fs14">代引き手数料が別途かかります。</p>
+				<div class="acceptance-btn-box2 clearfix">
+					<div class="fl">
+						<%= link_to(user_path(current_user)) do %>
+							<div class="form-back-btn">< 戻る</div>
+						<% end %>
+					</div>
+					<div class="fr">
+						<%= f.submit("注文内容 >", class:"acceptance-btn") %>
+					</div>
+				</div><!-- /.clearfix -->
+			</div><!-- /.radio-cheackbox -->
+		<% end %>
+		<%= form_for(@user, url: cart_buy_page_3_path(@user), html: {method: 'POST'}) do |f| %>
+			<div class="radio-cheackbox">
+				<table class="acceptance-table clearfix">
+					<tr class="table-line">
+						<th class="table-txt">クレジットカード番号</th>
+						<th class="acceptance-box-form">
+							<div class="input-group">
+								<%= f.text_field :name_kanji %>
 							</div>
-							<div class="credit-txt">　月　/ 　</div>
-							<div class="btn-group fl" role="group" style="margin-right: 0px;">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-									1
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">１０</a></li>
-									<li><a href="#">１２</a></li>
-									<li><a href="#">１３</a></li>
-									<li><a href="#">１４</a></li>
-									<li><a href="#">１５</a></li>
-									<li><a href="#">１６</a></li>
-									<li><a href="#">１７</a></li>
-									<li><a href="#">１８</a></li>
-									<li><a href="#">１９</a></li>
-									<li><a href="#">２０</a></li>
-									<li><a href="#">２１</a></li>
-									<li><a href="#">２２</a></li>
-								</ul>
+						</th>
+					</tr>
+					<tr class="table-line">
+						<th class="table-txt">カードに記載のお名前</th>
+						<th class="acceptance-box-form">
+							<div class="input-group">
+								<%= f.text_field :name_kana %>
 							</div>
-							<div class="credit-txt">　年</div>
-						</div><!-- /.clearfix -->
-					</th>
-				</tr>
-				<tr class="table-line">
-					<th class="table-txt">セキュリティーコード</th>
-					<th class="acceptance-box-form">
-						<div class="input-group">
-							<%= f.text_field :name_kana%>
-						</div>
-					</th>
-				</tr>
-			</table>
-			<div class="acceptance-btn-box2 clearfix">
-				<div class="fl">
-					<%= link_to(user_path(current_user)) do %>
-						<div class="form-back-btn">< 戻る</div>
-					<% end %>
-				</div>
-				<div class="fr">
-					<%= f.submit("注文内容 >", class:"acceptance-btn") %>
-				</div>
-			</div><!-- /.clearfix -->
+						</th>
+					</tr>
+					<tr class="table-line">
+						<th class="table-txt">有効期限</th>
+						<th class="acceptance-box-form">
+							<div class="clearfix mb50">
+								<div class="btn-group fl" role="group" style="margin-right: 0px;">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+										1
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">１</a></li>
+										<li><a href="#">２</a></li>
+										<li><a href="#">３</a></li>
+										<li><a href="#">４</a></li>
+										<li><a href="#">５</a></li>
+										<li><a href="#">６</a></li>
+										<li><a href="#">７</a></li>
+										<li><a href="#">８</a></li>
+										<li><a href="#">９</a></li>
+										<li><a href="#">１０</a></li>
+										<li><a href="#">１１</a></li>
+										<li><a href="#">１２</a></li>
+									</ul>
+								</div>
+								<div class="credit-txt">　月　/ 　</div>
+								<div class="btn-group fl" role="group" style="margin-right: 0px;">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+										1
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">１０</a></li>
+										<li><a href="#">１２</a></li>
+										<li><a href="#">１３</a></li>
+										<li><a href="#">１４</a></li>
+										<li><a href="#">１５</a></li>
+										<li><a href="#">１６</a></li>
+										<li><a href="#">１７</a></li>
+										<li><a href="#">１８</a></li>
+										<li><a href="#">１９</a></li>
+										<li><a href="#">２０</a></li>
+										<li><a href="#">２１</a></li>
+										<li><a href="#">２２</a></li>
+									</ul>
+								</div>
+								<div class="credit-txt">　年</div>
+							</div><!-- /.clearfix -->
+						</th>
+					</tr>
+					<tr class="table-line">
+						<th class="table-txt">セキュリティーコード</th>
+						<th class="acceptance-box-form">
+							<div class="input-group">
+								<%= f.text_field :name_kana%>
+							</div>
+						</th>
+					</tr>
+				</table>
+				<div class="acceptance-btn-box2 clearfix">
+					<div class="fl">
+						<%= link_to(user_path(current_user)) do %>
+							<div class="form-back-btn">< 戻る</div>
+						<% end %>
+					</div>
+					<div class="fr">
+						<%= f.submit("注文内容 >", class:"acceptance-btn") %>
+					</div>
+				</div><!-- /.clearfix -->
+			</div><!-- /.radio-cheackbox -->
 		<% end %>
 	</div>
 </div><!-- /.container -->
 
 <%= render 'user/footer' %>
+
+<script>
+	$(function() {
+	  $('[name="btn"]:radio').change( function() {
+	    if($('[id=radio1]').prop('checked')){
+	      $('.radio-cheackbox').fadeOut();
+	      $('.radio-cheackbox01').fadeIn();
+	    } else if ($('[id=radio2]').prop('checked')) {
+	      $('.radio-cheackbox01').fadeOut();
+	      $('.radio-cheackbox').fadeIn();
+	    }
+	  });
+	});
+</script>

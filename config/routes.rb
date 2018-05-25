@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 		# 退会手続き
 		# destroy
 		resources :carts, only: [:create, :index, :edit, :update, :destroy]
-		post '/cart/buy/page/1' => 'carts#buy_cds_page_1'
+		get '/cart/buy/page/1' => 'carts#buy_cds_page_1'
 		post '/cart/buy/page/2' => 'carts#buy_cds_page_2'
 		post '/cart/buy/page/3' => 'carts#buy_cds_page_3'
 		post '/cart/buy/page/4' => 'carts#buy_cds_page_4'

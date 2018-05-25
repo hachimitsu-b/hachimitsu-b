@@ -34,19 +34,6 @@ class User::CartsController < ApplicationController
     @cart = @user.carts.find_by(status_flag: 0)
   end
 
-  def buy_cds_update
-    @cart = @user.carts.find_by(status_flag: 0)
-    @cart.update(buy_cds_update_params)
-
-    case params[:id]
-      when "2"
-        redirect_to #test
-      when "3"
-        redirect_to
-      when "4"
-      redirect_to #test
-    end
-  end
 
   # カートの購入処理をする
   def create

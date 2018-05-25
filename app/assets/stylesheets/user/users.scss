@@ -52,9 +52,9 @@ a:hover{text-decoration:none !important;}
 	color: #333333;
 }
 /* フォントサイズ */
-.fs12{
-	font-size: 12px;
-}
+.fs12{font-size: 12px;}
+.fs14{font-size: 14px;}
+.fs16{font-size: 16px;}
 /* テキスト位置 */
 .tac{text-align: center;}
 /* マージン */
@@ -124,6 +124,14 @@ h1{
 	font-size: 16px;
 	color: #E0001A;
 	word-break: break-all;	/* 文字を改行させる */
+}
+/* サーチのテキスト入力部分 */
+.search-txt{
+	width: 300px;
+}
+/* サーチボタン */
+.search-icon{
+	border: 1px solid #333333;
 }
 /* ログインページなどの簡易header */
 #header{
@@ -882,10 +890,6 @@ ol {
 	padding: 0 0 20px 0;
 	border-bottom: 1px solid #999999;
 }
-.radio-box{
-	float: right;
-	margin-right: 400px;
-}
 .acceptance-table{
 	width: 1200px;
 	margin-bottom: 50px;
@@ -945,11 +949,16 @@ ol {
 .form-edit-buy{
 	width: 350px !important;
 }
+/* ラジオボタンのクラス */
+.box-w500{
+	float: left;
+	width: 500px;
+}
 /* 受け取りボタンJQUERYのクラス */
-.acceptance-table {
+.radio-cheackbox {
   display: none;
 }
-.acceptance-table01 {
+.radio-cheackbox01 {
   display: block;
 }
 
