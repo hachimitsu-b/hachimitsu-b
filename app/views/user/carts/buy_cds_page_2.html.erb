@@ -39,13 +39,13 @@
 			</div>
 		</div><!-- /.clearfix -->
 		<div class="acceptance-box-title mb30">クレジットカードご利用の方</div>
-		<%= form_for(cart_buy_page_3(@user), html: {method: 'POST'} ) do |f| %>
+		<%= form_for(@user, url: cart_buy_page_3_path(@user), html: {method: 'POST'}) do |f| %>
 			<table class="acceptance-table clearfix">
 				<tr class="table-line">
 					<th class="table-txt">クレジットカード番号</th>
 					<th class="acceptance-box-form">
 						<div class="input-group">
-							<%= f.text_field %>
+							<%= f.text_field :name_kanji %>
 						</div>
 					</th>
 				</tr>
@@ -53,7 +53,7 @@
 					<th class="table-txt">カードに記載のお名前</th>
 					<th class="acceptance-box-form">
 						<div class="input-group">
-							<%= f.text_field %>
+							<%= f.text_field :name_kana %>
 						</div>
 					</th>
 				</tr>
@@ -110,7 +110,7 @@
 					<th class="table-txt">セキュリティーコード</th>
 					<th class="acceptance-box-form">
 						<div class="input-group">
-							<%= f.text_field %>
+							<%= f.text_field :name_kana%>
 						</div>
 					</th>
 				</tr>

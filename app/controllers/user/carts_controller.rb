@@ -16,6 +16,7 @@ class User::CartsController < ApplicationController
   # 受け取り方法
   def buy_cds_page_1
     @cart = @user.carts.find_by(status_flag: 0)
+    @user_new = User.new
   end
 
   # 支払い方法

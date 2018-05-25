@@ -70,8 +70,8 @@
 				<p class="total-txt"><%= @total %>円</p>
 			</div>
 			<div class="mb15">
-				<%= form_for(cart_buy_page_1(@user), html: {method: 'POST'} ) do |f| %>
-					<%= f.submit("購入手続きへ進む  >", class:"purchase-shopping-btn") %>
+				<%= link_to cart_buy_page_1_path, method: :Post do %>
+					<div class="purchase-shopping-btn mb15">購入手続きへ進む  ></div>
 				<% end %>
 				<%= link_to cds_path do %>
 					<div class="purchase-move-btn">お買い物を続ける</div>
