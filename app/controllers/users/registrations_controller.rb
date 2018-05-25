@@ -12,8 +12,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #  POST /resource
    def create
      super
-  @user = User.find(current_user.id)
-  @cart_create = @user.carts.create(status_flag: 0)
+     if current_user then
+      @user = User.find(current_user.id)
+      @cart_create = @user.carts.create(status_flag: 0)
+    end
    end
 
   # GET /resource/edit

@@ -1,6 +1,12 @@
 
 <%= render 'user/header' %>
 
+<% if @cds != nil then %>
+<% @cds.each do |f| %>
+<%= f.name %><br>
+<% end %>
+<% end %>
+
 <div class='container'>
   	<div class="clearfix">
 		<div class='sideber-box'>
