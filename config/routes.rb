@@ -45,6 +45,7 @@ Rails.application.routes.draw do
 	namespace :admin do
 		resources :carts, only: [:index]
 		resources :cds
+		post 'cd/seach' => 'cds#seach'
 		resources :users, only: [:index, :show, :edit, :update, :destroy]
 		resources :artists, only: [:index, :create, :edit, :update, :destroy]
 		post 'artist/seach' => 'artists#seach'
@@ -54,7 +55,7 @@ Rails.application.routes.draw do
 		post 'label/seach' => 'labels#seach'
 		resources :type_names, only: [:index, :create, :edit, :update, :destroy]
 		post 'type_name/seach' => 'type_names#seach'
-		resources :recommends, only: [:index, :create, :edit, :update, :destroy]
+		resources :recommends, only: [:index, :create, :destroy]
 
 
 		get 'users/:id', to: 'users#show', as: 'user_show'

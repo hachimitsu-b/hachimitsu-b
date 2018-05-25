@@ -1,46 +1,44 @@
 <div class='container'>
   <div class="clearfix">
-  	<!-- recommendの新規ジャンル追加フォーム -->
-  	<div class="type-name-form col-md-offset-3 col-md-6">
-  		<%= form_for(type_new, url: admin_type_names_path) do |f| %>
-				<div class="form-group">
-					<%= f.label :name, "帯のジャンル名" %>
-					<%= f.text_field :name, class: "form-control" %>
-				</div>
-				<%= f.submit "新規帯を追加" %>
-  		<% end %>
-  	</div>
   	<!-- 左サイドバー -->
-		<div class='sideber-box'>
-			<div class="sideber">
+		<div class=' col-md-4'>
+			<div class="type-name-box">
+			<p class="recomend-table-head-text">帯を選択</p>
 				<!-- typeの検索 -->
 				<%= form_tag("#") do %>
-					<%= text_field_tag :seach, "" %>
-					<i class="glyphicon glyphicon-search btn btn-default"></i>
+					<%= text_field_tag :recom_seach_val, "", class: "recom-seach-field form-control" %>
+					<i class="glyphicon glyphicon-search btn btn-primary recom-seach-btn" id="recom-seach"></i>
 				<% end %>
-				<ul style="padding-left: 20px;">
-					<% type_names.each do |type| %>
-
-						<li class="genre-menu" data-id="<%= type.id %>"><%= type.name %></li>
-					<% end %>
-				</ul>
+				<div class="recommend-scroll">
+					<table class=" table table-hover" style="padding-left: 20px;">
+						<tbody class="recom-table" id="recommend-scroll">
+							<% type_names.each do |type| %>
+								<tr class="type-btn" data-id=<%= type.id %>>
+									<th class="genre-menu"><%= type.name %></th>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 
-		<%= form_for(recommend, url: admin_recommends_path) do |f| %>
-			<%= f.hidden_field :recommend_type, value: "" %>
-			<%= f.hidden_field :cd_id, value: "" %>
+		<!-- cdの選択 -->
+		<div class="recommend-cds-box col-md-8">
+			<p class="recomend-table-head-text">登録するCDを選択</p>
+			<!-- cdの検索フォーム -->
+			<%= form_tag() do %>
+				<%= text_field_tag :cd_seach_val, "", class: "recom-seach-field form-control" %>
+				<span class="btn btn-primary recom-seach-btn" id="cds-seach">CDを検索</span>
+			<% end %>
 
-				<div class="ranking-box">
-					<!-- cdの検索フォーム -->
-					<%= form_tag("#") do %>
-						<%= text_field_tag :seach, "" %>
-						<span class="btn btn-primary">CDを検索</span>
-					<% end %>
+			<%= form_for(recommend, url: admin_recommends_path) do |f| %>
+				<%= f.hidden_field :recommend_type, value: "" %>
+				<%= f.hidden_field :cd_id, value: "" %>
 
-					<p class="recomend-table-head-text">登録するCDを選択</p>
+				<div class="recommend-scroll">
 					<table class="table table-hover">
-						<tbody id="">
+						<tbody class="cds-table">
 							<!-- 最新の５件を表示 -->
 							<% cds.each do |cd| %>
 								<tr class="cd-btn" data-id="<%= cd.id %>">
@@ -51,15 +49,38 @@
 							<% end %>
 						</tbody>
 					</table>
-				</div><!-- /.ranking-box -->
-
-			<%= f.submit "登録する" %>
+				</div>
+		</div><!-- /.ranking-box -->
+		<!-- ボタンを外に出すために外へ -->
+			<%= f.submit "登録する", id: "submit-recommend-btn" %>
 		<% end %>
+
 	</div><!-- /.clearfix -->
-	<h2>話題の</h2>
-	<div class="cd-box-container clearfix">
-	<!-- 抜き取った -->
-	</div><!-- /.cd-box-container -->
+		<% type_names.each do |type| %>
+			<h2><%= type.name %></h2>
+			<div class="cd-box-container clearfix">
+				<% type.cds.each do |cd| %>
+					<div class="cd-con">
+						<%= link_to(admin_cd_path(cd.id)) do %>
+							<% if cd.jacket_id.present? %>
+								<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
+								<% else %>
+									<%= image_tag 'no-image150.jpg', size: '150x150' %>
+							<% end %>
+						<% end %>
+						<%= link_to(admin_recommend_path(cd.recommends.find_by(recommend_type: type.id).id), method: :delete) do %>
+							<div class="cart-btn mb5" style="background-color: #d9534f;">帯からCDを削除</div>
+						<% end %>
+						<%= link_to(admin_cd_path(cd.id)) do %>
+							<div class="titile-name"><%= cd.name %></div>
+						<% end %>
+						<div class="artists-name"><%= cd.artist.name %></div>
+						<p class="price">値段 ｜ <%= cd.price %>円</p>
+					</div>
+				<% end %>
+			</div><!-- /.cd-box-container -->
+		<% end %>
+	</div>
 </div><!-- /.container -->
 
 
@@ -67,9 +88,74 @@
 
 <script>
 
+	// cdの選択機能
 	$(document).on('click', '.cd-btn', function(){
-		var cd_id = $(this).
-	}
+		var cd_id = $(this).data('id');
+		$(this).parent().parent().find('tr').css('background-color', 'white');
+		$(this).css('background-color', '#dcdcdc');
+		$('#recommend_cd_id').attr('value', cd_id);
+	});
+
+	// 帯の選択機能
+	$(document).on('click', '.type-btn', function(){
+		var type_id = $(this).data('id');
+		$(this).parent().parent().find('tr').css('background-color', 'white');
+		$(this).css('background-color', '#dcdcdc');
+		$('#recommend_recommend_type').attr('value', type_id);
+	});
+
+	// cdの検索機能
+	$('#cds-seach').on('click', function() {
+		$.ajax({
+			url: '<%= admin_cd_seach_path %>',
+			type: 'POST',
+			data: {
+				'seach' : $('#cd_seach_val').val()
+			}
+		}).done( (data) => {
+			console.log(data)
+			// 前回の検索を削除
+			$('.cds-table').text('');
+			$.each(data, function(i){
+				var input = '<tr class="type-btn" data-id="' + data[i].id + '">'
+									+ 	'<th>'
+									+			data[i].name
+									+		'</th>'
+									+		'<th>'
+									+			data[i].artist.name
+									+		'</th>'
+									+		'<th>'
+									+			data[i].genre.name
+									+		'</th>'
+									+	'</tr>';
+									console.log(data[i].artist.name)
+				$('.cds-table').append( input );
+			});
+    }).fail((data) => {  /* Ajaxリクエストが失敗した時発動 */ });
+	});
+
+	// type_nameの検索機能
+	$('#recom-seach').on('click', function() {
+		$.ajax({
+			url: '<%= admin_type_name_seach_path %>',
+			type: 'POST',
+			data: {
+				'seach' : $('#recom_seach_val').val()
+			}
+		}).done( (data) => {
+			console.log(data)
+			// 前回の検索を削除
+			$('.recom-table').text('');
+			$.each(data, function(i){
+				var input = '<tr class="type-btn" data-id="' + data[i].id + '">'
+									+ 	'<th class="genre-menu">'
+									+			data[i].name
+									+		'</th>'
+									+	'</tr>';
+				$('.recom-table').append( input );
+			});
+    }).fail((data) => {  /* Ajaxリクエストが失敗した時発動 */ });
+	});
 
 </script>
 
