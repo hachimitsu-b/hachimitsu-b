@@ -16,7 +16,6 @@ class Admin::RecommendsController < ApplicationController
   	end
   end
 
-
   def destroy
   	@recommend = Recommend.find(params[:id])
     @recommend.delete

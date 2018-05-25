@@ -29,18 +29,64 @@
 		<div class="clearfix mb50">
 			<div class="fl">
 				<div class="radio">
-	  				<label><input type="radio" name="radio" id="radio1" value="radio1"> 会員登録先住所</label>
+	  				<label><input type="radio" name="btn" id="radio1" value="radio1"> 会員登録先住所</label>
 				</div>
 			</div>
 			<div class="radio-box">
 				<div class="radio">
-	  				<label><input type="radio" name="radio" id="radio1" value="radio1"> 新しいお届け先</label>
+	  				<label><input type="radio" name="btn" id="radio2" value="radio1"> 新しいお届け先</label>
 				</div>
 			</div>
 		</div><!-- /.clearfix -->
 		<div class="acceptance-box-title mb30">お届け先を入力してください。</div>
-		<%= form_for(cart_buy_page_2(@user), html: {method: 'POST'} ) do |f| %>
-			<table class="acceptance-table clearfix">
+		<%= form_for(@user, url: cart_buy_page_2_path(@user), html: {method: 'POST'}) do |f| %>
+			<table class="acceptance-table acceptance-table01 clearfix">
+				<tr class="table-line">
+					<th class="table-txt">お名前</th>
+					<th class="acceptance-box-form">
+						<div class="input-group">
+							  <%= f.text_field :name_kanji %>
+						</div>
+					</th>
+				</tr>
+				<tr class="table-line">
+					<th class="table-txt">郵便番号</th>
+					<th class="acceptance-box-form">
+						<div class="input-group">
+							  <%= f.text_field :postcode %>
+						</div>
+					</th>
+				</tr>
+				<tr class="table-line">
+					<th class="table-txt">住所</th>
+					<th class="acceptance-box-form">
+						<div class="input-group">
+							  <%= f.text_field :street_address %>
+						</div>
+					</th>
+				</tr>
+				<tr class="table-line">
+					<th class="table-txt">電話番号</th>
+					<th class="acceptance-box-form">
+						<div class="input-group">
+							  <%= f.text_field :phone_number %>
+						</div>
+					</th>
+				</tr>
+			</table>
+			<div class="acceptance-btn-box2 clearfix">
+				<div class="fl">
+					<%= link_to(user_path(current_user)) do %>
+						<div class="form-back-btn">< 戻る</div>
+					<% end %>
+				</div>
+				<div class="fr">
+					<%= f.submit("お支払い方法 >", class:"acceptance-btn") %>
+				</div>
+			</div><!-- /.clearfix -->
+		<% end %>
+		<%= form_for(@user_new, url: cart_buy_page_2_path(@user), html: {method: 'POST'}) do |f| %>
+			<table class="acceptance-table acceptance-table02 clearfix">
 				<tr class="table-line">
 					<th class="table-txt">お名前</th>
 					<th class="acceptance-box-form">
@@ -89,3 +135,17 @@
 </div><!-- /.container -->
 
 <%= render 'user/footer' %>
+
+<script>
+	$(function() {
+	  $('[name="btn"]:radio').change( function() {
+	    if($('[id=a]').prop('checked')){
+	      $('.acceptance-table').fadeOut();
+	      $('.acceptance-table01').fadeIn();
+	    } else if ($('[id=b]').prop('checked')) {
+	      $('.acceptance-table').fadeOut();
+	      $('.acceptance-table02').fadeIn();
+	    } 
+	  });
+	});
+</script>

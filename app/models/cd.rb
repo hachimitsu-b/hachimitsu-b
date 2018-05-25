@@ -19,4 +19,11 @@ class Cd < ApplicationRecord
 	# 空の保存を制限
 	validates :name, :single_album, :price, :stock, :display, :release_date, presence: true
 
+	def self.search(word)
+		if word
+			Cd.where(['name LIKE ?', "%#{word}%"])
+		else
+			nil
+		end
+	end
 end

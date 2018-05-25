@@ -11,6 +11,7 @@
         <th>メールアドレス</th>
         <th>郵便番号</th>
         <th>住所</th>
+        <th>削除状態</th>
       </tr>
     </thead>
 		<tbody>
@@ -22,6 +23,15 @@
 		      <td><%= @user.email %></td>
           <td><%= @user.postcode %></td>
           <td><%= @user.street_address %></td>
+          <td>
+          <% if @user.delete_flag == 0 %>
+            通常通り表示されています。
+          <% elsif @user.delete_flag == 1 %>
+            ユーザーによって削除されています。
+          <% elsif @user.delete_flag == 2 %>
+            管理側によって削除されています。
+          <% end %>
+          </td>
         </tr>
 		</tbody>
   </table>
