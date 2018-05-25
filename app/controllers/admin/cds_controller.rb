@@ -52,7 +52,7 @@ class Admin::CdsController < ApplicationController
     if params[:seach].present?
       seach_val = params[:seach]
       @cds = Cd.where("name LIKE ?", "%#{seach_val}%")
-      render :json => @cds
+      render :json => @cds.to_json( {:include => [:artist, :genre]})
     end
   end
 

@@ -45,6 +45,7 @@ Rails.application.routes.draw do
 	namespace :admin do
 		resources :carts, only: [:index]
 		resources :cds
+		post 'cd/seach' => 'cds#seach'
 		resources :users, only: [:index, :show, :edit, :update, :destroy]
 		resources :artists, only: [:index, :create, :edit, :update, :destroy]
 		post 'artist/seach' => 'artists#seach'
