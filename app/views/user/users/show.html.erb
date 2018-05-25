@@ -70,13 +70,13 @@
 				<p class="total-txt"><%= @total %>円</p>
 			</div>
 			<div class="mb15">
-				<%= link_to cart_buy_page_1_path do %>
-					<div class="purchase-move-btn">購入手続きへ進む  ></div>
+				<%= link_to cart_buy_page_1_path, method: :Post do %>
+					<div class="purchase-shopping-btn mb15">購入手続きへ進む  ></div>
+				<% end %>
+				<%= link_to cds_path do %>
+					<div class="purchase-move-btn">お買い物を続ける</div>
 				<% end %>
 			</div>
-			<%= link_to(cds_path) do %>
-				<div class="purchase-shopping-btn">お買い物を続ける  ></div>
-			<% end %>
 		</div>
 	</div><!-- /.clearfix -->
 </div><!-- /.container -->

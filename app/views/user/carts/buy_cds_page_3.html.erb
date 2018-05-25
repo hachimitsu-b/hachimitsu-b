@@ -44,7 +44,7 @@
 		</div><!-- /.clearfix -->
 	</div><!-- /.purchase-line -->
 	<% end %>
-	<%= form_for(cart_buy_page_4(@user), html: {method: 'POST'} ) do |f| %>
+	<%= form_for(@user, url: cart_buy_page_4_path(@user), html: {method: 'POST'}) do |f| %>
 		<div class="acceptance-btn-box2">
 			<%= f.submit("注文を確定する >", class:"acceptance-btn") %>
 		</div>
