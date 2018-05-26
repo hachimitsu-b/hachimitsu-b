@@ -42,7 +42,7 @@
 				<div class="single-rank">シングル ランキング</div>
 				<div class="clearfix">
 					<% num = 1%>
-					<% @cd.first(3).each do |cd| %>
+					<% @singles.each do |cd| %>
 						<%= link_to(carts_path) do %>
 							<div class="rank-container">
 								<div class="rank">
@@ -74,7 +74,7 @@
 				<div class="single-rank">アルバム ランキング</div>
 				<div class="clearfix">
 					<% num = 1%>
-					<% @cd.first(3).each do |cd| %>
+					<% @albums.each do |cd| %>
 						<%= link_to(carts_path) do %>
 							<div class="rank-container">
 								<div class="rank">
