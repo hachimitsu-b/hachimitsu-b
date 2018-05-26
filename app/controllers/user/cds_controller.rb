@@ -16,14 +16,6 @@ class User::CdsController < ApplicationController
     @cds = Cd.search(params[:search])
   end
 
-  # def seach
-  #   if params[:seach].present?
-  #     seach_val = params[:seach]
-  #     @cds = Cd.where("name LIKE ?", "%#{seach_val}%")
-  #      render :json => @cds
-  #   end
-  # end
-
   private
 
     def  cd_params

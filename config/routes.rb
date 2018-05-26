@@ -21,9 +21,9 @@ Rails.application.routes.draw do
 	# 生成されるpath => ooo_path
 	scope module: :user do
 		# 退会１ページ
-		post '/users/destroying', to: 'users#destroying'
+		get '/users/destroying', to: 'users#destroying'
 		# 退会完了
-		post '/users/destroyed', to: 'users#destroyed'
+		get '/users/destroyed', to: 'users#destroyed'
 		resources :users, only: [:show, :edit, :update, :destroy]
 		# 退会手続き
 		# destroy
