@@ -5,5 +5,5 @@ class Admin::CartsController < ApplicationController
   	@cart_cd = @cart.cds
   	@users = User.all
   end
-  @cds = Cd.search(params[:search]
+  @cds = Cd.search(params[:search])
 end

@@ -60,11 +60,11 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+
   private
 
    def user_params
         params.require(:user).permit(:name_kanji, :name_kana, :street_address, :phone_number ,:email)
-        
     end
 
 end

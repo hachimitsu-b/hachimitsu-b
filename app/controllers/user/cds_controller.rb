@@ -7,8 +7,6 @@ class User::CdsController < ApplicationController
   	else
   		redirect_to cds_path
   	end
-
-
   end
 
   def index
