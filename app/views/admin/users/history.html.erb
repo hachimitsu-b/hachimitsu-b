@@ -1,30 +1,53 @@
 <%= render 'layouts/admins_header' %>
 <div class="container">
-	<div class="row">
-        <div class="col-md-11 col-md-offset-1">
-			<h1>購入履歴</h1>
-				<div class="cd-box-container clearfix">
-					<% @cart.each do |cart| %>
-					<% cart.cds.each do |cd|%>
-						<%= link_to(admin_cd_path(1)) do %>
-							<div class="cd-con">
-								<% if cd.jacket_id.present? %>
-									<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
-									<% else %>
-										<%= image_tag 'no-image150.jpg', size: '150x150' %>
-								<% end %>
-								<p class="admin-t-a-name" style="margin-bottom: 0;">
-									<span><%= cd.name %></span>
-									<br><%= cd.artist.name %>
+	<font size="7">購入履歴</font>
+	<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>購入価格総計</th>
+      </tr>
+    </thead>
+		<tbody>
+		  <tr>
+		      <td>大槻 寿夫</td>
+		      <td>100000090円</td>
+        </tr>
+		</tbody>
+  </table>
+	<div class="cd-box-container clearfix">
+				<div class="cd-con">
+					<div class="cd-box"><%= image_tag 'no-image150.jpg', size: '150x150' %></div>
+					<p class="admin-t-a-name" style="margin-bottom: 0;">
+									<span>嵐</span>
+									<br>あらーし
 								</p>
-								<p class="price">値段 ｜ <%= cd.price %>円</p>
+								<p class="price">値段 ｜ ２億円</p>
+								</p>
+								<p class="price">発送日 ｜ １２月１２日</p>
+								</p>
+								<p class="price">購入枚数 ｜ 100枚</p>
+								</p>
+								<p class="price">小計 ｜ 200億円</p>
+								</p>
+								<p class="price">ステータス ｜ 準備中</p>
 							</div>
-						<% end %>
-					<% end %>
-					<% end %>
-				</div>
-		</div><!-- /.clearfix -->
-	</div><!-- /.container -->
-</div>
 
-
+							<div class="cd-con">
+					<div class="cd-box"><%= image_tag 'no-image150.jpg', size: '150x150' %></div>
+					<p class="admin-t-a-name" style="margin-bottom: 0;">
+									<span>AKB</span>
+									<br>エーケービー
+								</p>
+								<p class="price">値段 ｜ ２億円</p>
+								</p>
+								<p class="price">発送日 ｜ １２月１２日</p>
+							</p>
+								<p class="price">購入枚数 ｜ 100枚</p>
+								</p>
+								<p class="price">小計 ｜ 200億円</p>
+								</p>
+								<p class="price">ステータス ｜発送済み</p>
+							</div>
+	</div><!-- /.clearfix -->
+</div><!-- /.c

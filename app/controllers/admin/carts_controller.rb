@@ -3,5 +3,6 @@ class Admin::CartsController < ApplicationController
   	@user = User.find_by(params[:id])
   	@cart = Cart.find_by(status_flag: 1)
   	@cart_cd = @cart.cds
+  	@users = User.all
   end
 end
