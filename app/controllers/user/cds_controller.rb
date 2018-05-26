@@ -25,6 +25,10 @@ class User::CdsController < ApplicationController
     @cds = Cd.search(params[:search])
   end
 
+  def search
+
+  end
+
   # def seach
   #   if params[:seach].present?
   #     seach_val = params[:seach]
