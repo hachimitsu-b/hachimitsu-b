@@ -49,6 +49,7 @@ Rails.application.routes.draw do
 	# 生成されるpath => admin_ooo_path
 	namespace :admin do
 		resources :carts, only: [:index]
+		get 'cart/send/:id' => 'carts#send_cart', as: 'send_cart'
 		resources :cds
 		post 'cd/seach' => 'cds#seach'
 		resources :users, only: [:index, :show, :edit, :update, :destroy]
