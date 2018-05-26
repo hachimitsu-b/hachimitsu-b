@@ -1,42 +1,23 @@
 <%= render 'layouts/admins_header' %>
 
-<head>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
 
 <div class="container"> <!-- ここを追加 -->
     <div class="row">
       <div class="col-xs-12">
         <font size="7">発送状態確認一覧</font>
-        <form class="form-horizontal" action="admin/carts" method="post">
-          <div class="form-group">
-            <label for="name" class="control-label col-xs-2">検索する名前を入力</label>
-            <div class="col-xs-5">
-              <input type="text" class="form-control" id="name" name="name" placeholder="your name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="number" class="control-label col-xs-2">選択してください</label>
-            <div class="col-xs-3">
-              <select class="form-control" id="number" name="number">
-                <option value="1">ユーザー名</option>
-                <option value="2" selected="selected">商品名</option>
-                <option value="3">発送済みのものでかつユーザー名で検索</option>
-                <option value="3">発送済みのものでかつ商品名で検索</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-xs-offset-2 col-xs-10">
-              <button type="submit" class="btn btn-primary">検索</button>
-            </div>
-          </div>
-        </form>
+        
+        <div class="col-md-6 col-xs-6 search-box">
+          <div class="input-group">
+            <%= form_tag cds_path, :method => 'get' do %>
+              <%= text_field_tag :search, '', class: 'form-control' %>
+              <span class="input-group-btn">
+                <%= button_tag( class: "btn btn-default") do %>
+              <%= content_tag :span, " ", class: "glyphicon glyphicon-search", :name => nil %>
+              <% end %>
+            </span>
+            <% end %>
+        </div><!-- /input-group -->
+        </div>
         <!-- 後でラインを追加 -->
         <table class="table table-condensed">
           <thead>
