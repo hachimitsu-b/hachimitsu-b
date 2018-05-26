@@ -17,3 +17,11 @@ class User < ApplicationRecord
 	# 電話番号
 	validates :phone_number, presence: true, length: { in: 10..14 }
 end
+
+	def self.search(word)
+		if word
+			User.where(['name LIKE ?', "%#{word}%"])
+		else
+			nil
+		end
+	end
