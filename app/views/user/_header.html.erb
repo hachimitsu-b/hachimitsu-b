@@ -7,12 +7,14 @@
 		    <div class="col-md-6 col-xs-6 search-box">
 		    	<div class="input-group">
 		    		<%= form_tag cds_path, :method => 'get' do %>
-		    			<%= text_field_tag :search, placeholder="商品名やアーティスト名で検索" %>
-		    			<%= button_tag( class: "btn btn-default") do %>
-						  <%= content_tag :span, " ", class: "glyphicon glyphicon-search", :name => nil %>
-						<% end %>
+		    			<%= text_field_tag :search, '', class: 'form-control' %>
+		    			<span class="input-group-btn">
+		    				<%= button_tag( class: "btn btn-default") do %>
+							<%= content_tag :span, " ", class: "glyphicon glyphicon-search", :name => nil %>
+							<% end %>
+						</span>
 		    		<% end %>
-				</div>
+				</div><!-- /input-group -->
 		    </div>
 			<% if user_signed_in? %>
 				<div class="col-md-2 col-xs-1 user-login-name">ようこそ<%= @user.name_kanji %> 様</div>

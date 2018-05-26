@@ -20,6 +20,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* 検索フォーム装飾 */
+#search{
+	display: inline-block;
+	width: 400px;
+}
+.form-control{
+	width: 400px;
+}
 
 /*---------------------------------------------------------------------
 	共通CSS
@@ -159,7 +167,6 @@ footer p{
 -----------------------------------------------------------------------*/
 .login-box{
 	width: 400px;
-	height: 320px;
 	border: 1px solid #CCCCCC;
 	border-radius: 4px;        /* CSS3草案 */
     -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
@@ -208,7 +215,6 @@ input[type="submit"] {
 -----------------------------------------------------------------------*/
 .signin-box{
 	width: 400px;
-	height: 830px;
 	margin:0 auto;
 	border: 1px solid #CCCCCC;
 	border-radius: 4px;        /* CSS3草案 */
@@ -323,13 +329,14 @@ input[type="password"] {
 .artists-name{
 	color: #4597F5;
 	font-size: 16px;
+	margin-bottom: 0;
 	word-break: break-all;	/* 文字を改行させる */
 }
 .titile-name{
 	width: 150px;
 	font-weight: bold;
 	font-size: 18px;
-	padding-bottom: 3px;
+	margin-bottom: 0;
 	word-break: break-all;	/* 文字を改行させる */
 }
 /* cdの表示の箱 */
