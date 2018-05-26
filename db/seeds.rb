@@ -143,7 +143,7 @@ end
 									bought: 15 + n,
 									display: true,
 									introduction: "テストテストテストテストテストテストテストテストテストテ
-																ストテストテストテストテストテストテスト")
+			 													ストテストテストテストテストテストテスト")
 
 	album = Album.create(name: "test_album" + cd.name,
 												cd_id: cd.id,

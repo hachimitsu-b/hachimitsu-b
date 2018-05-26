@@ -17,7 +17,7 @@ class Cd < ApplicationRecord
 
 	# バリデーション
 	# 空の保存を制限
-	validates :name, :single_album, :price, :stock, :display, :release_date, presence: true
+	validates :name, :price, :stock, :display, :release_date, presence: true
 
 	def self.search(word)
 		if word
