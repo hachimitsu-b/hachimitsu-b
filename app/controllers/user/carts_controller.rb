@@ -34,19 +34,6 @@ class User::CartsController < ApplicationController
     @cart = @user.carts.find_by(status_flag: 0)
   end
 
-  def buy_cds_update
-    @cart = @user.carts.find_by(status_flag: 0)
-    @cart.update(buy_cds_update_params)
-
-    case params[:id]
-      when "2"
-        redirect_to #test
-      when "3"
-        redirect_to
-      when "4"
-      redirect_to #test
-    end
-  end
 
   # カートの購入処理をする
   def create
@@ -69,6 +56,15 @@ class User::CartsController < ApplicationController
     # 購入処理
     @cart.item_in_carts.create(price: @cd.price, cd_id: @cd.id, count: 1)
     redirect_to user_path(@user.id)
+  end
+
+  # カート内の商品の個数をajaxで変更
+  def count_update
+    @user = User.find(current_user.id)
+    @cart = Cart.find_by(status_flag: 0, user_id: current_user.id)
+    item_in_cart = @cart.item_in_carts.find_by(cd_id: params[:cd_id])
+    item_in_cart.count = params[:count].to_i
+    item_in_cart.save
   end
 
   # def お支払い方法

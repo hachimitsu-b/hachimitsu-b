@@ -553,6 +553,23 @@ h5{
     padding: 10px 0;
 }
 
+// ajax後のメッセージ
+.add-flash {
+	background-color: #e0ffff;
+	padding: 5px;
+	border-radius: 2px;
+}
+
+.count-select-dropdown {
+	text-align: center !important;
+	min-width: auto !important;
+}
+
+.count-select-text{
+	width: 50px;
+	margin: 0;
+}
+
 /*---------------------------------------------------------------------
 	新規登録編集画面
 -----------------------------------------------------------------------*/
