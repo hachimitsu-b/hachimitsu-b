@@ -12,7 +12,16 @@ class User::CdsController < ApplicationController
   end
 
   def index
-    @cd = Cd.all
+    # 最新のシングルを取得
+    @new_single_cds = Cd.where('release_day < ? and single_album = true', Time.now).last(6)
+    # 最新のアルバムを取得
+    @new_album_cds = Cd.where('release_day < ? and single_album = false', Time.now).last(6)
+    # 1週間で発売されたシングルを取得
+    new_single_rank = Cd.where('release_day < ? and release_day > ? and single_album = true', Time.now, Time.now.ago(7.days))
+    @most_singles = new_single_rank.first(3)
+    new_single_rank.each do |single|
+
+    end
     @cds = Cd.search(params[:search])
   end
 

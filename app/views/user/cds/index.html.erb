@@ -106,7 +106,7 @@
 	</div><!-- /.clearfix -->
 	<h2>NEW シングル</h2>
 	<div class="cd-box-container clearfix">
-		<% @cd.first(6).each do |cd| %>
+		<% @new_single_cds.each do |cd| %>
 			<div class="cd-con">
 				<div class="cd-box">
 					<%= link_to(cd_path(cd.id)) do %>
@@ -130,7 +130,7 @@
 	</div><!-- /.cd-box-container -->
 	<h2>NEW アルバム</h2>
 	<div class="cd-box-container clearfix">
-		<% @cd.first(6).each do |cd| %>
+		<% @new_album_cds.each do |cd| %>
 			<div class="cd-con">
 				<div class="cd-box">
 					<%= link_to(cd_path(cd.id)) do %>
