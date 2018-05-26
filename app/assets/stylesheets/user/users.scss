@@ -20,6 +20,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* 検索フォーム装飾 */
+#search{
+	display: inline-block;
+	width: 400px;
+}
+.form-control{
+	width: 400px;
+}
 
 /*---------------------------------------------------------------------
 	共通CSS
@@ -52,9 +60,9 @@ a:hover{text-decoration:none !important;}
 	color: #333333;
 }
 /* フォントサイズ */
-.fs12{
-	font-size: 12px;
-}
+.fs12{font-size: 12px;}
+.fs14{font-size: 14px;}
+.fs16{font-size: 16px;}
 /* テキスト位置 */
 .tac{text-align: center;}
 /* マージン */
@@ -125,6 +133,14 @@ h1{
 	color: #E0001A;
 	word-break: break-all;	/* 文字を改行させる */
 }
+/* サーチのテキスト入力部分 */
+.search-txt{
+	width: 300px;
+}
+/* サーチボタン */
+.search-icon{
+	border: 1px solid #333333;
+}
 /* ログインページなどの簡易header */
 #header{
 	background-color:  #F5A623;
@@ -151,7 +167,6 @@ footer p{
 -----------------------------------------------------------------------*/
 .login-box{
 	width: 400px;
-	height: 320px;
 	border: 1px solid #CCCCCC;
 	border-radius: 4px;        /* CSS3草案 */
     -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
@@ -200,7 +215,6 @@ input[type="submit"] {
 -----------------------------------------------------------------------*/
 .signin-box{
 	width: 400px;
-	height: 830px;
 	margin:0 auto;
 	border: 1px solid #CCCCCC;
 	border-radius: 4px;        /* CSS3草案 */
@@ -226,6 +240,9 @@ input[type="password"] {
     -moz-border-radius: 4px;   /* Firefox用 */
     padding: 5px;
     margin-bottom:30px;
+}
+#error_explanation ul li{
+	word-wrap: break-word;
 }
 
 /*---------------------------------------------------------------------
@@ -315,13 +332,14 @@ input[type="password"] {
 .artists-name{
 	color: #4597F5;
 	font-size: 16px;
+	margin-bottom: 0;
 	word-break: break-all;	/* 文字を改行させる */
 }
 .titile-name{
 	width: 150px;
 	font-weight: bold;
 	font-size: 18px;
-	padding-bottom: 3px;
+	margin-bottom: 0;
 	word-break: break-all;	/* 文字を改行させる */
 }
 /* cdの表示の箱 */
@@ -882,10 +900,6 @@ ol {
 	padding: 0 0 20px 0;
 	border-bottom: 1px solid #999999;
 }
-.radio-box{
-	float: right;
-	margin-right: 400px;
-}
 .acceptance-table{
 	width: 1200px;
 	margin-bottom: 50px;
@@ -945,11 +959,16 @@ ol {
 .form-edit-buy{
 	width: 350px !important;
 }
+/* ラジオボタンのクラス */
+.box-w500{
+	float: left;
+	width: 500px;
+}
 /* 受け取りボタンJQUERYのクラス */
-.acceptance-table {
+.radio-cheackbox {
   display: none;
 }
-.acceptance-table01 {
+.radio-cheackbox01 {
   display: block;
 }
 
