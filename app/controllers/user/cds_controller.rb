@@ -37,6 +37,11 @@ class User::CdsController < ApplicationController
     @cds = Cd.search(params[:search])
   end
 
+
+  def search
+
+  end
+
   private
 
     def  cd_params

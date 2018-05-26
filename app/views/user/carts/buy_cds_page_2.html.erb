@@ -39,9 +39,10 @@
 			</div>
 		</div><!-- /.clearfix -->
 		<div class="acceptance-box-title mb30">代金引換ご利用の方</div>
-		<%= form_for(@user, url: cart_buy_page_3_path(@user), html: {method: 'POST'}) do |f| %>
+		<%= form_for(@cart, url: cart_buy_page_3_path(@user), html: {method: 'POST'}) do |f| %>
 			<div class="radio-cheackbox01">
 				<p class="mb30 fs14">代引き手数料が別途かかります。</p>
+				<%= f.hidden_field :payment,value: 0 %>
 				<div class="acceptance-btn-box2 clearfix">
 					<div class="fl">
 						<%= link_to(user_path(current_user)) do %>
@@ -54,14 +55,14 @@
 				</div><!-- /.clearfix -->
 			</div><!-- /.radio-cheackbox -->
 		<% end %>
-		<%= form_for(@user, url: cart_buy_page_3_path(@user), html: {method: 'POST'}) do |f| %>
+		<%= form_for(@cart, url: cart_buy_page_3_path(@user), html: {method: 'POST'}) do |f| %>
 			<div class="radio-cheackbox">
 				<table class="acceptance-table clearfix">
 					<tr class="table-line">
 						<th class="table-txt">クレジットカード番号</th>
 						<th class="acceptance-box-form">
 							<div class="input-group">
-								<%= f.text_field :name_kanji %>
+								<%= f.text_field :to_name,value: @user.name_kanji %>
 							</div>
 						</th>
 					</tr>
@@ -69,7 +70,7 @@
 						<th class="table-txt">カードに記載のお名前</th>
 						<th class="acceptance-box-form">
 							<div class="input-group">
-								<%= f.text_field :name_kana %>
+								<%= f.text_field :to_name,value: @user.name_kanji %>
 							</div>
 						</th>
 					</tr>
@@ -126,7 +127,7 @@
 						<th class="table-txt">セキュリティーコード</th>
 						<th class="acceptance-box-form">
 							<div class="input-group">
-								<%= f.text_field :name_kana%>
+								<%= f.text_field :to_name,value: @user.name_kanji %>
 							</div>
 						</th>
 					</tr>
