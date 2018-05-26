@@ -72,11 +72,19 @@ class User::CartsController < ApplicationController
 
   # カート内の商品の個数をajaxで変更
   def count_update
+    cd = Cd.find_by(id: params[:cd_id])
     @user = User.find(current_user.id)
     @cart = Cart.find_by(status_flag: 0, user_id: current_user.id)
-    item_in_cart = @cart.item_in_carts.find_by(cd_id: params[:cd_id])
-    item_in_cart.count = params[:count].to_i
-    item_in_cart.save
+    item = @cart.item_in_carts.find_by(cd_id: params[:cd_id])
+
+    if params[:count].to_i <= item.count
+      cd.stock += (item.count - params[:count].to_i)
+    else
+      cd.stock -= (params[:count].to_i - item.count)
+    end
+    cd.save
+    item.count = params[:count].to_i
+    item.save
   end
 
   # def お支払い方法
@@ -87,8 +95,11 @@ class User::CartsController < ApplicationController
   def destroy
     user = User.find_by(id: current_user.id)
     cart = user.carts.find_by(status_flag: 0)
-    cd = cart.item_in_carts.find_by(cd_id: params[:id])
-    cd.delete
+    item = cart.item_in_carts.find_by(cd_id: params[:id])
+    cd = Cd.find(params[:id])
+    cd.stock += item.count
+    cd.save
+    item.delete
     redirect_to user_path(user.id)
   end
 

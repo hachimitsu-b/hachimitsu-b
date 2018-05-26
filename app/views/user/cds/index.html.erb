@@ -152,6 +152,33 @@
 			</div>
 		<% end %>
 	</div><!-- /.cd-box-container -->
+
+	<div><!-- /.clearfix -->
+		<% @type_names.each do |type| %>
+			<h2><%= type.name %></h2>
+			<div class="cd-box-container clearfix">
+				<% type.cds.each do |cd| %>
+					<div class="cd-con">
+						<%= link_to(cd_path(cd.id)) do %>
+							<% if cd.jacket_id.present? %>
+								<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
+								<% else %>
+									<%= image_tag 'no-image150.jpg', size: '150x150' %>
+							<% end %>
+						<% end %>
+						<%= link_to cart_path(cd.id), method: :patch do %>
+							<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
+						<% end %>
+						<%= link_to(cd_path(cd.id)) do %>
+							<div class="titile-name"><%= cd.name %></div>
+						<% end %>
+						<div class="artists-name"><%= cd.artist.name %></div>
+						<p class="price">値段 ｜ <%= cd.price %>円</p>
+					</div>
+				<% end %>
+			</div><!-- /.cd-box-container -->
+		<% end %>
+	</div>
 </div><!-- /.container -->
 
 <%= render 'user/footer' %>

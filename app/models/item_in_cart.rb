@@ -5,4 +5,9 @@ class ItemInCart < ApplicationRecord
 	# バリデーション
 	# 空の保存を制限
 	validates :count, :price, presence: true
+
+	def total_price
+		total = count * price
+		total
+	end
 end

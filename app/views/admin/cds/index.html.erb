@@ -6,7 +6,7 @@
 			<%= link_to '新規商品を追加する場合はこちらをクリック', new_admin_cd_path ,class: "btn btn-primary btn-lg active btncolor new-product"%>
 				<div class="cd-box-container clearfix">
 					<% @cds.each do |cd| %>
-						<%= link_to(admin_cd_path(1)) do %>
+						<%= link_to(admin_cd_path(cd.id)) do %>
 							<div class="cd-con">
 								<% if cd.jacket_id.present? %>
 									<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
