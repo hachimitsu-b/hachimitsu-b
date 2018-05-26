@@ -29,7 +29,10 @@ class Admin::GenresController < ApplicationController
   def seach
     if params[:seach].present?
       seach_val = params[:seach]
-      @genres = Genre.where("name LIKE ?", "%#{seach_val}%")
+      @genres = Genre.where("name_kana LIKE ?", "%#{seach_val}%")
+      render :json => @genres
+    else
+      @genres = Genre.last(10)
       render :json => @genres
     end
   end

@@ -29,7 +29,10 @@ class Admin::LabelsController < ApplicationController
   def seach
     if params[:seach].present?
       seach_val = params[:seach]
-      @labels = Label.where("name LIKE ?", "%#{seach_val}%")
+      @labels = Label.where("name_kana LIKE ?", "%#{seach_val}%")
+      render :json => @labels
+    else
+      @labels = Label.last(5)
       render :json => @labels
     end
   end

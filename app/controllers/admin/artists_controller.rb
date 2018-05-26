@@ -29,7 +29,10 @@ class Admin::ArtistsController < ApplicationController
   def seach
     if params[:seach].present?
       seach_val = params[:seach]
-      @artists = Artist.where("name LIKE ?", "%#{seach_val}%")
+      @artists = Artist.where("name_kana LIKE ?", "%#{seach_val}%")
+      render :json => @artists
+    else
+      @artists = Artist.last(5)
       render :json => @artists
     end
   end

@@ -68,7 +68,7 @@
 									<%= image_tag 'no-image150.jpg', size: '150x150' %>
 							<% end %>
 						<% end %>
-						<%= link_to(admin_recommend_path(cd.recommends.find_by(recommend_type: type.id).id), method: :delete) do %>
+						<%= link_to(admin_recommend_path(cd.recommends.find_by(recommend_type: type.id).id), method: :delete, data: {confirm: "#{type.name}からこのCDを削除しますか？"}) do %>
 							<div class="cart-btn mb5" style="background-color: #d9534f;">帯からCDを削除</div>
 						<% end %>
 						<%= link_to(admin_cd_path(cd.id)) do %>
