@@ -75,7 +75,7 @@
 			<!-- 検索フォーム -->
 			<div class="object-seach-form">
 				<%= form_tag("#") do %>
-					<%= text_field_tag :seach, "", placeholder: "#{object_name}を検索", class: "form-control form-seach-field" %>
+					<%= text_field_tag :seach, "", placeholder: "#{object_name}を検索(カタカナ)", class: "form-control form-seach-field" %>
 					<span class="btn btn-primary form-seach form-seach-btn-object">検索</span>
 				<% end %>
 			</div>
@@ -113,7 +113,8 @@
 										+			'</a>'
 													// <!-- 削除ボタン -->
 										+			'<a href="/admin/cds/<%= object_name_eng.downcase + "s" %>/' + data[i].id + '" data-method="delete">'
-										+			'<span class="btn btn-danger">削除</span>'
+										+				'<span class="btn btn-danger">削除</span>'
+										+			'</a>'
 										+		'</th>'
 										+	'</tr>';
 					$('#cd-seach').append( input );

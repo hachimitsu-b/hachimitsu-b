@@ -46,13 +46,16 @@
 							<div class="clearfix cd-num" style="margin-right: 0px;">
 								<div class="cd-number-text"><p>個数:</p></div>
 								<div class="btn-group fl" role="group" style="margin-right: 0px;">
-									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-										1
+									<button type="button" class="btn btn-default dropdown-toggle" data-cd_id="<%= cd.id %>" data-toggle="dropdown" aria-expanded="false">
+										<%= @cart.item_in_carts.find_by(cd_id: cd.id).count %>
 										<span class="caret"></span>
 									</button>
-									<ul class="dropdown-menu" role="menu">
-										<li>１</li>
-										<li>２</li>
+									<ul class="dropdown-menu count-select-dropdown" role="menu" >
+										<li class="cd-count-btn count-select-text">1</li>
+										<li class="cd-count-btn count-select-text">2</li>
+										<li class="cd-count-btn count-select-text">3</li>
+										<li class="cd-count-btn count-select-text">4</li>
+										<li class="cd-count-btn count-select-text">5</li>
 									</ul>
 								</div>
 							</div><!-- /.clearfix -->
@@ -71,14 +74,40 @@
 			</div>
 			<div class="mb15">
 				<%= link_to cart_buy_page_1_path do %>
-					<div class="purchase-move-btn">購入手続きへ進む  ></div>
+					<div class="purchase-shopping-btn mb15">購入手続きへ進む  ></div>
+				<% end %>
+				<%= link_to cds_path do %>
+					<div class="purchase-move-btn">お買い物を続ける</div>
 				<% end %>
 			</div>
-			<%= link_to(cds_path) do %>
-				<div class="purchase-shopping-btn">お買い物を続ける  ></div>
-			<% end %>
 		</div>
 	</div><!-- /.clearfix -->
 </div><!-- /.container -->
 
 <%= render 'user/footer' %>
+
+
+<script>
+	$(document).on('click', '.cd-count-btn', function(){
+		var count = $(this).text();
+		var cd_id = $(this).parent().parent().find('button').data('cd_id');
+		$(this).parent().parent().find('button').text(count);
+		$.ajax({
+			url: '<%= cart_count_path %>',
+			type: 'POST',
+			data: {
+				count: count,
+				cd_id: cd_id
+			}
+		}).done((data) => {
+			var input = $('<p class="add-flash add-flash-' + cd_id + '">保存しました</p>').hide().fadeIn(500)
+			$(this).parent().parent().parent().prepend(input);
+			// メッセージ削除のfunction
+			setTimeout(function(){
+				$('.add-flash-' + cd_id).fadeOut(500);
+			}, 3000); // 三秒後にメッセージ削除
+		})
+	})
+
+
+</script>

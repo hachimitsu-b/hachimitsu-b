@@ -12,7 +12,7 @@ class Users::SessionsController < Devise::SessionsController
   # 論理削除を判別
   def create
     user = User.find_by(email: params[:user][:email])
-    if user && user.delete_flag == 1
+    if user && user.delete_flag == 1 || user && user.delete_flag == 2
       sign_out(current_user)
       redirect_to cds_path
     else

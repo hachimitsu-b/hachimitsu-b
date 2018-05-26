@@ -13,6 +13,9 @@
 					<p class="price3-txt"><span>価格</span>(税込)</p>
 					<p class="price3"><%= @cd.price %>円</span></p>
 					<div class="cart-btn2 mb5"><%= link_to '商品編集', edit_admin_cd_path %></div>
+					<div class="cart-btn2 mb5" style="background-color: #d9534f;">
+						<%= link_to '商品を削除', admin_cd_path(@cd.id), data: {confirm: "本当に削除しますか？(ユーザーに購入されている場合は非表示設定に変更)"}, method: :delete %>
+					</div>
 					<p class="stock-txt"><p class="padding-zaiko"><font size="5">在庫数<%= @cd.stock %></p></p></font>
 					<p class="stock-txt2"><span>こちらの商品は</span><%= @cd.bought %><span>個買われています</span></p>
 					<p class="stock-txt2-note">

@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 # # TOP画面
  root 'user/cds#index'
 
+	# 検索ページ
+	# get 'users/cds#seach'
+
+
 
   # 管理者側のpath
   devise_for :admins, controllers: {
@@ -28,7 +32,8 @@ Rails.application.routes.draw do
 		# 退会手続き
 		# destroy
 		resources :carts, only: [:create, :index, :edit, :update, :destroy]
-		post '/cart/buy/page/1' => 'carts#buy_cds_page_1'
+		get '/cart/buy/page/1' => 'carts#buy_cds_page_1'
+		post '/cart/count'	=> 'carts#count_update', as: 'cart_count'
 		post '/cart/buy/page/2' => 'carts#buy_cds_page_2'
 		post '/cart/buy/page/3' => 'carts#buy_cds_page_3'
 		post '/cart/buy/page/4' => 'carts#buy_cds_page_4'
@@ -36,7 +41,7 @@ Rails.application.routes.draw do
 		post 'cart/buy/:id' => 'carts#buy_cds_update'
 		# 支払い方法選択
 		# post ''
-		resources :cds, only: [:show, :index]
+		resources :cds, only: [:show, :index,]
 	end
 
 
@@ -45,6 +50,7 @@ Rails.application.routes.draw do
 	namespace :admin do
 		resources :carts, only: [:index]
 		resources :cds
+		post 'cd/seach' => 'cds#seach'
 		resources :users, only: [:index, :show, :edit, :update, :destroy]
 		resources :artists, only: [:index, :create, :edit, :update, :destroy]
 		post 'artist/seach' => 'artists#seach'
@@ -54,7 +60,7 @@ Rails.application.routes.draw do
 		post 'label/seach' => 'labels#seach'
 		resources :type_names, only: [:index, :create, :edit, :update, :destroy]
 		post 'type_name/seach' => 'type_names#seach'
-		resources :recommends, only: [:index, :create, :edit, :update, :destroy]
+		resources :recommends, only: [:index, :create, :destroy]
 
 
 		get 'users/:id', to: 'users#show', as: 'user_show'

@@ -27,65 +27,113 @@
 	<div class="acceptance-box">
 		<div class="acceptance-box-title">お届け方法を指定してください。</div>
 		<div class="clearfix mb50">
-			<div class="fl">
+			<div class="box-w500">
 				<div class="radio">
-	  				<label><input type="radio" name="radio" id="radio1" value="radio1"> 会員登録先住所</label>
+	  				<label><input type="radio" name="btn" id="radio1" value="radio1"> 会員登録先住所</label>
 				</div>
 			</div>
-			<div class="radio-box">
+			<div class="fl">
 				<div class="radio">
-	  				<label><input type="radio" name="radio" id="radio1" value="radio1"> 新しいお届け先</label>
+	  				<label><input type="radio" name="btn" id="radio2" value="radio1"> 新しいお届け先</label>
 				</div>
 			</div>
 		</div><!-- /.clearfix -->
 		<div class="acceptance-box-title mb30">お届け先を入力してください。</div>
-		<%= form_for(cart_buy_page_2(@user), html: {method: 'POST'} ) do |f| %>
-			<table class="acceptance-table clearfix">
-				<tr class="table-line">
-					<th class="table-txt">お名前</th>
-					<th class="acceptance-box-form">
-						<div class="input-group">
-							  <%= f.text_field :name_kanji %>
-						</div>
-					</th>
-				</tr>
-				<tr class="table-line">
-					<th class="table-txt">郵便番号</th>
-					<th class="acceptance-box-form">
-						<div class="input-group">
-							  <%= f.text_field :postcode %>
-						</div>
-					</th>
-				</tr>
-				<tr class="table-line">
-					<th class="table-txt">住所</th>
-					<th class="acceptance-box-form">
-						<div class="input-group">
-							  <%= f.text_field :street_address %>
-						</div>
-					</th>
-				</tr>
-				<tr class="table-line">
-					<th class="table-txt">電話番号</th>
-					<th class="acceptance-box-form">
-						<div class="input-group">
-							  <%= f.text_field :phone_number %>
-						</div>
-					</th>
-				</tr>
-			</table>
-			<div class="acceptance-btn-box2 clearfix">
-				<div class="fl">
-					<%= link_to(user_path(current_user)) do %>
-						<div class="form-back-btn">< 戻る</div>
-					<% end %>
-				</div>
-				<div class="fr">
-					<%= f.submit("お支払い方法 >", class:"acceptance-btn") %>
-				</div>
-			</div><!-- /.clearfix -->
+		<%= form_for(@cart, url: cart_buy_page_2_path(@user), html: {method: 'POST'}) do |f| %>
+			<div class="radio-cheackbox01">
+				<table class="acceptance-table clearfix">
+					<tr class="table-line">
+						<th class="table-txt">お名前</th>
+						<th class="acceptance-box-form">
+							<div class="input-group">
+								  <%= f.text_field :to_name,value: @user.name_kanji %>
+							</div>
+						</th>
+					</tr>
+					<tr class="table-line">
+						<th class="table-txt">郵便番号</th>
+						<th class="acceptance-box-form">
+							<div class="input-group">
+								  <%= f.text_field :to_postcode,value: @user.postcode %>
+							</div>
+						</th>
+					</tr>
+					<tr class="table-line">
+						<th class="table-txt">住所</th>
+						<th class="acceptance-box-form">
+							<div class="input-group">
+								  <%= f.text_field :to_street_address,value: @user.street_address %>
+							</div>
+						</th>
+					</tr>
+				</table>
+				<div class="acceptance-btn-box2 clearfix">
+					<div class="fl">
+						<%= link_to(user_path(current_user)) do %>
+							<div class="form-back-btn">< 戻る</div>
+						<% end %>
+					</div>
+					<div class="fr">
+						<%= f.submit("お支払い方法 >", class:"acceptance-btn") %>
+					</div>
+				</div><!-- /.clearfix -->
+			</div><!-- /.radio-box -->
+		<% end %>
+		<%= form_for(@cart, url: cart_buy_page_2_path(@user), html: {method: 'POST'}) do |f| %>
+			<div class="radio-cheackbox">
+				<table class="acceptance-table clearfix">
+					<tr class="table-line">
+						<th class="table-txt">お名前</th>
+						<th class="acceptance-box-form">
+							<div class="input-group">
+								  <%= f.text_field :to_name %>
+							</div>
+						</th>
+					</tr>
+					<tr class="table-line">
+						<th class="table-txt">郵便番号</th>
+						<th class="acceptance-box-form">
+							<div class="input-group">
+								  <%= f.text_field :to_postcode %>
+							</div>
+						</th>
+					</tr>
+					<tr class="table-line">
+						<th class="table-txt">住所</th>
+						<th class="acceptance-box-form">
+							<div class="input-group">
+								  <%= f.text_field :to_street_address %>
+							</div>
+						</th>
+					</tr>
+				</table>
+				<div class="acceptance-btn-box2 clearfix">
+					<div class="fl">
+						<%= link_to(user_path(current_user)) do %>
+							<div class="form-back-btn">< 戻る</div>
+						<% end %>
+					</div>
+					<div class="fr">
+						<%= f.submit("お支払い方法 >", class:"acceptance-btn") %>
+					</div>
+				</div><!-- /.clearfix -->
+			</div><!-- /.radio-cheackbox -->
 		<% end %>
 	</div>
 </div><!-- /.container -->
 
 <%= render 'user/footer' %>
+
+<script>
+	$(function() {
+	  $('[name="btn"]:radio').change( function() {
+	    if($('[id=radio1]').prop('checked')){
+	      $('.radio-cheackbox').fadeOut();
+	      $('.radio-cheackbox01').fadeIn();
+	    } else if ($('[id=radio2]').prop('checked')) {
+	      $('.radio-cheackbox01').fadeOut();
+	      $('.radio-cheackbox').fadeIn();
+	    }
+	  });
+	});
+</script>

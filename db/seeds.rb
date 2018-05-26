@@ -29,15 +29,18 @@ user = User.find(1)
 user.carts.create(status_flag: 0)
 user.carts.create(status_flag: 1)
 
-cart = user.carts.first
+cart = user.carts.find_by(status_flag: 0)
 cart.item_in_carts.create(cd_id: 1,
 												 count: 2,
 												 price: 1000)
 
-cart = user.carts.last
-cart.item_in_carts.create(cd_id: 3,
-												 count: 3,
-												 price: 500)
+cart = user.carts.find_by(status_flag: 1)
+3.times do |n|
+	cart.item_in_carts.create(cd_id: n,
+													 count: 3,
+													 price: 500)
+end
+
 
 
 # アーティストを作成
@@ -140,7 +143,7 @@ end
 									bought: 15 + n,
 									display: true,
 									introduction: "テストテストテストテストテストテストテストテストテストテ
-																ストテストテストテストテストテストテスト")
+			 													ストテストテストテストテストテストテスト")
 
 	album = Album.create(name: "test_album" + cd.name,
 												cd_id: cd.id,

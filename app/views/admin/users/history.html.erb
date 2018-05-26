@@ -1,19 +1,53 @@
-
 <%= render 'layouts/admins_header' %>
 <div class="container">
-	<h1>購入履歴</h1>
+	<font size="7">購入履歴</font>
+	<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>購入価格総計</th>
+      </tr>
+    </thead>
+		<tbody>
+		  <tr>
+		      <td>大槻 寿夫</td>
+		      <td>100000090円</td>
+        </tr>
+		</tbody>
+  </table>
 	<div class="cd-box-container clearfix">
-	<% binding.pry>
-		<% @cart.each do |cart| %>
-			<% cart.cds.each do |cd|%>
 				<div class="cd-con">
-					<div class="cd-box">CD</div>
-					<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-					<p class="titile-artists" style="margin-bottom: 0;"><span><%= cd.name %></span><br><%= cd.artist.name %></p>
-					<p class="price">値段 ｜ <%= cd.price %>円</p>
-					<p><%= link_to '詳細', admin_cd_path(1) ,class: "btn btn-primary btn-lg active btncolor"%></p>
-				</div>
-			<% end %>
-		<% end %>
+					<div class="cd-box"><%= image_tag 'no-image150.jpg', size: '150x150' %></div>
+					<p class="admin-t-a-name" style="margin-bottom: 0;">
+									<span>嵐</span>
+									<br>あらーし
+								</p>
+								<p class="price">値段 ｜ ２億円</p>
+								</p>
+								<p class="price">発送日 ｜ １２月１２日</p>
+								</p>
+								<p class="price">購入枚数 ｜ 100枚</p>
+								</p>
+								<p class="price">小計 ｜ 200億円</p>
+								</p>
+								<p class="price">ステータス ｜ 準備中</p>
+							</div>
+
+							<div class="cd-con">
+					<div class="cd-box"><%= image_tag 'no-image150.jpg', size: '150x150' %></div>
+					<p class="admin-t-a-name" style="margin-bottom: 0;">
+									<span>AKB</span>
+									<br>エーケービー
+								</p>
+								<p class="price">値段 ｜ ２億円</p>
+								</p>
+								<p class="price">発送日 ｜ １２月１２日</p>
+							</p>
+								<p class="price">購入枚数 ｜ 100枚</p>
+								</p>
+								<p class="price">小計 ｜ 200億円</p>
+								</p>
+								<p class="price">ステータス ｜発送済み</p>
+							</div>
 	</div><!-- /.clearfix -->
-</div><!-- /.container -->
+</div><!-- /.c
