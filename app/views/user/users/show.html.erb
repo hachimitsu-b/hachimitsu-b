@@ -47,15 +47,20 @@
 								<div class="cd-number-text"><p>個数:</p></div>
 								<div class="btn-group fl" role="group" style="margin-right: 0px;">
 									<button type="button" class="btn btn-default dropdown-toggle" data-cd_id="<%= cd.id %>" data-toggle="dropdown" aria-expanded="false">
-										<%= @cart.item_in_carts.find_by(cd_id: cd.id).count %>
+										<span class="now-count-<%=  cd.id%>"><%= @cart.item_in_carts.find_by(cd_id: cd.id).count %>
 										<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu count-select-dropdown" role="menu" >
-										<li class="cd-count-btn count-select-text">1</li>
-										<li class="cd-count-btn count-select-text">2</li>
-										<li class="cd-count-btn count-select-text">3</li>
-										<li class="cd-count-btn count-select-text">4</li>
-										<li class="cd-count-btn count-select-text">5</li>
+
+									<% if cd.stock <= 0 %>
+										<li class="cd-count-btn count-select-text">０</li>
+									<% else %>
+										<% cd.stock.times do |n| %>
+										<% n += 1 %>
+											<li class="cd-count-btn count-select-text"><%= n %></li>
+										<% end %>
+									<% end %>
+
 									</ul>
 								</div>
 							</div><!-- /.clearfix -->
@@ -91,12 +96,14 @@
 	$(document).on('click', '.cd-count-btn', function(){
 		var count = $(this).text();
 		var cd_id = $(this).parent().parent().find('button').data('cd_id');
+		var now_count = $('.now_count-' + cd_id ).text();
 		$(this).parent().parent().find('button').text(count);
 		$.ajax({
 			url: '<%= cart_count_path %>',
 			type: 'POST',
 			data: {
 				count: count,
+				now_count: now_count,
 				cd_id: cd_id
 			}
 		}).done((data) => {

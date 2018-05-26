@@ -36,7 +36,7 @@ cart.item_in_carts.create(cd_id: 1,
 
 cart = user.carts.find_by(status_flag: 1)
 3.times do |n|
-	cart.item_in_carts.create(cd_id: n,
+	cart.item_in_carts.create(cd_id: n + 1,
 													 count: 3,
 													 price: 500)
 end

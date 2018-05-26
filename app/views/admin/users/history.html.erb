@@ -1,53 +1,45 @@
 <%= render 'layouts/admins_header' %>
 <div class="container">
 	<font size="7">購入履歴</font>
-	<table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>名前</th>
-        <th>購入価格総計</th>
-      </tr>
-    </thead>
-		<tbody>
-		  <tr>
-		      <td>大槻 寿夫</td>
-		      <td>100000090円</td>
-        </tr>
-		</tbody>
-  </table>
-	<div class="cd-box-container clearfix">
+	<% @carts.each do |cart| %>
+		<table class="table table-bordered">
+	    <thead>
+	      <tr>
+	        <th>名前</th>
+	        <th>購入価格総計</th>
+	        <th>ステータス</th>
+	      </tr>
+	    </thead>
+			<tbody>
+			  <tr>
+		      <th><%= cart.user.name_kanji %></th>
+		      <th><%= cart.total_price %>円</th>
+		      <th>
+		      	<% if cart.status_flag == 0 %>
+		      		買い物中
+		      	<% elsif cart.status_flag == 1 %>
+		      		未発送
+		      	<% elsif cart.status_flag == 2 %>
+		      		発送済み
+		      	<% end %>
+			     </th>
+	       </tr>
+			</tbody>
+	  </table>
+		<div class="cd-box-container clearfix">
+			<% cart.item_in_carts.each do |item| %>
 				<div class="cd-con">
 					<div class="cd-box"><%= image_tag 'no-image150.jpg', size: '150x150' %></div>
-					<p class="admin-t-a-name" style="margin-bottom: 0;">
-									<span>嵐</span>
-									<br>あらーし
-								</p>
-								<p class="price">値段 ｜ ２億円</p>
-								</p>
-								<p class="price">発送日 ｜ １２月１２日</p>
-								</p>
-								<p class="price">購入枚数 ｜ 100枚</p>
-								</p>
-								<p class="price">小計 ｜ 200億円</p>
-								</p>
-								<p class="price">ステータス ｜ 準備中</p>
-							</div>
-
-							<div class="cd-con">
-					<div class="cd-box"><%= image_tag 'no-image150.jpg', size: '150x150' %></div>
-					<p class="admin-t-a-name" style="margin-bottom: 0;">
-									<span>AKB</span>
-									<br>エーケービー
-								</p>
-								<p class="price">値段 ｜ ２億円</p>
-								</p>
-								<p class="price">発送日 ｜ １２月１２日</p>
-							</p>
-								<p class="price">購入枚数 ｜ 100枚</p>
-								</p>
-								<p class="price">小計 ｜ 200億円</p>
-								</p>
-								<p class="price">ステータス ｜発送済み</p>
-							</div>
-	</div><!-- /.clearfix -->
-</div><!-- /.c
+					<div class="admin-t-a-name" style="margin-bottom: 0;">
+						<span class="titile-name"><%= item.cd.name %></span>
+						<p class="artists-name"><%= item.cd.artist.name %></p>
+						<p class="price history-text">値段 ｜ <%= item.price %>円</p>
+						<p class="price history-text">発送日 ｜ １２月１２日</p>
+						<p class="price history-text">購入枚数 ｜ <%= item.count %>枚</p>
+						<p class="price history-text">小計 ｜ <%= item.total_price %>円</p>
+					</div>
+				</div>
+			<% end %>
+		</div><!-- /.clearfix -->
+	<% end %>
+</div>
