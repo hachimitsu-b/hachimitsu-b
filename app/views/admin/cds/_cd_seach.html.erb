@@ -3,7 +3,7 @@
 <%= f.label :artist_id, "#{seach_name_kana}" %>
 <div class="form-group">
 	<%= form_tag("#") do %>
-			<%= text_field_tag "seach_" + seach_name_eng, "", placeholder: "#{seach_name_kana}を検索", class: "form-control form-seach-field" %>
+			<%= text_field_tag "seach_" + seach_name_eng, "", placeholder: "#{seach_name_kana}を検索(カタカナ)", class: "form-control form-seach-field" %>
 			<!-- 検索ボタン -->
 			<span class="btn btn-primary form-control  form-seach-btn form-seach-btn-<%= seach_name_eng %>">検索</span>
 	<% end %>

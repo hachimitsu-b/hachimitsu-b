@@ -58,6 +58,15 @@ class User::CartsController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
+  # カート内の商品の個数をajaxで変更
+  def count_update
+    @user = User.find(current_user.id)
+    @cart = Cart.find_by(status_flag: 0, user_id: current_user.id)
+    item_in_cart = @cart.item_in_carts.find_by(cd_id: params[:cd_id])
+    item_in_cart.count = params[:count].to_i
+    item_in_cart.save
+  end
+
   # def お支払い方法
   # end
   # def 配送方法
