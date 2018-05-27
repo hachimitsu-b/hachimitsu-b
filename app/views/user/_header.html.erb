@@ -6,7 +6,7 @@
 			<% end %>
 		    <div class="col-md-6 col-xs-6 search-box">
 		    	<div class="input-group">
-		    		<%= form_tag cds_path, :method => 'get' do %>
+		    		<%= form_tag cds_search_path, :method => 'get' do %>
 		    			<%= text_field_tag :search, '', class: 'form-control' %>
 		    			<span class="input-group-btn">
 		    				<%= button_tag( class: "btn btn-default") do %>
