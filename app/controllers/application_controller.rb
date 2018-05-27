@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 	# 全ページに@userをセット
 	before_action :set_user
 
-	# before_action :authenticate_admin!, if: :admin_controller?
+	before_action :authenticate_admin!, if: :admin_controller?
 
 	protected
 		def configure_permitted_parameters
@@ -39,12 +39,5 @@ class ApplicationController < ActionController::Base
 	  		true
 	  	end
 	  end
-
-	  # def after_sign_out_path_for(resource_or_scope)
-	  # 	if current_user == @user.delete_flag = 1
-	  # 		redirect_to cds_path
-	  # 	else current_user == @user.delete_flag = 0
-	  # 	end
-	  # end
 
 end
