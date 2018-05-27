@@ -40,8 +40,7 @@ class Admin::CdsController < ApplicationController
 
   def destroy
     cd = Cd.find(params[:id])
-    binding.pry
-    if cd.bought
+    if cd.bought.present?
       cd.display = false
     else
       cd.destroy

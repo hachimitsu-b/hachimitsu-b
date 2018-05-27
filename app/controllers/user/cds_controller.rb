@@ -13,6 +13,8 @@ class User::CdsController < ApplicationController
   end
 
   def index
+    # スタッフのおすすめなどの表示用
+    @type_names = TypeName.all
     # 最新のシングルを取得
     @new_single_cds = Cd.where('release_date < ? and single_album = ?', Time.now, 1).last(6)
     # 最新のアルバムを取得
@@ -36,6 +38,7 @@ class User::CdsController < ApplicationController
       end
     end
   end
+
 
 
   def search
@@ -65,6 +68,7 @@ class User::CdsController < ApplicationController
       end
     end
   end
+
 
   private
 

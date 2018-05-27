@@ -34,22 +34,21 @@ class User::UsersController < ApplicationController
 
   # 退会ページの1ページ目
   def destroying
+    @user = current_user
   end
 
   # 退会処理
   def destroy
-    now_user = User.find(current_user.id)
-    user = User.find(params[:id])
-    if user == now_user
-      # ユーザーを論理削除
-      user.delete_flag = 1
-      user.save
-    end
-    redirect_to users_destroyed_path
+
   end
 
   # 処理後
   def destroyed
+    # ユーザーを論理削除
+    @user = current_user
+    @user.delete_flag = 0
+    @user.save
+    redirect_to destroy_user_session_path, method: :delete
   end
 
 private

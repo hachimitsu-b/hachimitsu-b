@@ -36,26 +36,18 @@ class Admin::UsersController < ApplicationController
       else
         render :edit
       end
-    else 
+    else
       redirect_to admin_users_path
     end
   end
 
 
   def history
-
-    if User.find_by(id: params[:id])
-
-      @user = User.find(params[:id])
-
-      # わからないからコメントアウト
-      # @cart = @user.carts.find_by(status_flag: 0)
-
-      # わからないから以下2行を使用
-      @cart = Cart.where(status_flag: 0)
-
+    if user = User.find_by(id: params[:id])
+      # 本番はflag = 2
+      @carts = user.carts
     else
-      redirect_to cds_path
+      redirect_to admin_users_path
     end
   end
 
@@ -64,7 +56,7 @@ class Admin::UsersController < ApplicationController
       user.delete_flag = 2
       user.save
       flash[:notice] = "Book was successfully destroyed."
-      redirect_to admin_user_path
+      redirect_to admin_user_path(user.id)
     end
   end
 

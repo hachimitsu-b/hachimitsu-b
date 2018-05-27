@@ -40,4 +40,11 @@ class ApplicationController < ActionController::Base
 	  	end
 	  end
 
+	  # def after_sign_out_path_for(resource_or_scope)
+	  # 	if current_user == @user.delete_flag = 1
+	  # 		redirect_to cds_path
+	  # 	else current_user == @user.delete_flag = 0
+	  # 	end
+	  # end
+
 end
