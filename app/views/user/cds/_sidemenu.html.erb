@@ -1,12 +1,14 @@
-<div class='sideber-box'>
-	<div class="sideber">
-		<ul class="user-sidemenu">
-			<li class="genre"><i class="glyphicon glyphicon-search"></i> ジャンルから探す</li>
-			<% @genres.each do |g| %>
-				<%= link_to(genre_search_path(g.name)) do %>
-					<li class="genre-menu"><%= g.name %></li>
+<div class="col-md-4 col-sm-2">
+	<div class='sideber-box'>
+		<div class="sideber">
+			<ul class="user-sidemenu">
+				<li class="genre"><i class="glyphicon glyphicon-search"></i> ジャンルから探す</li>
+				<% @genres.each do |g| %>
+					<%= link_to(genre_search_path(g.name)) do %>
+						<li class="genre-menu"><%= g.name %></li>
+					<% end %>
 				<% end %>
-			<% end %>
-		</ul>
+			</ul>
+		</div>
 	</div>
 </div>

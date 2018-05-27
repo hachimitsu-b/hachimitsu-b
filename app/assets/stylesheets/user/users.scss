@@ -253,7 +253,6 @@ input[type="password"] {
 -----------------------------------------------------------------------*/
 /* サイドバー */
 .sideber-box{
-	float: left;
 	margin:0 60px 0 50px;
 }
 .sideber{
@@ -278,6 +277,10 @@ input[type="password"] {
 	border-bottom: 1px solid #CCCCCC;
 	padding: 7px 0;
 }
+/* トップページ右 */
+#index-right{
+	float: right;
+}
 /* ランキング */
 .ranking-box{
 	width: 650px;
@@ -285,7 +288,7 @@ input[type="password"] {
 	border-radius: 4px;        /* CSS3草案 */
     -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 4px;   /* Firefox用 */
-    float:left;
+    margin-bottom: 70px !important;
 }
 .ranking{
 	width: 650px;
@@ -355,7 +358,7 @@ input[type="password"] {
 .cd-con{
 	width: 150px;
 	float: left;
-	margin-right: 30px;
+	margin:0 30px 25px 0;
 }
 
 .titile-artists{
@@ -364,7 +367,7 @@ input[type="password"] {
 
 
 .cd-box-container{
-	margin: 0 0 50px 50px;
+	margin: 0 0 50px 25px;
 }
 
 /*---------------------------------------------------------------------
