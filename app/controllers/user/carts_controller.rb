@@ -57,7 +57,7 @@ class User::CartsController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
-  # カートにしょうひんをいれる
+  # カートに商品をいれる
   def update
     @user = User.find(current_user.id)
     @cart = Cart.find_by(status_flag: 0, user_id: current_user.id)
