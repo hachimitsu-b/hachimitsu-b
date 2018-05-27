@@ -3,6 +3,7 @@ class CreateCarts < ActiveRecord::Migration[5.2]
     create_table :carts do |t|
       t.integer :user_id
       t.date :delivery_day
+      t.date :purchase_date
       t.string :to_postcode
       t.string :to_street_address
       t.integer :status_flag

@@ -32,7 +32,7 @@ class User::CartsController < ApplicationController
   def buy_cds_page_3
     @cart = @user.carts.find_by(status_flag: 0)
     if @cart.update(buy_cds_update_params)
-      @user.carts.create(status_flag: 0)
+      @user.carts.create(status_flag: 0, purchase_date: Time.now)
       @cart.status_flag = 1
       @cart.save
     else
