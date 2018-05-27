@@ -18,3 +18,4 @@ class Cart < ApplicationRecord
 		price
 	end
 end
+
