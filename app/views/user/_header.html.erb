@@ -7,7 +7,7 @@
 		    <div class="col-md-6 col-xs-6 search-box">
 		    	<div class="input-group">
 		    		<%= form_tag cds_search_path, :method => 'get' do %>
-		    			<%= text_field_tag :search, '', class: 'form-control' %>
+		    			<%= text_field_tag :search, '', class: 'form-control', placeholder: "商品名やアーティスト名で検索" %>
 		    			<span class="input-group-btn">
 		    				<%= button_tag( class: "btn btn-default") do %>
 							<%= content_tag :span, " ", class: "glyphicon glyphicon-search", :name => nil %>
