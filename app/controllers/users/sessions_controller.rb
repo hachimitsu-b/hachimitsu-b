@@ -21,13 +21,9 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   if current_user == @user.delete_flag = 1
-  #     redirect_to cds_path
-  #   else current_user == @user.delete_flag = 0
-  #   end
-  #   super
-  # end
+  def destroy
+      super
+  end
 
   # protected
 
