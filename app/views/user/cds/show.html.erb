@@ -7,7 +7,7 @@
 			<div class="clearfix">
 				<div class="cd-box3">
 					<% if @cd.jacket_id.present? %>
-					<%= attachment_image_tag cd, :jacket, :fill, 250, 250 %>
+					<%= attachment_image_tag @cd, :jacket, :fill, 250, 250 %>
 					<% else %>
 						<%= image_tag 'no-image250.png', size: '250x250' %>
 					<% end %>

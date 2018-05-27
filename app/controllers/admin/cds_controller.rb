@@ -1,4 +1,5 @@
 class Admin::CdsController < ApplicationController
+  protect_from_forgery except: [:create,:edit]
   PER = 10
   def index
     @cds = Cd.all
@@ -18,7 +19,7 @@ class Admin::CdsController < ApplicationController
   def create
     @cd = Cd.new(new_cd_params)
     if @cd.save
-      redirect_to admin_cd_path(cd.id)
+      redirect_to admin_cd_path(@cd.id)
     else
       render 'new'
     end
