@@ -2,160 +2,133 @@
 <%= render 'user/header' %>
 
 <div class='container'>
-  	<div class="clearfix">
-		<div class='sideber-box'>
-			<div class="sideber">
-				<ul class="user-sidemenu">
-					<li class="genre"><i class="glyphicon glyphicon-search"></i> ジャンルから探す</li>
-					<%= link_to(cds_path) do %>
-						<li class="genre-menu">J-pop</li>
-					<% end %>
-					<%= link_to(cds_path) do %>
-						<li class="genre-menu">K-pop</li>
-					<% end %>
-					<%= link_to(cds_path) do %>
-						<li class="genre-menu">ロック</li>
-					<% end %>
-					<%= link_to(cds_path) do %>
-						<li class="genre-menu">ブルース</li>
-					<% end %>
-					<%= link_to(cds_path) do %>
-						<li class="genre-menu">ジャズ</li>
-					<% end %>
-					<%= link_to(cds_path) do %>
-						<li class="genre-menu">サウンドトラック</li>
-					<% end %>
-					<%= link_to(cds_path) do %>
-						<li class="genre-menu">アニメ</li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
-		<div class="ranking-box slider">
-			<div class="ranking">
-				<div class="single-rank">シングル ランキング</div>
-				<div class="clearfix">
-					<% num = 1%>
-					<% @singles.each do |cd| %>
-						<%= link_to(carts_path) do %>
-							<div class="rank-container">
-								<div class="rank">
-									<div class="rank-icon-box">
-										<div class="rank-icon-img"><%= image_tag("rank" + num.to_s + "-icon.png") %></div>
-										<p class="rank-icon-txt"><span><%= num.to_s %> </span>位</p>
-									</div>
-									<%= link_to(cd_path(cd.id)) do %>
-										<div class="cd-box">
-											<% if cd.jacket_id.present? %>
-												<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
-												<% else %>
-													<%= image_tag 'no-image150.jpg', size: '150x150' %>
-											<% end %>
+  	<div class="row">
+
+		<%= render 'user/cds/sidemenu' %>
+
+		<div class="col-md-8 col-sm-4">
+			<div class="ranking-box slider">
+				<div class="ranking">
+					<div class="single-rank">シングル ランキング</div>
+					<div class="clearfix">
+						<% num = 1%>
+						<% @singles.each do |cd| %>
+							<%= link_to(carts_path) do %>
+								<div class="rank-container">
+									<div class="rank">
+										<div class="rank-icon-box">
+											<div class="rank-icon-img"><%= image_tag("rank" + num.to_s + "-icon.png") %></div>
+											<p class="rank-icon-txt"><span><%= num.to_s %> </span>位</p>
 										</div>
-									<% end %>
-									<%= link_to(cd_path(cd.id)) do %>
-										<p class="titile-name"><%= cd.name %></p>
-										<p class="artists-name"><%= cd.artist.name %></p>
-									<% end %>
-								</div>
-							</div>
-							<% num += 1%>
-						<% end %>
-					<% end %>
-				</div><!-- /.clearfix -->
-			</div><!-- /.ranking-->
-			<div class="ranking">
-				<div class="single-rank">アルバム ランキング</div>
-				<div class="clearfix">
-					<% num = 1%>
-					<% @albums.each do |cd| %>
-						<%= link_to(carts_path) do %>
-							<div class="rank-container">
-								<div class="rank">
-									<div class="rank-icon-box">
-										<div class="rank-icon-img"><%= image_tag("rank" + num.to_s + "-icon.png") %></div>
-										<p class="rank-icon-txt"><span><%= num.to_s %> </span>位</p>
-									</div>
-									<%= link_to(cd_path(cd.id)) do %>
-										<div class="cd-box">
+										<%= link_to(cd_path(cd.id)) do %>
+											<div class="cd-box">
 												<% if cd.jacket_id.present? %>
 													<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
 													<% else %>
 														<%= image_tag 'no-image150.jpg', size: '150x150' %>
 												<% end %>
-										</div>
-									<% end %>
-									<%= link_to(cd_path(cd.id)) do %>
-										<p class="titile-name"><%= cd.name %></p>
-										<p class="artists-name"><%= cd.artist.name %></p>
-									<% end %>
+											</div>
+										<% end %>
+										<%= link_to(cd_path(cd.id)) do %>
+											<p class="titile-name"><%= cd.name %></p>
+											<p class="artists-name"><%= cd.artist.name %></p>
+										<% end %>
+									</div>
 								</div>
-							</div>
-							<% num += 1%>
+								<% num += 1%>
+							<% end %>
 						<% end %>
-					<% end %>
-				</div><!-- /.clearfix -->
-			</div><!-- /.ranking-->
-		</div><!-- /.ranking-box -->
-	</div><!-- /.clearfix -->
-	<h2>NEW シングル</h2>
-	<div class="cd-box-container clearfix">
-		<% @new_single_cds.each do |cd| %>
-			<div class="cd-con">
-				<div class="cd-box">
-					<%= link_to(cd_path(cd.id)) do %>
-						<% if cd.jacket_id.present? %>
-							<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
-							<% else %>
-								<%= image_tag 'no-image150.jpg', size: '150x150' %>
+					</div><!-- /.clearfix -->
+				</div><!-- /.ranking-->
+				<div class="ranking">
+					<div class="single-rank">アルバム ランキング</div>
+					<div class="clearfix">
+						<% num = 1%>
+						<% @albums.each do |cd| %>
+							<%= link_to(carts_path) do %>
+								<div class="rank-container">
+									<div class="rank">
+										<div class="rank-icon-box">
+											<div class="rank-icon-img"><%= image_tag("rank" + num.to_s + "-icon.png") %></div>
+											<p class="rank-icon-txt"><span><%= num.to_s %> </span>位</p>
+										</div>
+										<%= link_to(cd_path(cd.id)) do %>
+											<div class="cd-box">
+													<% if cd.jacket_id.present? %>
+														<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
+														<% else %>
+															<%= image_tag 'no-image150.jpg', size: '150x150' %>
+													<% end %>
+											</div>
+										<% end %>
+										<%= link_to(cd_path(cd.id)) do %>
+											<p class="titile-name"><%= cd.name %></p>
+											<p class="artists-name"><%= cd.artist.name %></p>
+										<% end %>
+									</div>
+								</div>
+								<% num += 1%>
+							<% end %>
 						<% end %>
-					<% end %>
-				</div>
-				<%= link_to(cart_path(cd.id), method: :patch) do %>
-					<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-				<% end %>
-				<%= link_to(cd_path(cd.id)) do %>
-					<p class="titile-name"><%= cd.name %></p>
-				<% end %>
-				<p class="artists-name"><%= cd.artist.name %></p>
-				<p class="price">値段 ｜ <%= cd.price %>円</p>
-			</div>
-		<% end %>
-	</div><!-- /.cd-box-container -->
-	<h2>NEW アルバム</h2>
-	<div class="cd-box-container clearfix">
-		<% @new_album_cds.each do |cd| %>
-			<div class="cd-con">
-				<div class="cd-box">
-					<%= link_to(cd_path(cd.id)) do %>
-						<% if cd.jacket_id.present? %>
-							<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
-							<% else %>
-								<%= image_tag 'no-image150.jpg', size: '150x150' %>
-						<% end %>
-					<% end %>
-				</div>
-				<%= link_to cart_path(cd.id), method: :patch do %>
-					<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-				<% end %>
-				<%= link_to(cd_path(cd.id)) do %>
-					<p class="titile-name"><%= cd.name %></p>
-				<% end %>
-				<p class="artists-name"><%= cd.artist.name %></p>
-				<p class="price">値段 ｜ <%= cd.price %>円</p>
-			</div>
-		<% end %>
-	</div><!-- /.cd-box-container -->
-
-	<div><!-- /.clearfix -->
-		<% @type_names.each do |type| %>
-			<h2><%= type.name %></h2>
+					</div><!-- /.clearfix -->
+				</div><!-- /.ranking-->
+			</div><!-- /.ranking-box -->
+			<h2>NEW シングル</h2>
 			<div class="cd-box-container clearfix">
-				<% type.cds.each do |cd| %>
+				<% @new_single_cds.each do |cd| %>
 					<div class="cd-con">
+						<div class="cd-box">
+							<%= link_to(cd_path(cd.id)) do %>
+								<% if cd.jacket_id.present? %>
+									<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
+									<% else %>
+										<%= image_tag 'no-image150.jpg', size: '150x150' %>
+								<% end %>
+							<% end %>
+						</div>
+						<%= link_to(cart_path(cd.id), method: :patch) do %>
+							<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
+						<% end %>
 						<%= link_to(cd_path(cd.id)) do %>
-							<% if cd.jacket_id.present? %>
-								<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
+							<p class="titile-name"><%= cd.name %></p>
+						<% end %>
+						<p class="artists-name"><%= cd.artist.name %></p>
+						<p class="price">値段 ｜ <%= cd.price %>円</p>
+					</div>
+				<% end %>
+			</div><!-- /.cd-box-container -->
+			<h2>NEW アルバム</h2>
+			<div class="cd-box-container clearfix">
+				<% @new_album_cds.each do |cd| %>
+					<div class="cd-con">
+						<div class="cd-box">
+							<%= link_to(cd_path(cd.id)) do %>
+								<% if cd.jacket_id.present? %>
+									<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
+									<% else %>
+										<%= image_tag 'no-image150.jpg', size: '150x150' %>
+								<% end %>
+							<% end %>
+						</div>
+						<%= link_to cart_path(cd.id), method: :patch do %>
+							<div class="cart-btn mb5"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
+						<% end %>
+						<%= link_to(cd_path(cd.id)) do %>
+							<p class="titile-name"><%= cd.name %></p>
+						<% end %>
+						<p class="artists-name"><%= cd.artist.name %></p>
+						<p class="price">値段 ｜ <%= cd.price %>円</p>
+					</div>
+				<% end %>
+			</div><!-- /.cd-box-container -->
+			<% @type_names.each do |type| %>
+				<h2><%= type.name %></h2>
+				<div class="cd-box-container clearfix">
+					<% type.cds.each do |cd| %>
+						<div class="cd-con">
+							<%= link_to(cd_path(cd.id)) do %>
+								<% if cd.jacket_id.present? %>
+									<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
 								<% else %>
 									<%= image_tag 'no-image150.jpg', size: '150x150' %>
 							<% end %>
@@ -170,9 +143,10 @@
 						<p class="price">値段 ｜ <%= cd.price %>円</p>
 					</div>
 				<% end %>
-			</div><!-- /.cd-box-container -->
-		<% end %>
-	</div>
+				</div><!-- /.cd-box-container -->
+			<% end %>
+		</div><!-- /.col-md-8 col-sm-4 -->
+	</div><!-- /.row -->
 </div><!-- /.container -->
 
 <%= render 'user/footer' %>
