@@ -3,10 +3,6 @@ Rails.application.routes.draw do
 # # TOP画面
  root 'user/cds#index'
 
-	# 検索ページ
-	# get 'users/cds#seach'
-
-
 
   # 管理者側のpath
   devise_for :admins, controllers: {
@@ -37,11 +33,14 @@ Rails.application.routes.draw do
 		post '/cart/buy/page/2' => 'carts#buy_cds_page_2'
 		post '/cart/buy/page/3' => 'carts#buy_cds_page_3'
 		post '/cart/buy/page/4' => 'carts#buy_cds_page_4'
+		# 検索ページ
+		get '/cds/search/' => 'cds#search'
 
-		post 'cart/buy/:id' => 'carts#buy_cds_update'
+		post '/cart/buy/:id' => 'carts#buy_cds_update'
 		# 支払い方法選択
 		# post ''
 		resources :cds, only: [:show, :index,]
+		get '/cds/genre/:genre' => 'cds#genre_search', as: 'genre_search'
 	end
 
 

@@ -63,6 +63,8 @@ a:hover{text-decoration:none !important;}
 .fs12{font-size: 12px;}
 .fs14{font-size: 14px;}
 .fs16{font-size: 16px;}
+/* フォント太さ */
+.fwb{font-weight: bold !important;}
 /* テキスト位置 */
 .tac{text-align: center;}
 /* マージン */
@@ -167,6 +169,7 @@ footer p{
 -----------------------------------------------------------------------*/
 .login-box{
 	width: 400px;
+	margin: 0 auto;
 	border: 1px solid #CCCCCC;
 	border-radius: 4px;        /* CSS3草案 */
     -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
@@ -988,6 +991,11 @@ ol {
 .radio-cheackbox01 {
   display: block;
 }
+/* フォームサイズ */
+.input-group input{
+	width: 500px !important;
+}
+
 
 /*---------------------------------------------------------------------
 	支払い方法画面
@@ -1002,7 +1010,7 @@ ol {
 /*---------------------------------------------------------------------
 	注文内容画面
 -----------------------------------------------------------------------*/
-.acceptance-btn-box2{
+.acceptance-btn-box3{
 	width: 200px;
 	margin: 50px auto;
 }
@@ -1021,12 +1029,39 @@ ol {
 	text-align: center;
 }
 
-
-
-
-
-
-
+/*---------------------------------------------------------------------
+	検索結果表示画面
+-----------------------------------------------------------------------*/
+.search-title-txt{
+	font-size: 22px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #999999;
+}
+.search-title-txt span{
+	font-size: 24px;
+	font-weight: bold;
+	color: #4597F5;
+}
+.sreach-box{
+	padding: 20px 0;
+	border-bottom: 1px solid #CCCCCC;
+}
+.cart-btn3{
+	width: 200px;
+	background-color: #F5A623;
+	border: 1px solid #E0001A;
+	border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */
+    text-align: center;
+    padding: 9px 0;
+    font-weight: bold;
+    font-size: 20px;
+}
+.sreach-cart-box{
+	float: right;
+	margin-top: 50px;
+}
 
 
 
