@@ -18,7 +18,7 @@
 						</div>
 					<% end %>
 					<div class="fl">
-						<%= link_to(carts_path) do %>
+						<%= link_to(cd_path(f.id)) do %>
 							<div class="titile-artists2"><span><%= f.name %></span><br><%= f.artist.name %></div>
 						<% end %>
 						<p class="genre-txt"><%= f.genre.name %></p>

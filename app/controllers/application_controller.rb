@@ -15,13 +15,14 @@ class ApplicationController < ActionController::Base
 		def configure_permitted_parameters
       # 新規登録に使用するカラム
 	    devise_parameter_sanitizer.permit(:sign_up, keys: [:name_kanji,
-	    																									 :name_kana,
-	    																									 :postcode,
-	    																									 :street_address,
-	    																									 :phone_number,
-	    																									 :delete_flag,
-	    																									 :emal])
-	  end
+															 :name_kana,
+															 :postcode,
+															 :street_address,
+															 :phone_number,
+															 :delete_flag,
+															 :emal])
+	    devise_parameter_sanitizer.permit(:account_update, keys: [:name_kanji, :name_kana, :postcode, :street_address, :phone_number, :delete_flag, :email])
+	    end
 
 	  # @userにログインユーザーを代入
 	  def set_user
