@@ -14,9 +14,9 @@ class User::CdsController < ApplicationController
     # スタッフのおすすめなどの表示用
     @type_names = TypeName.all
     # 最新のシングルを取得
-    @new_single_cds = Cd.where('release_date < ? and single_album = ?', Time.now, 1).last(6).reverse
+    @new_single_cds = Cd.where('release_date < ? and single_album = ?', Time.now, 1).last(8).reverse
     # 最新のアルバムを取得
-    @new_album_cds = Cd.where('release_date < ? and single_album = ?', Time.now, 0).last(6).reverse
+    @new_album_cds = Cd.where('release_date < ? and single_album = ?', Time.now, 0).last(8).reverse
     # 1週間で発売されたシングルを取得
     new_single_rank = Cd.where('release_date < ? and release_date > ? and single_album = ?', Time.now, Time.now.ago(7.days), 1)
     @singles = new_single_rank.first(3).sort_by{ |key| key.bought}

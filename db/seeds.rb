@@ -162,7 +162,8 @@ end
 4.times do |num|
 	num += 1
 	user = User.find(num)
-	user.carts.create(status_flag: 1)
+	user.carts.create(status_flag: 1,
+										purchase_date: Time.now)
 
 	cart = user.carts.find_by(status_flag: 0)
 	3.times do |n|
