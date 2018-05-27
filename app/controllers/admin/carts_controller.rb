@@ -1,5 +1,6 @@
 class Admin::CartsController < ApplicationController
   def index
+
   	# @carts = Cart.where(status_flag: 1)
   	@carts = Cart.all
   	a = User.where(name_kanji: params[:search])

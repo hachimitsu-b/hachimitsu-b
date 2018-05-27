@@ -9,7 +9,6 @@ class User::UsersController < ApplicationController
   	@cart = @user.carts.find_by(status_flag: 0)
     @cart_cd = @cart.cds
   	@items = @cart.item_in_carts
-    @total = ItemInCart.where(cart_id: @cart.id).sum(:price)
   	else
   		redirect_to cds_path
   	end

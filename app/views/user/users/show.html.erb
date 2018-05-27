@@ -30,7 +30,7 @@
 				<div class="mypage-cart-line">
 					<div class="clearfix">
 						<div class="cd-box2">
-							<%= link_to cd_path do %>
+							<%= link_to cd_path(cd.id) do %>
 								<% if cd.jacket_id.present? %>
 									<%= attachment_image_tag cd, :jacket, :fill, 100, 100 %>
 									<% else %>
@@ -75,7 +75,7 @@
 		<div class="purchase">
 			<div class="purchase-total-line">
 				<P class="total-price-txt">合計金額</P>
-				<p class="total-txt"><%= @total %>円</p>
+				<p class="total-txt"><%= @cart.total_price %>円</p>
 			</div>
 			<div class="mb15">
 				<%= link_to cart_buy_page_1_path do %>

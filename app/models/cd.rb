@@ -13,7 +13,7 @@ class Cd < ApplicationRecord
 	attachment :jacket
 
 	# fields_forの設定
-	accepts_nested_attributes_for :albums, allow_destroy: true
+	accepts_nested_attributes_for :albums, allow_destroy: true, reject_if: :all_blank
 
 	# バリデーション
 	# 空の保存を制限

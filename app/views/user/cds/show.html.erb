@@ -7,7 +7,7 @@
 			<div class="clearfix">
 				<div class="cd-box3">
 					<% if @cd.jacket_id.present? %>
-					<%= attachment_image_tag cd, :jacket, :fill, 250, 250 %>
+					<%= attachment_image_tag @cd, :jacket, :fill, 250, 250 %>
 					<% else %>
 						<%= image_tag 'no-image250.png', size: '250x250' %>
 					<% end %>
@@ -39,11 +39,10 @@
 		<div class="introduction-txt"><%= @cd.introduction %></div>
 		<h3>収録曲</h3>
 		<div class="recording-titile-txt"><%= @cd.name %></div>
-		<p class="disk-titile">ディスク 1</p>
 			<% @cd.albums.each do |f| %>
-				<%= f.name %>
+				<p class="disk-titile"><%= f.name %></p>
 			<ol>
-				<% f.music_in_cds.each do |g| %>
+				<% f.music_in_cds.sort_by{ |o| o.oder }.each do |g| %>
 					<li><%= g.name %></li>
 				<% end %>
 			</ol>
