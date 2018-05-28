@@ -5,6 +5,6 @@
 
 /admin/sign_in
 * 管理者のアカウント
-  - email:   admin@exmple.com
+  - email:   admin@example.com
   - password:   password
 
