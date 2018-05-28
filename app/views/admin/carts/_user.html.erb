@@ -1,27 +1,9 @@
-<%= render 'layouts/admins_header' %>
-
-
-
-
-
-<div class="container"> <!-- ここを追加 -->
-    <div class="row">
-      <div class="col-xs-12">
-        <font size="7">発送状態確認一覧</font>
-        <div class="col-md-6 col-xs-6 search-box">
-          <div class="input-group">
-            <%= form_tag admin_carts_path, :method => 'get' do %>
-              <%= text_field_tag :search, '', class: 'form-control' %>
-              <span class="input-group-btn">
-                <%= button_tag( class: "btn btn-default") do %>
-              <%= content_tag :span, " ", class: "glyphicon glyphicon-search", :name => nil %>
-              <% end %>
-            </span>
-            <% end %>
-        </div><!-- /input-group -->
-        </div>
-        <!-- 後でラインを追加 -->
-        <table class="table table-condensed">
+<%# if @a != nil %>
+  	
+	 
+	    
+	      
+ 	<table class="table table-condensed">
           <thead>
               <tr>
                   <th>ユーザー名</th>
@@ -33,15 +15,18 @@
 
           <tbody>
                 <%# if @a.nil? %>
-                  <% @carts.each do |cart| %>
+                <% users.each do |a| %>
                       <tr>
                           <td class="info">
-                            <%= cart.user.name_kanji %>
+                             <%= a.name_kanji %>
                           </td>
                           <td class="danger">
-                              <% cart.item_in_carts.each do |item| %>
-                                <%= item.cd.name %><br>
-                              <% end %>
+                              	<% a.carts.each do |cart| %>
+	     					 	<% cart.item_in_carts.each do |item| %>
+	        					<%= item.cd.name %><br>
+                                <% end %>
+                                <% end %>
+	    						
                           </td>
                           <td class="warning">
                            <%= cart.to_street_address %>
@@ -56,9 +41,10 @@
                       </tr>
                 <% end %>
               <%# else %>
-                <%= render partial: 'user', locals: {users: @a} %>
-              <% end %>
+                <%#= render partial: 'user', locals: {users: @a} %>
+              <%# end %>
           </tbody>
         </table>
-      </div>
-    </div>
+        
+ 	<% end %>
+<%# end %>
