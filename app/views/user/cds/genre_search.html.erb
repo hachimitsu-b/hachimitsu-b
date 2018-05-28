@@ -13,30 +13,26 @@
 					<div class="clearfix">
 						<% num = 1%>
 						<% @singles.each do |cd| %>
-							<%= link_to(carts_path) do %>
-								<div class="rank-container">
-									<div class="rank">
-										<div class="rank-icon-box">
-											<div class="rank-icon-img"><%= image_tag("rank" + num.to_s + "-icon.png") %></div>
-											<p class="rank-icon-txt"><span><%= num.to_s %> </span>位</p>
-										</div>
-										<%= link_to(cd_path(cd.id)) do %>
-											<div class="cd-box">
-												<% if cd.jacket_id.present? %>
-													<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
-													<% else %>
-														<%= image_tag 'no-image150.jpg', size: '150x150' %>
-												<% end %>
-											</div>
-										<% end %>
-										<%= link_to(cd_path(cd.id)) do %>
-											<p class="titile-name"><%= cd.name %></p>
-											<p class="artists-name"><%= cd.artist.name %></p>
-										<% end %>
+							<div class="rank-container">
+								<div class="rank">
+									<div class="rank-icon-box">
+										<div class="rank-icon-img"><%= image_tag("rank" + num.to_s + "-icon.png") %></div>
+										<p class="rank-icon-txt"><span><%= num.to_s %> </span>位</p>
 									</div>
+									<%= link_to(cd_path(cd.id)) do %>
+										<div class="cd-box">
+											<% if cd.jacket_id.present? %>
+												<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
+												<% else %>
+													<%= image_tag 'no-image150.jpg', size: '150x150' %>
+											<% end %>
+										</div>
+										<p class="titile-name"><%= cd.name %></p>
+										<p class="artists-name"><%= cd.artist.name %></p>
+									<% end %>
 								</div>
-								<% num += 1%>
-							<% end %>
+							</div>
+							<% num += 1%>
 						<% end %>
 					</div><!-- /.clearfix -->
 				</div><!-- /.ranking-->
@@ -45,30 +41,26 @@
 					<div class="clearfix">
 						<% num = 1%>
 						<% @albums.each do |cd| %>
-							<%= link_to(carts_path) do %>
-								<div class="rank-container">
-									<div class="rank">
-										<div class="rank-icon-box">
-											<div class="rank-icon-img"><%= image_tag("rank" + num.to_s + "-icon.png") %></div>
-											<p class="rank-icon-txt"><span><%= num.to_s %> </span>位</p>
-										</div>
-										<%= link_to(cd_path(cd.id)) do %>
-											<div class="cd-box">
-													<% if cd.jacket_id.present? %>
-														<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
-														<% else %>
-															<%= image_tag 'no-image150.jpg', size: '150x150' %>
-													<% end %>
-											</div>
-										<% end %>
-										<%= link_to(cd_path(cd.id)) do %>
-											<p class="titile-name"><%= cd.name %></p>
-											<p class="artists-name"><%= cd.artist.name %></p>
-										<% end %>
+							<div class="rank-container">
+								<div class="rank">
+									<div class="rank-icon-box">
+										<div class="rank-icon-img"><%= image_tag("rank" + num.to_s + "-icon.png") %></div>
+										<p class="rank-icon-txt"><span><%= num.to_s %> </span>位</p>
 									</div>
+									<%= link_to(cd_path(cd.id)) do %>
+										<div class="cd-box">
+											<% if cd.jacket_id.present? %>
+												<%= attachment_image_tag cd, :jacket, :fill, 150, 150 %>
+												<% else %>
+													<%= image_tag 'no-image150.jpg', size: '150x150' %>
+											<% end %>
+										</div>
+										<p class="titile-name"><%= cd.name %></p>
+										<p class="artists-name"><%= cd.artist.name %></p>
+									<% end %>
 								</div>
-								<% num += 1%>
-							<% end %>
+							</div>
+							<% num += 1%>
 						<% end %>
 					</div><!-- /.clearfix -->
 				</div><!-- /.ranking-->

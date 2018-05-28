@@ -8,10 +8,10 @@
 		<% if @cds != nil then %>
 			<% @cds.each do |f| %>
 				<div class="sreach-box clearfix">
-					<%= link_to(carts_path) do %>
+					<%= link_to(cd_path(f.id)) do %>
 						<div class="cd-box2">
-							<% if f.jacket_id %>
-								<%= attachment_image_tag cart.cds, :jacket, :fill, 100, 100 %>
+							<% if f.jacket_id.present? %>
+								<%= attachment_image_tag f, :jacket, :fill, 100, 100 %>
 								<% else %>
 									<%= image_tag 'no-image100.png', size: '100x100' %>
 							<% end %>

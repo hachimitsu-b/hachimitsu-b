@@ -7,7 +7,7 @@
 		<% cart.cds.each do |cd| %>
 			<div class="purchase-line">
 				<div class="clearfix">
-					<%= link_to(carts_path) do %>
+					<%= link_to(cd_path(cd.id)) do %>
 						<div class="cd-box2">
 							<% if cd.jacket_id %>
 								<%= attachment_image_tag cart.cds, :jacket, :fill, 100, 100 %>
@@ -17,7 +17,7 @@
 						</div>
 					<% end %>
 					<div class="fl">
-						<%= link_to(carts_path) do %>
+						<%= link_to(cd_path(cd.id)) do %>
 							<div class="titile-artists2"><span><%= cd.name %></span><br><%= cd.artist.name %></div>
 						<% end %>
 						<p class="genre-txt"><%= cd.genre.name %></p>
