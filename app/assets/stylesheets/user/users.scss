@@ -486,13 +486,17 @@ h5{
 	color: #E0001A;
 	font-weight: bold;
 }
+.mypage-count-box{
+	float: right;
+	margin-top: 26px;
+}
 .cd-num{
-	width: 100px;
+	width: 120px;
 	margin-bottom: 10px;
 }
 .cd-number-text{
 	float: left;
-	margin: 6px 5px 0 17px;
+	margin: 6px 5px 0 33px;
 }
 /* マイページ内の削除ボタン */
 .destroy-btn{
@@ -505,11 +509,12 @@ h5{
     -moz-border-radius: 4px;   /* Firefox用 */
     text-align: center;
     padding: 5px 1px 5px 1px;
+    margin-left: 20px;
 }
 .destroy-btn a{
 	background-color: #999999;
 	color: #fff;
-	width: 100px;
+	width: 120px;
 	border: 1px solid #ccc;
 	border-radius: 4px;        /* CSS3草案 */
     -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */
@@ -1011,7 +1016,7 @@ ol {
 }
 
 /*---------------------------------------------------------------------
-	注文内容画面
+	受け取り方法容画面
 -----------------------------------------------------------------------*/
 .acceptance-btn-box3{
 	width: 200px;
@@ -1031,7 +1036,29 @@ ol {
 	color: #444;
 	text-align: center;
 }
+.order-content-box{
+	float: right;
+	margin-top:61px;
+}
+.order-count{
+	font-size: 14px;
+	margin-bottom: 0px;
+}
+.order-count span{
+	font-size: 16px;
+	font-weight: bold;
 
+}
+.order-price{
+	font-weight: bold;
+	font-size: 19px;
+	color: #E0001A;
+	margin-bottom: 0;
+}
+.order-price span{
+	font-size: 22px;
+	color: #E0001A;
+}
 /*---------------------------------------------------------------------
 	検索結果表示画面
 -----------------------------------------------------------------------*/
@@ -1050,7 +1077,7 @@ ol {
 	border-bottom: 1px solid #CCCCCC;
 }
 .cart-btn3{
-	width: 200px;
+	width: 170px;
 	background-color: #F5A623;
 	border: 1px solid #E0001A;
 	border-radius: 5px;        /* CSS3草案 */
@@ -1059,11 +1086,11 @@ ol {
     text-align: center;
     padding: 9px 0;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
 }
 .sreach-cart-box{
 	float: right;
-	margin-top: 50px;
+	margin-top: 60px;
 }
 
 
