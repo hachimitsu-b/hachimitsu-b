@@ -53,16 +53,10 @@
 										</span>
 									</button>
 									<ul class="dropdown-menu count-select-dropdown" role="menu" >
-
-									<% if item.cd.stock <= 0 %>
-										<li class="cd-count-btn count-select-text">０</li>
-									<% else %>
 										<% (item.cd.stock + item.count).times do |n| %>
-										<% n += 1 %>
+											<% n += 1 %>
 											<li class="cd-count-btn count-select-text"><%= n %></li>
 										<% end %>
-									<% end %>
-
 									</ul>
 								</div>
 							</div><!-- /.clearfix -->
