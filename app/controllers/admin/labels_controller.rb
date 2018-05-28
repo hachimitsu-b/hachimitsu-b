@@ -1,6 +1,6 @@
 class Admin::LabelsController < ApplicationController
    def index
-  	@labels = Label.all.last(15).reverse
+  	@labels = Label.where(delete_flag: false).or(Label.where(delete_flag: nil)).last(15).reverse
     @new_label = Label.new
   end
 
@@ -10,7 +10,7 @@ class Admin::LabelsController < ApplicationController
   end
 
   def edit
-	  @labels = Label.all.last(15).reverse
+	  @labels = Label.where(delete_flag: false).or(Label.where(delete_flag: nil)).last(15).reverse
     @new_label = Label.find(params[:id])
   end
 
@@ -22,14 +22,15 @@ class Admin::LabelsController < ApplicationController
 
   def destroy
   	@label = Label.find(params[:id])
-    @label.delete
+    @label.delete_flag = true
+    @label.save
     redirect_to admin_labels_path
   end
 
   def seach
     if params[:seach].present?
       seach_val = params[:seach]
-      @labels = Label.where("name_kana LIKE ?", "%#{seach_val}%")
+      @labels = Label.where("name_kana LIKE ? and delete_flag = ?", "%#{seach_val}%", false)
       render :json => @labels
     else
       @labels = Label.last(5)

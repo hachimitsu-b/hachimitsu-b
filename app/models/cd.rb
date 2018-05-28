@@ -13,7 +13,7 @@ class Cd < ApplicationRecord
 	attachment :jacket
 
 	# fields_forの設定
-	accepts_nested_attributes_for :albums, allow_destroy: true, reject_if: :all_blank
+	accepts_nested_attributes_for :albums, allow_destroy: true, reject_if: :single?
 
 	# バリデーション
 	# 空の保存を制限
@@ -25,5 +25,9 @@ class Cd < ApplicationRecord
 		else
 			nil
 		end
+	end
+
+	def single?
+		self.single_album
 	end
 end

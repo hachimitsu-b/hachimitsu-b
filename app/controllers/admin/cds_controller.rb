@@ -31,9 +31,9 @@ class Admin::CdsController < ApplicationController
 
   def update
     # CDが存在するか確認
-    cd = Cd.find(params[:id])
-    if cd.update(update_cd_params)  # 変更を保存
-      redirect_to admin_cd_path(cd.id)
+    @cd = Cd.find(params[:id])
+    if @cd.update(update_cd_params)  # 変更を保存
+      redirect_to admin_cd_path(@cd.id)
     else
       render 'edit'
     end
@@ -41,10 +41,11 @@ class Admin::CdsController < ApplicationController
 
   def destroy
     cd = Cd.find(params[:id])
-    if cd.bought.present?
-      cd.display = false
-    else
+    if cd.bought == 0 || cd.bought == nil
       cd.destroy
+    else
+      cd.display = false
+      cd.save
     end
     redirect_to admin_cds_path
   end

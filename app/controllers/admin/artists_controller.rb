@@ -1,6 +1,6 @@
 class Admin::ArtistsController < ApplicationController
   def index
-  	@artists = Artist.all.last(15).reverse
+  	@artists = Artist.where(delete_flag: false).or(Artist.where(delete_flag: nil)).last(15).reverse
     @new_artist = Artist.new
   end
 
@@ -10,7 +10,7 @@ class Admin::ArtistsController < ApplicationController
   end
 
   def edit
-	  @artists = Artist.all.last(15).reverse
+	  @artists = Artist.where(delete_flag: false).or(Artist.where(delete_flag: nil)).last(15).reverse
     @new_artist = Artist.find(params[:id])
   end
 
@@ -22,14 +22,15 @@ class Admin::ArtistsController < ApplicationController
 
   def destroy
   	@artist = Artist.find(params[:id])
-    @artist.delete
+    @artist.delete_flag = true
+    @artist.save
     redirect_to admin_artists_path
   end
 
   def seach
     if params[:seach].present?
       seach_val = params[:seach]
-      @artists = Artist.where("name_kana LIKE ?", "%#{seach_val}%")
+      @artists = Artist.where("name_kana LIKE ? and delete_flag = ?", "%#{seach_val}%", false)
       render :json => @artists
     else
       @artists = Artist.last(5)
