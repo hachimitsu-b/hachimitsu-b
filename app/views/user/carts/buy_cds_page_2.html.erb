@@ -62,7 +62,7 @@
 						<th class="table-txt">クレジットカード番号</th>
 						<th class="acceptance-box-form">
 							<div class="input-group">
-								<%= f.text_field :to_name,value: @user.name_kanji %>
+								<%= f.hidden_field :payment,value: 1 %>
 							</div>
 						</th>
 					</tr>
@@ -70,7 +70,7 @@
 						<th class="table-txt">カードに記載のお名前</th>
 						<th class="acceptance-box-form">
 							<div class="input-group">
-								<%= f.text_field :to_name,value: @user.name_kanji %>
+								<%= f.hidden_field :payment,value: 0 %>
 							</div>
 						</th>
 					</tr>
@@ -84,18 +84,18 @@
 										<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">１</a></li>
-										<li><a href="#">２</a></li>
-										<li><a href="#">３</a></li>
-										<li><a href="#">４</a></li>
-										<li><a href="#">５</a></li>
-										<li><a href="#">６</a></li>
-										<li><a href="#">７</a></li>
-										<li><a href="#">８</a></li>
-										<li><a href="#">９</a></li>
-										<li><a href="#">１０</a></li>
-										<li><a href="#">１１</a></li>
-										<li><a href="#">１２</a></li>
+										<li>１</li>
+										<li>２</li>
+										<li>３</li>
+										<li>４</li>
+										<li>５</li>
+										<li>６</li>
+										<li>７</li>
+										<li>８</li>
+										<li>９</li>
+										<li>１０</li>
+										<li>１１</li>
+										<li>１２</li>
 									</ul>
 								</div>
 								<div class="credit-txt">　月　/ 　</div>
@@ -105,18 +105,18 @@
 										<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">１０</a></li>
-										<li><a href="#">１２</a></li>
-										<li><a href="#">１３</a></li>
-										<li><a href="#">１４</a></li>
-										<li><a href="#">１５</a></li>
-										<li><a href="#">１６</a></li>
-										<li><a href="#">１７</a></li>
-										<li><a href="#">１８</a></li>
-										<li><a href="#">１９</a></li>
-										<li><a href="#">２０</a></li>
-										<li><a href="#">２１</a></li>
-										<li><a href="#">２２</a></li>
+										<li>１８</li>
+										<li>１９</li>
+										<li>２０</li>
+										<li>２１</li>
+										<li>２２</li>
+										<li>２３</li>
+										<li>２４</li>
+										<li>２５</li>
+										<li>２６</li>
+										<li>２７</li>
+										<li>２８</li>
+										<li>２９</li>
 									</ul>
 								</div>
 								<div class="credit-txt">　年</div>
@@ -127,7 +127,7 @@
 						<th class="table-txt">セキュリティーコード</th>
 						<th class="acceptance-box-form">
 							<div class="input-group">
-								<%= f.text_field :to_name,value: @user.name_kanji %>
+								<%= f.hidden_field :payment,value: 1 %>
 							</div>
 						</th>
 					</tr>
