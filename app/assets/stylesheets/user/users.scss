@@ -1011,7 +1011,7 @@ ol {
 }
 
 /*---------------------------------------------------------------------
-	注文内容画面
+	受け取り方法容画面
 -----------------------------------------------------------------------*/
 .acceptance-btn-box3{
 	width: 200px;
@@ -1031,7 +1031,29 @@ ol {
 	color: #444;
 	text-align: center;
 }
+.order-content-box{
+	float: right;
+	margin-top:61px;
+}
+.order-count{
+	font-size: 14px;
+	margin-bottom: 0px;
+}
+.order-count span{
+	font-size: 16px;
+	font-weight: bold;
 
+}
+.order-price{
+	font-weight: bold;
+	font-size: 19px;
+	color: #E0001A;
+	margin-bottom: 0;
+}
+.order-price span{
+	font-size: 22px;
+	color: #E0001A;
+}
 /*---------------------------------------------------------------------
 	検索結果表示画面
 -----------------------------------------------------------------------*/
