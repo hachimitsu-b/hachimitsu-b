@@ -26,36 +26,38 @@
 		</div>
 		<div class="mypage-cart">
 			<h5>ショッピングカート</h5>
-			<% @cart.cds.each do |cd| %>
+			<% @cart.item_in_carts.each do |item| %>
 				<div class="mypage-cart-line">
 					<div class="clearfix">
 						<div class="cd-box2">
-							<%= link_to cd_path(cd.id) do %>
-								<% if cd.jacket_id.present? %>
-									<%= attachment_image_tag cd, :jacket, :fill, 100, 100 %>
+							<%= link_to cd_path(item.cd.id) do %>
+								<% if item.cd.jacket_id.present? %>
+									<%= attachment_image_tag item.cd, :jacket, :fill, 100, 100 %>
 									<% else %>
 										<%= image_tag 'no-image100.png', size: '100x100' %>
 								<% end %>
 							<% end %>
 						</div>
 						<div class="fl">
-							<p class="titile-artists2"><span><%= cd.name %></span><br><%= cd.artist.name %></p>
-							<p class="price2">(税込) :  <span><%= cd.price %>円</span></p>
+							<p class="titile-artists2"><span><%= item.cd.name %></span><br><%= item.cd.artist.name %></p>
+							<p class="price2">(税込) :  <span><%= item.cd.price %>円</span></p>
 						</div>
 						<div class="mypage-count-box">
 							<div class="clearfix cd-num">
 								<div class="cd-number-text">個数:</div>
 								<div class="btn-group fl" role="group" style="margin-right: 0px;">
-									<button type="button" class="btn btn-default dropdown-toggle" data-cd_id="<%= cd.id %>" data-toggle="dropdown" aria-expanded="false">
-										<span class="now-count-<%=  cd.id%>"><%= @cart.item_in_carts.find_by(cd_id: cd.id).count %>
-										<span class="caret"></span>
+									<button type="button" class="btn btn-default dropdown-toggle" data-cd_id="<%= item.cd.id %>" data-toggle="dropdown" aria-expanded="false">
+										<span class="now-count-<%=  item.cd.id%>">
+											<%= item.count %>
+											<span class="caret"></span>
+										</span>
 									</button>
 									<ul class="dropdown-menu count-select-dropdown" role="menu" >
 
-									<% if cd.stock <= 0 %>
+									<% if item.cd.stock <= 0 %>
 										<li class="cd-count-btn count-select-text">０</li>
 									<% else %>
-										<% (cd.stock + @cart.item_in_carts.find_by(cd_id: cd.id).count).times do |n| %>
+										<% (item.cd.stock + item.count).times do |n| %>
 										<% n += 1 %>
 											<li class="cd-count-btn count-select-text"><%= n %></li>
 										<% end %>
@@ -64,7 +66,7 @@
 									</ul>
 								</div>
 							</div><!-- /.clearfix -->
-							<%= link_to(cart_path(cd.id), method: :delete) do %>
+							<%= link_to(cart_path(item.cd.id), method: :delete) do %>
 								<div class="destroy-btn">削除</div>
 							<% end %>
 						</div>
@@ -97,7 +99,12 @@
 		var count = $(this).text();
 		var cd_id = $(this).parent().parent().find('button').data('cd_id');
 		var now_count = $('.now_count-' + cd_id ).text();
-		$(this).parent().parent().find('button').text(count);
+		var input = '<span class="now-count-' + cd_id + '">'
+							+		count
+							+		'<span class="caret"></span>'
+							+	'</span>'
+		$(this).parent().parent().find('button').text("");
+		$(this).parent().parent().find('button').prepend( input );
 		$.ajax({
 			url: '<%= cart_count_path %>',
 			type: 'POST',
@@ -107,12 +114,14 @@
 				cd_id: cd_id
 			}
 		}).done((data) => {
-			var input = $('<p class="add-flash add-flash-' + cd_id + '">保存しました</p>').hide().fadeIn(500)
-			$(this).parent().parent().parent().prepend(input);
+			console.log(data)
+			var message = $('<p class="add-flash add-flash-' + cd_id + '">保存しました</p>').hide().fadeIn(500)
+			$(this).parent().parent().parent().prepend(message);
+			$('.total-txt').text(data + '円')
 			// メッセージ削除のfunction
 			setTimeout(function(){
 				$('.add-flash-' + cd_id).fadeOut(500);
-			}, 3000); // 三秒後にメッセージ削除
+			}, 2000); // 三秒後にメッセージ削除
 		})
 	})
 

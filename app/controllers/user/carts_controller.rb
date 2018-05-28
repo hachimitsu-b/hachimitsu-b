@@ -63,11 +63,13 @@ class User::CartsController < ApplicationController
     @user = User.find(current_user.id)
     @cart = Cart.find_by(status_flag: 0, user_id: current_user.id)
     @cd = Cd.find_by(id: params[:id])
-    # 在庫を減らす
-    @cd.stock -= 1
-    @cd.save
-    # 購入処理
-    @cart.item_in_carts.create(price: @cd.price, cd_id: @cd.id, count: 1)
+    unless @cart.item_in_carts.find_by(cd_id: @cd.id)
+      # 在庫を減らす
+      @cd.stock -= 1
+      @cd.save
+      # 購入処理
+      @cart.item_in_carts.create(price: @cd.price, cd_id: @cd.id, count: 1)
+    end
     redirect_to user_path(@user.id)
   end
 
@@ -86,6 +88,8 @@ class User::CartsController < ApplicationController
     cd.save
     item.count = params[:count].to_i
     item.save
+    @total = @cart.total_price
+    render :json => @total
   end
 
   # def お支払い方法
