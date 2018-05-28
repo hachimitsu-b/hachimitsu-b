@@ -19,6 +19,12 @@
 
 			<!-- 右側の表示 -->
 			<div class="col-md-6">
+				<!-- エラーを表示 -->
+				<ul>
+			    <% cd.errors.full_messages.each do |msg| %>
+			      <li><%= msg %></li>
+			    <% end %>
+		    </ul>
 				<!-- シングルかアルバムかの選択肢 -->
 				<div class="form-group">
 					<%= f.label :single_album, "アルバムかシングルかを選択" %>

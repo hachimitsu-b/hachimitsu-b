@@ -7,5 +7,5 @@ class Album < ApplicationRecord
 
 	# バリデーション
 	# 空の保存を制限
-	validates :name, :oder, presence: true
+	validates :name,  presence: true
 end

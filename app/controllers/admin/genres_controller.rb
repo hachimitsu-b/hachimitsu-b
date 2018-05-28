@@ -1,6 +1,6 @@
 class Admin::GenresController < ApplicationController
   def index
-  	@genres = Genre.all.last(15).reverse
+  	@genres = Genre.where(delete_flag: false).or(Genre.where(delete_flag: nil)).last(15).reverse
     @new_genre = Genre.new
   end
 
@@ -10,7 +10,7 @@ class Admin::GenresController < ApplicationController
   end
 
   def edit
-	  @genres = Genre.all.last(15).reverse
+	  @genres = Genre.where(delete_flag: false).or(Genre.where(delete_flag: nil)).last(15).reverse
     @new_genre = Genre.find(params[:id])
   end
 
@@ -22,14 +22,15 @@ class Admin::GenresController < ApplicationController
 
   def destroy
   	@genre = Genre.find(params[:id])
-    @genre.delete
+    @genre.delete_flag = true
+    @genre.save
     redirect_to admin_genres_path
   end
 
   def seach
     if params[:seach].present?
       seach_val = params[:seach]
-      @genres = Genre.where("name_kana LIKE ?", "%#{seach_val}%")
+      @genres = Genre.where("name_kana LIKE ? and delete_flag = ?", "%#{seach_val}%", false)
       render :json => @genres
     else
       @genres = Genre.last(10)
