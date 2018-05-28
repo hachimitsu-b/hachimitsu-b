@@ -35,7 +35,7 @@
 		<div class="cd-box-container clearfix">
 			<% cart.item_in_carts.each do |item| %>
 				<div class="cd-con">
-					<%= link_to admin_cds_path do %>
+					<%= link_to admin_cd_path(item.cd.id) do %>
 						<% if item.cd.jacket_id.present? %>
 							<%= attachment_image_tag item.cd, :jacket, :fill, 100, 100 %>
 							<% else %>

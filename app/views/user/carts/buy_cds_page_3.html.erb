@@ -28,7 +28,7 @@
 		<div class="purchase-line">
 			<div class="clearfix">
 				<div class="cd-box2">
-					<%= link_to cds_path do %>
+					<%= link_to cd_path(item.cd.id) do %>
 						<% if item.cd.jacket_id.present? %>
 							<%= attachment_image_tag item.cd, :jacket, :fill, 100, 100 %>
 							<% else %>
