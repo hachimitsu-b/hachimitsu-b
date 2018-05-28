@@ -55,7 +55,7 @@
 									<% if cd.stock <= 0 %>
 										<li class="cd-count-btn count-select-text">０</li>
 									<% else %>
-										<% cd.stock.times do |n| %>
+										<% (cd.stock + @cart.item_in_carts.find_by(cd_id: cd.id).count).times do |n| %>
 										<% n += 1 %>
 											<li class="cd-count-btn count-select-text"><%= n %></li>
 										<% end %>

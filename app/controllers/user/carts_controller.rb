@@ -22,7 +22,7 @@ class User::CartsController < ApplicationController
   # 支払い方法
   def buy_cds_page_2
     @cart = @user.carts.find_by(status_flag: 0)
-    unless @cart.update(buy_cds_update_params)
+    unless @cart.update(buy_cds_page_update_params)
       render 'buy_cds_page_1'
     end
     # 入力が空の場合にページを戻す
@@ -31,10 +31,7 @@ class User::CartsController < ApplicationController
   # 注文内容
   def buy_cds_page_3
     @cart = @user.carts.find_by(status_flag: 0)
-    if @cart.update(buy_cds_update_params)
-      @user.carts.create(status_flag: 0, purchase_date: Time.now)
-      @cart.status_flag = 1
-      @cart.save
+    if @cart.update(buy_cds_page_update_params)
     else
       render 'buy_cds_page_2'
     end
@@ -44,6 +41,10 @@ class User::CartsController < ApplicationController
 
   # 注文完了
   def buy_cds_page_4
+    @cart = @user.carts.find_by(status_flag: 0)
+    @cart.status_flag = 1
+    @cart.save
+    @user.carts.create(status_flag: 0, purchase_date: Time.now)
   end
 
 
@@ -109,7 +110,7 @@ class User::CartsController < ApplicationController
       params.require(:cd).permit(:cd_id, :price)
     end
 
-    def buy_cds_update_params
+    def buy_cds_page_update_params
       params.require(:cart).permit(:purchase_date, :delivery_day, :to_postcode, :to_street_address, :payment, :to_name, :price)
     end
 end
