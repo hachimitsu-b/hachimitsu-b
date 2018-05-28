@@ -62,7 +62,7 @@
 						<th class="table-txt">クレジットカード番号</th>
 						<th class="acceptance-box-form">
 							<div class="input-group">
-								<%= f.text_field :to_name,value: @user.name_kanji %>
+								<%= f.hidden_field :payment,value: 1 %>
 							</div>
 						</th>
 					</tr>
@@ -70,7 +70,7 @@
 						<th class="table-txt">カードに記載のお名前</th>
 						<th class="acceptance-box-form">
 							<div class="input-group">
-								<%= f.text_field :to_name,value: @user.name_kanji %>
+								<%= f.hidden_field :payment,value: 0 %>
 							</div>
 						</th>
 					</tr>
@@ -116,7 +116,7 @@
 										<li>２６</li>
 										<li>２７</li>
 										<li>２８</li>
-										<li>２</li>
+										<li>２９</li>
 									</ul>
 								</div>
 								<div class="credit-txt">　年</div>
@@ -127,7 +127,7 @@
 						<th class="table-txt">セキュリティーコード</th>
 						<th class="acceptance-box-form">
 							<div class="input-group">
-								<%= f.text_field :to_name,value: @user.name_kanji %>
+								<%= f.hidden_field :payment,value: 1 %>
 							</div>
 						</th>
 					</tr>
