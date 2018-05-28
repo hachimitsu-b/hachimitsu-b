@@ -10,7 +10,7 @@
         <font size="7">発送状態確認一覧</font>
         <div class="col-md-6 col-xs-6 search-box">
           <div class="input-group">
-            <%= form_tag admin_carts_path, :method => 'get' do %>
+            <%= form_tag admin_carts_search_path, :method => 'get' do %>
               <%= text_field_tag :search, '', class: 'form-control' %>
               <span class="input-group-btn">
                 <%= button_tag( class: "btn btn-default") do %>
@@ -32,32 +32,28 @@
           </thead>
 
           <tbody>
-                <%# if @a.nil? %>
-                  <% @carts.each do |cart| %>
-                      <tr>
-                          <td class="info">
-                            <%= cart.user.name_kanji %>
-                          </td>
-                          <td class="danger">
-                              <% cart.item_in_carts.each do |item| %>
-                                <%= item.cd.name %><br>
-                              <% end %>
-                          </td>
-                          <td class="warning">
-                           <%= cart.to_street_address %>
-                          </td>
-                          <td>
-                            <% if cart.status_flag == 3 %>
-                              <p><%= link_to 'この商品を発送済になっています', admin_send_cart_path(cart.id) ,class: "btn btn-primary btn-lg active btncolor"%></p>
-                            <% else %>
-                              <p><%= link_to 'この商品を発送済みにする', admin_send_cart_path(cart.id) ,class: "btn btn-primary btn-lg active btncolor"%></p>
-                            <% end %>
-                          </td>
-                      </tr>
-                <% end %>
-              <%# else %>
-                <%= render partial: 'user', locals: {users: @a} %>
-              <% end %>
+             <% @carts.each do |cart| %>
+              <tr>
+                <td class="info">
+                  <%= cart.user.name_kanji %>
+                </td>
+                <td class="danger">
+                  <% cart.item_in_carts.each do |item| %>
+                   <%= item.cd.name %><br>
+                  <% end %>
+                </td>
+                <td class="warning">
+                 <%= cart.to_street_address %>
+                </td>
+                <td>
+                  <% if cart.status_flag == 3 %>
+                    <p><%= link_to 'この商品を発送済になっています', admin_send_cart_path(cart.id) ,class: "btn btn-primary btn-lg active btncolor"%></p>
+                  <% else %>
+                    <p><%= link_to 'この商品を発送済みにする', admin_send_cart_path(cart.id) ,class: "btn btn-primary btn-lg active btncolor"%></p>
+                  <% end %>
+                </td>
+              </tr>
+             <% end %>
           </tbody>
         </table>
       </div>
