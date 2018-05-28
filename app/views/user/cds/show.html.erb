@@ -4,34 +4,32 @@
 <div class='container'>
 	<div class="cd-detail">
 		<div class="clearfix">
-			<div class="clearfix">
-				<div class="cd-box3">
-					<% if @cd.jacket_id.present? %>
-					<%= attachment_image_tag @cd, :jacket, :fill, 250, 250 %>
-					<% else %>
-						<%= image_tag 'no-image250.png', size: '250x250' %>
+			<div class="cd-box3">
+				<% if @cd.jacket_id.present? %>
+				<%= attachment_image_tag @cd, :jacket, :fill, 250, 250 %>
+				<% else %>
+					<%= image_tag 'no-image250.png', size: '250x250' %>
+				<% end %>
+			</div>
+			<div class="fl">
+				<div class="titile-name2"><%= @cd.name %></div>
+				<div class="artists-name2"><%= @cd.artist.name %></div>
+				<div class="category-txt"><%= @cd.genre.name %></div>
+				<div class="category-txt"><%= @cd.label.name %></div>
+			</div>
+			<div class="price-box">
+				<p class="price3-txt"><span>価格</span>(税込)</p>
+				<p class="price3"><%= @cd.price %>円</span></p>
+				<% if @cd.stock == 0 %>
+					<div class="cart-stock0-btn mb10">現在商品がありません</div>
+					<p class="stock-txt2">在庫なし</p>
+				<% else %>
+					<%= link_to(cart_path(@cd.id), method: :patch) do %>
+						<div class="cart-btn2 mb10"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
 					<% end %>
-				</div>
-				<div class="fl">
-					<div class="titile-name2"><%= @cd.name %></div>
-					<div class="artists-name2"><%= @cd.artist.name %></div>
-					<div class="category-txt"><%= @cd.genre.name %></div>
-					<div class="category-txt"><%= @cd.label.name %></div>
-				</div>
-				<div class="price-box">
-					<p class="price3-txt"><span>価格</span>(税込)</p>
-					<p class="price3"><%= @cd.price %>円</span></p>
-					<% if @cd.stock == 0 %>
-						<div class="cart-stock0-btn mb10">現在商品がありません</div>
-						<p class="stock-txt2">在庫なし</p>
-					<% else %>
-						<%= link_to(cart_path(@cd.id), method: :patch) do %>
-							<div class="cart-btn2 mb10"><i class="glyphicon glyphicon-shopping-cart color-icon-gray"></i> カートに入れる</div>
-						<% end %>
-						<p class="stock-txt">在庫あり<br>残り <%= @cd.stock %>個</p>
-					<% end %>
-				</div>
-			</div><!-- /.clearfix -->
+					<p class="stock-txt">在庫あり<br>残り <%= @cd.stock %>個</p>
+				<% end %>
+			</div>
 		</div><!-- /.clearfix -->
 	</div>
 	<div>
