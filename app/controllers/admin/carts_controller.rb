@@ -1,12 +1,15 @@
 class Admin::CartsController < ApplicationController
   def index
-  	# if params[:search]
-	  	@carts = Cart.where(status_flag: 1)
-	  	# binding.pry
-	  	@a = User.where('name_kanji LIKE(?)', "%#{params[:search]}%")
-	 # else
-	 # 	@carts = Cart.where(status_flag: 1)
-	 # end
+	 @carts = Cart.where(status_flag: 1)
+  end
+
+  def search
+  	@users = User.where('name_kanji LIKE(?)', "%#{params[:search]}%")
+  	@carts = []
+  	@users.each do |user|
+  		@carts.concat(user.carts.where(status_flag: 1))
+  	end
+  	render 'index'
   end
 
   def send_cart

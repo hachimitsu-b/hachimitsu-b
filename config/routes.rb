@@ -49,6 +49,7 @@ Rails.application.routes.draw do
 	namespace :admin do
 		resources :carts, only: [:index]
 		get 'cart/send/:id' => 'carts#send_cart', as: 'send_cart'
+		get 'carts/search' => 'carts#search', as: 'carts_search'
 		resources :cds
 		post 'cd/seach' => 'cds#seach'
 		resources :users, only: [:index, :show, :edit, :update, :destroy]
