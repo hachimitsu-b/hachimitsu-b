@@ -40,6 +40,7 @@ class User::CdsController < ApplicationController
 
 
   def search
+    if serch
     @cds = Cd.search(params[:search])
     @name = params[:search]
   end
