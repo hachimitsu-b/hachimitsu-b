@@ -50,20 +50,22 @@ genres.count.times do |n|
 end
 
 
-
+b = 0
 
 3.times do |time|
 	genre_name = Genre.find_by(name: genres[time][:name])
 	# シングルのcdを作成
 	# 安室奈美恵
 	4.times do |n|
+		b += 1
+		file = File.open("app/assets/images/amuro_#{b}.jpg")
 		cd_name = "テスト" + genre_name.name + n.to_s
 		artist_name = Artist.find_by(name: "安室奈美恵")
 		lebel_name = Label.find_by(name: labels[0][:name])
 		Cd.create(name: cd_name,
 							artist_id: artist_name.id,
 							single_album: true,
-							jacket_id: nil,
+							jacket: file,
 							release_date: Time.now.ago(4.days),
 							price: 1000 + n,
 							label_id: lebel_name.id,
@@ -72,18 +74,25 @@ end
 							bought: 0,
 							display: true,
 							introduction: "テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト")
+		file.close
 	end
+end
 
-
+c = 0
+3.times do |time|
+	genre_name = Genre.find_by(name: genres[time][:name])
+	# シングルのcdを作成
 	# アラシ
 	3.times do |n|
+		c += 1
+		file = File.open("app/assets/images/arashi_#{c}.jpg")
 		cd_name = "テスト" + genre_name.name + n.to_s
 		artist_name = Artist.find_by(name: "嵐")
 		lebel_name = Label.find_by(name: labels[1][:name])
 		Cd.create(name: cd_name,
 							artist_id: artist_name.id,
 							single_album: true,
-							jacket_id: nil,
+							jacket: file,
 							release_date: Time.now.ago(27.days),
 							price: 2000 + n,
 							label_id: lebel_name.id,
@@ -92,16 +101,21 @@ end
 							bought: 15 + n,
 							display: true,
 							introduction: "テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト")
+		file.close
 
 	end
 end
 
 
+
+d = 0
 # アルバムを作成
 3.times do |time|
 	genre_name = Genre.find_by(name: genres[time][:name])
 
 	4.times do |n|
+		d += 1
+		file = File.open("app/assets/images/AKB_#{d}.jpg")
 		cd_name = "テスト" + genre_name.name + n.to_s
 		artist_name = Artist.find_by(name: "AKB")
 		lebel_name = Label.find_by(name: labels[2][:name])
@@ -109,7 +123,7 @@ end
 		cd =	Cd.create(name: cd_name,
 										artist_id: artist_name.id,
 										single_album: false,
-										jacket_id: nil,
+										jacket: file,
 										release_date: Time.now,
 										price: 3000 + n,
 										label_id: lebel_name.id,
@@ -119,6 +133,7 @@ end
 										display: true,
 										introduction: "テストテストテストテストテストテストテストテストテストテ
 				 													ストテストテストテストテストテストテスト")
+		file.close
 
 		album1 = Album.create(name: "テストディスク１",
 													cd_id: cd.id,
