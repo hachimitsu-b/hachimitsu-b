@@ -35,7 +35,13 @@
 		<div class="cd-box-container clearfix">
 			<% cart.item_in_carts.each do |item| %>
 				<div class="cd-con">
-					<div class="cd-box"><%= image_tag 'no-image150.jpg', size: '150x150' %></div>
+					<%= link_to admin_cds_path do %>
+						<% if item.cd.jacket_id.present? %>
+							<%= attachment_image_tag item.cd, :jacket, :fill, 100, 100 %>
+							<% else %>
+								<%= image_tag 'no-image100.png', size: '100x100' %>
+						<% end %>
+					<% end %>
 					<div class="admin-t-a-name" style="margin-bottom: 0;">
 						<span class="titile-name"><%= item.cd.name %></span>
 						<p class="artists-name"><%= item.cd.artist.name %></p>
