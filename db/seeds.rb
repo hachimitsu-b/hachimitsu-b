@@ -202,7 +202,7 @@ end
 
 # 管理者
 Admin.create(name: "管理者",
-						 email: "admin@exmple.com",
+						 email: "admin@example.com",
 						 password: "password")
 
 
