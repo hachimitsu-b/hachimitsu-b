@@ -43,6 +43,7 @@
 							<% cds.each do |cd| %>
 								<tr class="cd-btn" data-id="<%= cd.id %>">
 									<th><%= cd.name %></th>
+									<%binding.pry%>
 									<th><%= cd.artist.name %></th>
 									<th><%= cd.genre.name %></th>
 								</tr>

@@ -52,7 +52,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    if user = User.find_by(params[:id])
+    if user = User.find_by(id: params[:id])
       user.delete_flag = 2
       user.save
       flash[:notice] = "Book was successfully destroyed."
@@ -64,7 +64,7 @@ class Admin::UsersController < ApplicationController
   private
 
    def user_params
-        params.require(:user).permit(:name_kanji, :name_kana, :street_address, :phone_number ,:email)
+        params.require(:user).permit(:name_kanji, :name_kana, :street_address, :phone_number, :postcode, :email)
     end
 
 end
